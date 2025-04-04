@@ -1,0 +1,49 @@
+{
+  "name": "solid-hook-form",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/main.umd.cjs",
+  "module": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.umd.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "solid-js": "^1.9.5"
+  },
+  "devDependencies": {
+    "react-hook-form": "^7.55.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.11",
+    "vite-plugin-dts": "^4.5.0",
+    "vitest": "^3.0.5"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "vitest run"
+  },
+  "author": "thorn_pear",
+  "license": "ISC",
+  "description": "Performant, flexible and extensible forms library for Solid",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tatsmaki/solid-hook-form.git"
+  },
+  "keywords": [
+    "solid",
+    "hooks",
+    "form",
+    "forms",
+    "form-validation",
+    "validation",
+    "typescript",
+    "solid-hooks"
+  ]
+}
