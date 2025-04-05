@@ -2,15 +2,14 @@ import type { Accessor } from "solid-js";
 import { FieldPath, FieldPathValue, Path } from "./path";
 import { Rules } from "./validate";
 import { FieldErrors } from "./errors";
-import { InputEvent, ChangeEvent } from "./event";
 
 export type FormValues = Record<string, any>;
 
 type RegisterReturn<F extends FormValues> = {
   name: Path<F>;
-  ref(ref: HTMLInputElement | null): void;
-  onInput(event: InputEvent): void;
-  onChange(event: ChangeEvent): void;
+  ref(ref: HTMLElement | null): void;
+  onInput(event: Event): void;
+  onChange(event: Event): void;
 };
 
 export type Register<T extends FormValues> = (

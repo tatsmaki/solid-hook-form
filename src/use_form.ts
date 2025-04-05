@@ -10,12 +10,12 @@ import {
 } from "./types/form";
 import { Path } from "./types/path";
 import { FieldErrors } from "./types/errors";
-import { executeGetValueStrategy } from "./logic/get_value";
-import { executeSetValueStrategy } from "./logic/set_value";
+import { getFieldValue } from "./logic/get_value";
+import { setFieldValue } from "./logic/set_value";
 import { Rules } from "./types/validate";
 import { validate } from "./logic/validate";
 
-type FormFields = Record<string, HTMLInputElement | null>;
+type FormFields = Record<string, HTMLElement | null>;
 
 type UseFormArg<T extends FormValues> = {
   defaultValues: T;
@@ -61,6 +61,13 @@ export const useForm = <F extends FormValues>({
     });
   };
 
+  const onFieldChange = (event: Event, name: Path<F>) => {
+    const value = getFieldValue(event);
+
+    setValues((prev) => ({ ...prev, [name]: value }));
+    validateField(name);
+  };
+
   const register: Register<F> = (name, options = {}) => {
     rules[name] = {
       required: options.required,
@@ -77,18 +84,12 @@ export const useForm = <F extends FormValues>({
       // value: values()[name],
       onInput(event) {
         if (mode === "onInput") {
-          const newValue = event.target.value;
-
-          setValues((prev) => ({ ...prev, [name]: newValue }));
-          validateField(name);
+          onFieldChange(event, name);
         }
       },
       onChange(event) {
         if (mode === "onChange" || mode === "onInput") {
-          const value = executeGetValueStrategy(event.target);
-
-          setValues((prev) => ({ ...prev, [name]: value }));
-          validateField(name);
+          onFieldChange(event, name);
         }
       },
       ref(element) {
@@ -101,7 +102,7 @@ export const useForm = <F extends FormValues>({
         fields[name] = element;
 
         if (element) {
-          executeSetValueStrategy(element, values()[name]);
+          setFieldValue(element, values()[name]);
         }
       },
     };
@@ -121,7 +122,7 @@ export const useForm = <F extends FormValues>({
     const field = fields[name];
 
     if (field) {
-      executeSetValueStrategy(field, value);
+      setFieldValue(field, value);
     }
   };
 

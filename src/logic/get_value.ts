@@ -1,16 +1,13 @@
-type GetValueStrategy = (element: HTMLInputElement) => any;
+export const getFieldValue = (event: Event) => {
+  const field = event.target;
 
-const getValueStrategies: Record<string, GetValueStrategy> = {
-  text(element) {
-    return element.value;
-  },
-  checkbox(element) {
-    return element.checked;
-  },
-};
+  if (field instanceof HTMLSelectElement) {
+    return field.value;
+  }
 
-export const executeGetValueStrategy: GetValueStrategy = (element) => {
-  const strategy = getValueStrategies[element.type] || getValueStrategies.text;
+  if (field instanceof HTMLInputElement && field.type === "checkbox") {
+    return field.checked;
+  }
 
-  return strategy(element);
+  return (field as HTMLInputElement).value;
 };

@@ -1,16 +1,15 @@
-type SetValueStrategy = (element: HTMLInputElement, value: any) => void;
+export const setFieldValue = (field: HTMLElement, value: any) => {
+  if (field instanceof HTMLSelectElement) {
+    field.value = value;
 
-const setValueStrategies: Record<string, SetValueStrategy> = {
-  text(element, value) {
-    element.value = value;
-  },
-  checkbox(element, value) {
-    element.checked = value;
-  },
-};
+    return;
+  }
 
-export const executeSetValueStrategy: SetValueStrategy = (element, value) => {
-  const strategy = setValueStrategies[element.type] || setValueStrategies.text;
+  if (field instanceof HTMLInputElement && field.type === "checkbox") {
+    field.checked = value;
 
-  return strategy(element, value);
+    return;
+  }
+
+  (field as HTMLInputElement).value = value;
 };
