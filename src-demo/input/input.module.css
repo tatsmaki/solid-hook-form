@@ -1,0 +1,19 @@
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+
+.input {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  height: 40px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,44 @@
+:root {
+  font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+  background: #191d3a;
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+}
+
+.demo {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+button {
+  background: #ec5990;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 16px 10px;
+  transition: all 0.3s;
+  font-size: 16px;
+  color: white;
+}
+
+button:hover {
+  background: #bf1650;
+}
+
+button:disabled {
+  background: #ccc;
+}
