@@ -30,7 +30,7 @@ const getRuleMessage = (rule: ValidationRule<any>) => {
 export const validate = <F extends FormValues>(
   values: F,
   name: Path<F>,
-  rules: Rules<F, Path<F>>
+  rules: Rules<F, Path<F>> = {}
 ): FieldError | undefined => {
   const value = values[name];
 
