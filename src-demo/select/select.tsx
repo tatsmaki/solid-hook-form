@@ -9,7 +9,7 @@ export const Select = (props: SelectProps) => {
   const id = createUniqueId();
 
   return (
-    <span>
+    <span class={sx.field}>
       <label for={id} class={sx.label}>
         {props.label}
       </label>
