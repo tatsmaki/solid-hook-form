@@ -1,16 +1,16 @@
 # Solid Hook Form
 
-## Playground
+### Playground
 
 [<img width="1171" alt="Screenshot 2025-04-05 at 15 01 47" src="https://github.com/user-attachments/assets/072eb398-85fa-4240-b305-dcbbe9c0a9c8" />](https://solid-hook-form.vercel.app/)
 
-## Install
+### Install
 
 ```sh
 npm install solid-hook-form
 ```
 
-## Quickstart
+### Quickstart
 
 ```tsx
 import { useForm } from "solid-hook-form";

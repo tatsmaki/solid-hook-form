@@ -1,6 +1,6 @@
 {
   "name": "solid-hook-form",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "main": "./dist/main.umd.cjs",
   "module": "./dist/main.js",
@@ -34,7 +34,7 @@
   },
   "author": "thorn_pear",
   "license": "ISC",
-  "description": "Performant, flexible and extensible forms library for Solid",
+  "description": "Performant, flexible and extensible forms with easy to use validation",
   "repository": {
     "type": "git",
     "url": "https://github.com/tatsmaki/solid-hook-form.git"
