@@ -8,6 +8,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    sourcemap: true,
     lib: {
       entry: "src/main.ts",
       name: "solid-hook-form",
