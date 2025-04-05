@@ -10,7 +10,6 @@ import {
 } from "./types/form";
 import { Path } from "./types/path";
 import { FieldErrors } from "./types/errors";
-import { InputEvent, ChangeEvent } from "./types/event";
 import { executeGetValueStrategy } from "./logic/get_value";
 import { executeSetValueStrategy } from "./logic/set_value";
 import { Rules } from "./types/validate";
