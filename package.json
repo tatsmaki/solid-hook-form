@@ -1,6 +1,6 @@
 {
   "name": "solid-hook-form",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "main": "./dist/main.umd.cjs",
   "module": "./dist/main.js",
@@ -23,10 +23,13 @@
     "typescript": "~5.7.2",
     "vite": "^6.0.11",
     "vite-plugin-dts": "^4.5.0",
+    "vite-plugin-solid": "^2.11.6",
     "vitest": "^3.0.5"
   },
   "scripts": {
+    "start": "vite --config vite.demo",
     "build": "tsc && vite build",
+    "build:demo": "tsc && vite build --config vite.demo",
     "test": "vitest run"
   },
   "author": "thorn_pear",

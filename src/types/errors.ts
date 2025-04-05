@@ -1,8 +1,9 @@
 import { FormValues } from "./form";
-import { BrowserNativeObject, IsAny, Merge } from "./utils";
+import { BrowserNativeObject, IsAny, LiteralUnion, Merge } from "./utils";
+import { Rules } from "./validate";
 
 export type FieldError = {
-  //   type: LiteralUnion<keyof RegisterOptions, string>;
+  type: LiteralUnion<keyof Rules, string>;
   //   root?: FieldError;
   //   ref?: Ref;
   //   types?: MultipleFieldErrors;
