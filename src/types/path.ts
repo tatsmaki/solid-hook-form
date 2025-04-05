@@ -75,3 +75,10 @@ export type PathValue<T, P extends Path<T> | ArrayPath<T>> = T extends any
   : never;
 
 export type FieldPathValue<F extends FormValues, P extends FieldPath<F>> = PathValue<F, P>;
+
+export type FieldPathValues<
+  F extends FormValues,
+  P extends FieldPath<F>[] | readonly FieldPath<F>[]
+> = {} & {
+  [K in keyof P]: FieldPathValue<F, P[K] & FieldPath<F>>;
+};
