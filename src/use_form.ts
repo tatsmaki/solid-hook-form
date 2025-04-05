@@ -1,5 +1,6 @@
 import { createSignal } from "solid-js";
 import {
+  FormFields,
   FormValues,
   GetValues,
   OnSubmit,
@@ -9,13 +10,12 @@ import {
   UseFormReturn,
 } from "./types/form";
 import { Path } from "./types/path";
-import { FieldErrors } from "./types/errors";
+import { FieldError } from "./types/errors";
 import { getFieldValue } from "./logic/get_value";
 import { setFieldValue } from "./logic/set_value";
 import { Rules } from "./types/validate";
 import { validate } from "./logic/validate";
-
-type FormFields = Record<string, HTMLElement | null>;
+import { createErrors } from "./logic/create_errors";
 
 type UseFormArg<T extends FormValues> = {
   defaultValues: T;
@@ -30,26 +30,31 @@ export const useForm = <F extends FormValues>({
   const rules: Record<string, Rules<F, Path<F>>> = {};
 
   const [values, setValues] = createSignal<F>(defaultValues);
-  const [errors, setErrors] = createSignal<FieldErrors<F>>({});
+  const { errors, appendError, removeError, resetErrors } = createErrors<F>();
   const [isValid, setIsValid] = createSignal<boolean>(true);
 
+  const setFieldError = (name: Path<F>, error: FieldError) => {
+    const field = fields[name];
+
+    if (field) {
+      error.ref = field;
+    }
+
+    appendError(name, error);
+  };
+
+  const clearFieldError = (name: Path<F>) => {
+    removeError(name);
+  };
+
   const validateField = (name: Path<F>) => {
-    // const field = fields[name];
     const rule = rules[name];
-
-    // const value = field && executeGetValueStrategy(field);
-
     const error = validate(values(), name, rule);
 
     if (error) {
-      setErrors((prev) => ({ ...prev, [name]: error }));
+      setFieldError(name, error);
     } else {
-      setErrors((prev) => {
-        const errors = { ...prev };
-
-        delete errors[name];
-        return errors;
-      });
+      clearFieldError(name);
     }
 
     setIsValid(!Object.keys(errors()).length);
@@ -142,7 +147,7 @@ export const useForm = <F extends FormValues>({
       ...defaultValues,
       ...newDefaultValues,
     }));
-    setErrors({});
+    resetErrors();
     setIsValid(true);
   };
 

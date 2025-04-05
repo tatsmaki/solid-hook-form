@@ -5,9 +5,11 @@ import { FieldErrors } from "./errors";
 
 export type FormValues = Record<string, any>;
 
+export type Ref = HTMLElement | null;
+
 type RegisterReturn<F extends FormValues> = {
   name: Path<F>;
-  ref(ref: HTMLElement | null): void;
+  ref(ref: Ref): void;
   onInput(event: Event): void;
   onChange(event: Event): void;
 };
@@ -46,3 +48,5 @@ export type UseFormReturn<F extends FormValues = FormValues> = {
   onSubmit: OnSubmit<F>;
   reset: Reset<F>;
 };
+
+export type FormFields = Record<string, Ref>;
