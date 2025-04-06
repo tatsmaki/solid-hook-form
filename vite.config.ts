@@ -14,5 +14,14 @@ export default defineConfig({
       name: "solid-hook-form",
       fileName: "main",
     },
+    rollupOptions: {
+      external: ["solid-js"],
+      output: {
+        exports: "named",
+        globals: {
+          "solid-js": "solid",
+        },
+      },
+    },
   },
 });
