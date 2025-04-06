@@ -7,7 +7,7 @@ export type FormValues = Record<string, any>;
 
 export type Ref = HTMLElement | null;
 
-type RegisterReturn<F extends FormValues> = {
+export type RegisterReturn<F extends FormValues> = {
   name: Path<F>;
   ref(ref: Ref): void;
   onInput(event: Event): void;
@@ -30,7 +30,7 @@ export type SetValue<F extends FormValues> = (
   value: FieldPathValue<F, Path<F>>
 ) => void;
 
-type SubmitCallback<F extends FormValues> = (values: F) => void;
+export type SubmitCallback<F extends FormValues> = (values: F) => void;
 
 export type OnSubmit<F extends FormValues> = (
   submit: SubmitCallback<F>
