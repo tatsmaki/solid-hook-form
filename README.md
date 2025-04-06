@@ -2,7 +2,7 @@
 
 ### Playground
 
-[<img width="1171" alt="Screenshot 2025-04-05 at 15 01 47" src="https://github.com/user-attachments/assets/08c8242a-c254-4d80-9de8-278d32615c12" />](https://solid-hook-form.vercel.app/)
+[<img width="1171" alt="Screenshot 2025-04-05 at 15 01 47" src="https://github.com/tatsmaki/solid-hook-form/blob/master/assets/demo.png" />](https://solid-hook-form.vercel.app/)
 
 ### Install
 
