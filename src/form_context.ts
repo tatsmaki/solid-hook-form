@@ -1,3 +1,3 @@
 import { createContext } from "solid-js";
 
-export const FormContext = createContext({});
+export const FormContext = createContext();

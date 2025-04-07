@@ -1,8 +1,10 @@
 import { defineConfig } from "vite";
+import solidPlugin from "vite-plugin-solid";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
   plugins: [
+    solidPlugin(),
     dts({
       tsconfigPath: "tsconfig.build.json",
     }),
