@@ -66,6 +66,19 @@ export const useForm = <F extends FormValues>({
     });
   };
 
+  const focusFirstError = () => {
+    const names = Object.keys(fields) as Path<F>[];
+
+    for (const name of names) {
+      const error = errors()[name];
+
+      if (error) {
+        error.ref?.focus();
+        break;
+      }
+    }
+  };
+
   const onFieldChange = (event: Event, name: Path<F>) => {
     const value = getFieldValue(event);
 
@@ -140,7 +153,7 @@ export const useForm = <F extends FormValues>({
         submit(getValues());
       }
 
-      (Object.values(errors()) as FieldError[])[0]?.ref?.focus();
+      focusFirstError();
     };
   };
 
