@@ -84,9 +84,17 @@ export const Form = () => {
             error={errors().age}
           />
 
-          <Checkbox label="Remember me" {...register("remember", { required: "Required" })} />
+          <Checkbox
+            label="Remember me"
+            {...register("remember", { required: "Required" })}
+            error={errors().remember}
+          />
 
-          <Select label="Title" {...register("title", { required: "Required" })}>
+          <Select
+            label="Title"
+            {...register("title", { required: "Required" })}
+            error={errors().title}
+          >
             <option value="">Select...</option>
             <option value="Mr">Mr</option>
             <option value="Mrs">Mrs</option>

@@ -1,4 +1,4 @@
-import { createUniqueId, JSX } from "solid-js";
+import { createUniqueId, JSX, splitProps } from "solid-js";
 import sx from "./input.module.css";
 import { FieldError } from "../../src/main";
 
@@ -9,14 +9,15 @@ type InputProps = JSX.InputHTMLAttributes<HTMLInputElement> & {
 
 export const Input = (props: InputProps) => {
   const id = createUniqueId();
+  const [local, rest] = splitProps(props, ["label", "error"]);
 
   return (
     <span class={sx.field}>
       <label for={id} class={sx.label}>
-        {props.label}
+        {local.label}
       </label>
-      <input id={id} type="text" class={`${sx.input} ${props.error ? "error" : ""}`} {...props} />
-      {props.error && <span class={sx.error}>{props.error.message}</span>}
+      <input id={id} type="text" class={`${sx.input} ${local.error ? "error" : ""}`} {...rest} />
+      {local.error && <span class={sx.error}>{local.error.message}</span>}
     </span>
   );
 };
