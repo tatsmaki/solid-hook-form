@@ -139,6 +139,8 @@ export const useForm = <F extends FormValues>({
       if (isValid()) {
         submit(getValues());
       }
+
+      (Object.values(errors()) as FieldError[])[0]?.ref?.focus();
     };
   };
 
