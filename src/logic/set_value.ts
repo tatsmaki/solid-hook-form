@@ -11,5 +11,9 @@ export const setFieldValue = (field: HTMLElement, value: any) => {
     return;
   }
 
+  if (field instanceof HTMLInputElement && field.type === "file") {
+    return;
+  }
+
   (field as HTMLInputElement).value = value;
 };

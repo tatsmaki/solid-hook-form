@@ -9,5 +9,9 @@ export const getFieldValue = (event: Event) => {
     return field.checked;
   }
 
+  if (field instanceof HTMLInputElement && field.type === "file") {
+    return field.files;
+  }
+
   return (field as HTMLInputElement).value;
 };
