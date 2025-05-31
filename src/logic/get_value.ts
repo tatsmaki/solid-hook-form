@@ -10,7 +10,7 @@ export const getFieldValue = (event: Event) => {
   }
 
   if (field instanceof HTMLInputElement && field.type === "file") {
-    return field.files;
+    return [...(field.files || [])];
   }
 
   return (field as HTMLInputElement).value;
