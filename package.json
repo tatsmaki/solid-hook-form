@@ -1,6 +1,6 @@
 {
   "name": "solid-hook-form",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "type": "module",
   "main": "./dist/main.umd.cjs",
   "module": "./dist/main.js",
@@ -44,6 +44,7 @@
     "type": "git",
     "url": "https://github.com/tatsmaki/solid-hook-form.git"
   },
+  "homepage": "https://tatsmaki.github.io/solid-hook-form",
   "keywords": [
     "solid",
     "hooks",
