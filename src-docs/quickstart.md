@@ -4,7 +4,7 @@
 
 Install solid-hook-form package.
 
-```sh
+```bash
 npm install solid-hook-form
 ```
 
@@ -12,7 +12,7 @@ npm install solid-hook-form
 
 The following code demonstrates a basic usage example.
 
-```jsx
+```javascript
 import { useForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
@@ -41,7 +41,7 @@ To make field value available for form validation and submission you need to reg
 
 > Note: form field name should match a registered component name.
 
-```jsx
+```javascript
 import { useForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
@@ -82,7 +82,7 @@ List of validation rules supported:
 - pattern
 - validate
 
-```jsx
+```javascript
 import { useForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
@@ -113,7 +113,7 @@ export const ExampleForm = () => {
 
 Solid Hook Form is built with TypeScript, and you can define a FormValues type.
 
-```tsx
+```typescript
 import { useForm } from "solid-hook-form";
 
 type ExampleFormValues = {

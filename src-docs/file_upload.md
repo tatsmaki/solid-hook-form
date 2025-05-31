@@ -2,9 +2,11 @@
 
 Check full example at [StackBlitz](https://stackblitz.com/edit/solidjs-templates-jhhjanak?file=src%2Fexample_form%2Fexample_form.tsx).
 
-<img src="_images/file_upload.png" />
+<p align="center">
+  <img width="600" src="_images/file_upload.png" />
+</p>
 
-```tsx
+```typescript
 import { useForm, FormProvider } from "solid-hook-form";
 import { FileUpload } from "./file_upload";
 
