@@ -1,10 +1,7 @@
 :root {
-  font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-
+  font-family: Inter;
+  --colors-black-100: #ffffff;
   background: #191d3a;
-  color: #ffffff;
 }
 
 body {
@@ -24,22 +21,8 @@ body {
   gap: 1rem;
 }
 
-button {
-  background: #ec5990;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-  padding: 16px 10px;
-  transition: all 0.3s;
-  font-size: 16px;
-  color: white;
-  margin-top: 1rem;
-}
-
-button:hover {
-  background: #bf1650;
-}
-
-button:disabled {
-  background: #ccc;
+select {
+  height: 48px;
+  background: var(--colors-black-900);
+  border-radius: 6px;
 }

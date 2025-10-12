@@ -1,11 +1,10 @@
 import { FormProvider } from "../src/form_provider";
 import { useForm } from "../src/use_form";
-import { Checkbox } from "./checkbox/checkbox";
 import { Errors } from "./errors/errors";
-import sx from "./form.module.css";
-import { Input } from "./input/input";
-import { Select } from "./select/select";
 import { Values } from "./values/values";
+import { Field, TextInput, Checkbox, Button } from "solid-uix";
+import "solid-uix/dist/main.css";
+import sx from "./form.module.css";
 
 export type DemoFormValues = {
   date: string;
@@ -40,69 +39,74 @@ export const Form = () => {
         <form class={sx.form} onSubmit={onSubmit(onSave)}>
           <h2>Form</h2>
 
-          <Input
-            label="Date"
-            type="date"
-            {...register("date", { required: "Required" })}
-            error={errors().date}
-          />
+          <Field error={!!errors().date}>
+            <Field.Label>Date</Field.Label>
+            <TextInput type="date" {...register("date", { required: "Required" })} />
+            <Field.Message level="error">{errors().date?.message}</Field.Message>
+          </Field>
 
-          <Input
-            label="Email"
-            {...register("email", {
-              required: "Required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid email",
-              },
-            })}
-            error={errors().email}
-          />
+          <Field error={!!errors().email}>
+            <Field.Label>Email</Field.Label>
+            <TextInput
+              {...register("email", {
+                required: "Required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email",
+                },
+              })}
+            />
+            <Field.Message level="error">{errors().email?.message}</Field.Message>
+          </Field>
 
-          <Input
-            label="Password"
-            {...register("password", {
-              required: "Required",
-              minLength: { value: 8, message: "Min 8" },
-            })}
-            error={errors().password}
-          />
+          <Field error={!!errors().password}>
+            <Field.Label>Password</Field.Label>
+            <TextInput
+              {...register("password", {
+                required: "Required",
+                minLength: { value: 8, message: "Min 8" },
+              })}
+            />
+            <Field.Message level="error">{errors().password?.message}</Field.Message>
+          </Field>
 
-          <Input
-            label="Age"
-            type="number"
-            {...register("age", {
-              min: {
-                value: 18,
-                message: "Min 18",
-              },
-              max: {
-                value: 100,
-                message: "Max 100",
-              },
-            })}
-            error={errors().age}
-          />
+          <Field error={!!errors().age}>
+            <Field.Label>Age</Field.Label>
+            <TextInput
+              type="number"
+              {...register("age", {
+                min: {
+                  value: 18,
+                  message: "Min 18",
+                },
+                max: {
+                  value: 100,
+                  message: "Max 100",
+                },
+              })}
+            />
+            <Field.Message level="error">{errors().age?.message}</Field.Message>
+          </Field>
 
           <Checkbox
             label="Remember me"
             {...register("remember", { required: "Required" })}
-            error={errors().remember}
+            error={!!errors().remember}
           />
 
-          <Select
-            label="Title"
-            {...register("title", { required: "Required" })}
-            error={errors().title}
-          >
-            <option value="">Select...</option>
-            <option value="Mr">Mr</option>
-            <option value="Mrs">Mrs</option>
-            <option value="Ms">Ms</option>
-            <option value="Dr">Dr</option>
-          </Select>
+          <Field>
+            <Field.Label>Title</Field.Label>
+            <select {...register("title", { required: "Required" })}>
+              <option value="">Select...</option>
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Ms">Ms</option>
+              <option value="Dr">Dr</option>
+            </select>
+            <Field.Message level="error">{errors().title?.message}</Field.Message>
+          </Field>
 
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
 
         <Values />
