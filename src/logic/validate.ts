@@ -2,6 +2,7 @@ import { FieldError } from "../types/errors";
 import { FormValues } from "../types/form";
 import { Path } from "../types/path";
 import { Rules, ValidationRule } from "../types/validate";
+import { get } from "../utils/get";
 
 const getRuleValue = (rule: ValidationRule<any>) => {
   if (rule instanceof RegExp) {
@@ -32,7 +33,7 @@ export const validate = <F extends FormValues>(
   name: Path<F>,
   rules: Rules<F, Path<F>> = {}
 ): FieldError | undefined => {
-  const value = values[name];
+  const value = get(values, name);
 
   if (rules.required && !value) {
     return { type: "required", message: getRuleMessage(rules.required) };

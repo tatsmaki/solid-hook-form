@@ -2,20 +2,30 @@ import { createSignal } from "solid-js";
 import { FieldError, FieldErrors } from "../types/errors";
 import { FormValues } from "../types/form";
 import { Path } from "../types/path";
+import { get } from "../utils/get";
 
 export const createErrors = <F extends FormValues>() => {
   const [errors, setErrors] = createSignal<FieldErrors<F>>({});
 
+  const getError = (name: string) => {
+    return get(errors(), name);
+  };
+
   const appendError = (name: Path<F>, error: FieldError) => {
-    setErrors((prev) => ({ ...prev, [name]: error }));
+    setErrors((prev) => {
+      const newState = { ...prev, [name]: error };
+
+      return newState;
+    });
   };
 
   const removeError = (name: Path<F>) => {
     setErrors((prev) => {
-      const errors = { ...prev };
+      const newState = { ...prev };
 
-      delete errors[name];
-      return errors;
+      delete newState[name];
+
+      return newState;
     });
   };
 
@@ -28,5 +38,6 @@ export const createErrors = <F extends FormValues>() => {
     appendError,
     removeError,
     resetErrors,
+    getError,
   };
 };

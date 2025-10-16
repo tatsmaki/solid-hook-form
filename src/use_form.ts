@@ -1,6 +1,5 @@
 import { createSignal } from "solid-js";
 import {
-  FormFields,
   FormValues,
   GetValues,
   OnSubmit,
@@ -13,12 +12,15 @@ import { Path } from "./types/path";
 import { FieldError } from "./types/errors";
 import { getFieldValue } from "./logic/get_value";
 import { setFieldValue } from "./logic/set_value";
-import { Rules } from "./types/validate";
 import { validate } from "./logic/validate";
 import { createErrors } from "./logic/create_errors";
+import { set } from "./utils/set";
+import { get } from "./utils/get";
+import { createRules } from "./logic/create_rules";
+import { createFields } from "./logic/create_fields";
 
-type UseFormArg<T extends FormValues> = {
-  defaultValues: T;
+type UseFormArg<F extends FormValues> = {
+  defaultValues: F;
   mode?: "onInput" | "onChange" | "onSubmit";
 };
 
@@ -26,15 +28,14 @@ export const useForm = <F extends FormValues>({
   defaultValues,
   mode = "onInput",
 }: UseFormArg<F>): UseFormReturn<F> => {
-  const fields: FormFields = {};
-  const rules: Record<string, Rules<F, Path<F>>> = {};
-
+  const { fields, getField, setField } = createFields();
+  const { rules, addRule, getRule } = createRules<F>();
   const [values, setValues] = createSignal<F>(defaultValues);
-  const { errors, appendError, removeError, resetErrors } = createErrors<F>();
+  const { errors, appendError, removeError, resetErrors, getError } = createErrors<F>();
   const [isValid, setIsValid] = createSignal<boolean>(true);
 
   const setFieldError = (name: Path<F>, error: FieldError) => {
-    const field = fields[name];
+    const field = getField(name);
 
     if (field) {
       error.ref = field;
@@ -48,7 +49,7 @@ export const useForm = <F extends FormValues>({
   };
 
   const validateField = (name: Path<F>) => {
-    const rule = rules[name];
+    const rule = getRule(name);
     const error = validate(values(), name, rule);
 
     if (error) {
@@ -61,7 +62,7 @@ export const useForm = <F extends FormValues>({
   };
 
   const validateAllFields = () => {
-    Object.keys(values()).forEach((key) => {
+    Object.keys(rules).forEach((key) => {
       validateField(key as Path<F>);
     });
   };
@@ -70,7 +71,7 @@ export const useForm = <F extends FormValues>({
     const names = Object.keys(fields) as Path<F>[];
 
     for (const name of names) {
-      const error = errors()[name];
+      const error = getError(name);
 
       if (error) {
         error.ref?.focus();
@@ -82,24 +83,22 @@ export const useForm = <F extends FormValues>({
   const onFieldChange = (event: Event, name: Path<F>) => {
     const value = getFieldValue(event);
 
-    setValues((prev) => ({ ...prev, [name]: value }));
+    setValues((prev) => {
+      const newState = { ...prev };
+
+      set(newState, name, value);
+
+      return newState;
+    });
     validateField(name);
   };
 
   const register: Register<F> = (name, options = {}) => {
-    rules[name] = {
-      required: options.required,
-      min: options.min,
-      max: options.max,
-      minLength: options.minLength,
-      maxLength: options.maxLength,
-      pattern: options.pattern,
-      validate: options.validate,
-    };
+    addRule(name, options);
 
     return {
       name,
-      // value: values()[name],
+      // value: get(values(), name),
       onInput(event) {
         if (mode === "onInput") {
           onFieldChange(event, name);
@@ -111,33 +110,39 @@ export const useForm = <F extends FormValues>({
         }
       },
       ref(element) {
-        const field = fields[name];
+        const field = getField(name);
 
         if (field) {
           return;
         }
 
-        fields[name] = element;
+        setField(name, element);
 
         if (element) {
-          setFieldValue(element, values()[name]);
+          setFieldValue(element, get(values(), name));
         }
       },
     };
   };
 
-  const getValues: GetValues<F> = (name?: string) => {
+  const getValues: GetValues<F> = (name?: Path<F>) => {
     if (name) {
-      return values()[name];
+      return get(values(), name);
     }
 
     return values();
   };
 
   const setValue: SetValue<F> = (name, value) => {
-    setValues((prev) => ({ ...prev, [name]: value }));
+    setValues((prev) => {
+      const newValues = { ...prev };
 
-    const field = fields[name];
+      set(newValues, name, value);
+
+      return newValues;
+    });
+
+    const field = getField(name);
 
     if (field) {
       setFieldValue(field, value);
@@ -158,12 +163,20 @@ export const useForm = <F extends FormValues>({
   };
 
   const reset: Reset<F> = (newDefaultValues = {}) => {
-    setValues(() => ({
-      ...defaultValues,
+    const newValues = {
+      ...structuredClone(defaultValues),
       ...newDefaultValues,
-    }));
+    };
+
+    setValues(() => newValues);
     resetErrors();
     setIsValid(true);
+
+    Object.entries(fields).forEach(([name, field]) => {
+      if (field) {
+        setFieldValue(field, get(newValues, name));
+      }
+    });
   };
 
   return {
