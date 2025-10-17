@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tatsmaki.github.io/solid-hook-form/sitemap.xml
