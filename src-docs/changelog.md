@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.1 (2025-10-17)
+
+### Bug fixes
+
+- empty useForm arguments [4f838df](https://github.com/tatsmaki/solid-hook-form/commit/4f838df72d9d678879fde78f980d90f195fdbcb9)
+
 ## 1.5.0 (2025-10-17)
 
 ### Added
