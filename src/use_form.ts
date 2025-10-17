@@ -24,10 +24,11 @@ type UseFormArg<F extends FormValues> = {
   mode?: "onInput" | "onChange" | "onSubmit";
 };
 
-export const useForm = <F extends FormValues>({
-  defaultValues,
-  mode = "onInput",
-}: UseFormArg<F>): UseFormReturn<F> => {
+export const useForm = <F extends FormValues>(
+  arg: UseFormArg<F> = { defaultValues: {} as F }
+): UseFormReturn<F> => {
+  const { defaultValues, mode = "onInput" } = arg;
+
   const { fields, getField, setField } = createFields();
   const { rules, addRule, getRule } = createRules<F>();
   const [values, setValues] = createSignal<F>(defaultValues);
