@@ -1,6 +1,6 @@
 # Solid Hook Form
 
-[<img width="1171" alt="Screenshot 2025-04-05 at 15 01 47" src="https://github.com/tatsmaki/solid-hook-form/blob/master/assets/demo.png" />](https://tatsmaki.github.io/solid-hook-form)
+[<img width="1291" height="834" alt="Screenshot 2025-10-17 at 02 07 00" src="https://github.com/user-attachments/assets/83ec4c9a-60e1-49be-9415-8f8b2df74d53" />](https://tatsmaki.github.io/solid-hook-form)
 
 <p align="center">
   <a href="https://tatsmaki.github.io/solid-hook-form/#/quickstart">Get started</a> | 
