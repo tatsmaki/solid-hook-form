@@ -10,9 +10,11 @@ export type DemoFormValues = {
   date: string;
   email: string;
   password: string;
-  age: number;
+  profile: {
+    age: number;
+    name: string;
+  };
   remember: boolean;
-  title: string;
 };
 
 export const Form = () => {
@@ -21,16 +23,22 @@ export const Form = () => {
       date: new Date().toISOString().split("T")[0],
       email: "",
       password: "",
-      age: 0,
+      profile: {
+        age: 0,
+        name: "",
+      },
       remember: false,
-      title: "",
     },
     mode: "onInput",
   });
-  const { errors, register, onSubmit } = form;
+  const { errors, register, onSubmit, reset } = form;
 
   const onSave = (values: DemoFormValues) => {
     console.log(values);
+  };
+
+  const onReset = () => {
+    reset();
   };
 
   return (
@@ -70,11 +78,22 @@ export const Form = () => {
             <Field.Message level="error">{errors().password?.message}</Field.Message>
           </Field>
 
-          <Field error={!!errors().age}>
+          <Field error={!!errors()["profile.name"]}>
+            <Field.Label>Name</Field.Label>
+            <TextInput
+              {...register("profile.name", {
+                required: "Required",
+                maxLength: { value: 10, message: "Max 10" },
+              })}
+            />
+            <Field.Message level="error">{errors()["profile.name"]?.message}</Field.Message>
+          </Field>
+
+          <Field error={!!errors()["profile.age"]}>
             <Field.Label>Age</Field.Label>
             <TextInput
               type="number"
-              {...register("age", {
+              {...register("profile.age", {
                 min: {
                   value: 18,
                   message: "Min 18",
@@ -85,16 +104,19 @@ export const Form = () => {
                 },
               })}
             />
-            <Field.Message level="error">{errors().age?.message}</Field.Message>
+            <Field.Message level="error">{errors()["profile.age"]?.message}</Field.Message>
           </Field>
 
-          <Checkbox
-            label="Remember me"
-            {...register("remember", { required: "Required" })}
-            error={!!errors().remember}
-          />
+          <Field error={!!errors().remember}>
+            <Checkbox
+              label="Remember me"
+              {...register("remember", { required: "Required" })}
+              error={!!errors().remember}
+            />
+            <Field.Message level="error">{errors().remember?.message}</Field.Message>
+          </Field>
 
-          <Field>
+          {/* <Field>
             <Field.Label>Title</Field.Label>
             <select {...register("title", { required: "Required" })}>
               <option value="">Select...</option>
@@ -104,9 +126,12 @@ export const Form = () => {
               <option value="Dr">Dr</option>
             </select>
             <Field.Message level="error">{errors().title?.message}</Field.Message>
-          </Field>
+          </Field> */}
 
           <Button type="submit">Submit</Button>
+          <Button variant="outlined" onClick={onReset}>
+            Reset
+          </Button>
         </form>
 
         <Values />
