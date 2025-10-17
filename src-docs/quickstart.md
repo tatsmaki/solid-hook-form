@@ -145,3 +145,39 @@ export const ExampleForm = () => {
   );
 };
 ```
+
+## Handle errors
+
+Solid Hook Form provides an errors accessor to show you the errors in the form. errors' type will return given validation constraints. The following example showcases a required validation rule.
+
+```javascript
+import { useForm } from "solid-hook-form";
+
+export const ExampleForm = () => {
+  const { register, errors, onSubmit } = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+    },
+  });
+
+  const saveExample = (values) => {
+    console.log(values);
+  };
+
+  return (
+    <form onSubmit={onSubmit(saveExample)}>
+      <input {...register("name", { required: true })} aria-invalid={Boolean(errors().name)} />
+      {errors().name && <p role="alert">Name is required</p>}
+
+      <input
+        {...register("email", { required: "Email is required" })}
+        aria-invalid={Boolean(errors().email)}
+      />
+      {errors().email && <p role="alert">{errors().email.message}</p>}
+
+      <button type="submit">Save</button>
+    </form>
+  );
+};
+```

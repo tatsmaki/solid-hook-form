@@ -11,4 +11,4 @@
 ## Features
 
 - Validate forms with HTML standard based validation API
-- Super Light (4 kB)
+- Super Light (12 kB)
