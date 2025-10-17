@@ -10,13 +10,13 @@
 
 - API
 
-  - [useForm](api/use_form)
-  - [useFormContext](api/use_form_context)
+  - [useForm](api/use-form)
+  - [useFormContext](api/use-form-context)
 
 - Examples
 
   - [Validation](examples/validation.md)
-  - [Nested Values](examples/nested_values.md)
-  - [File Upload](examples/file_upload.md)
+  - [Nested Values](examples/nested-values.md)
+  - [File Upload](examples/file-upload.md)
 
 - [Changelog](changelog.md)
