@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tatsmaki.github.io/solid-hook-form/</loc>
+    <priority>1.0</priority>
+  </url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/README</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/api/use_form</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/api/use_form_context</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/api</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/changelog</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/examples/date_picker</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/examples/file_upload</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/examples/nested_values</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/examples/validation</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/examples</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tatsmaki.github.io/solid-hook-form/#/quickstart</loc>
+  <priority>0.8</priority>
+</url>
+</urlset>

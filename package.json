@@ -22,6 +22,7 @@
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/user-event": "^14.6.1",
     "docsify-cli": "^4.4.4",
+    "docsify-sitemap": "^1.1.0",
     "happy-dom": "^17.4.4",
     "react-hook-form": "^7.55.0",
     "solid-uix": "^0.4.0",
@@ -36,7 +37,8 @@
     "build": "tsc && vite build",
     "build:demo": "tsc && vite build --config vite.demo",
     "test": "vitest run",
-    "start:docs": "npx docsify serve src-docs"
+    "start:docs": "npx docsify serve src-docs",
+    "build:sitemap": "bash ./src-docs/sitemap.sh"
   },
   "author": "thorn_pear",
   "license": "ISC",
