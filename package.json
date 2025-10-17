@@ -1,6 +1,6 @@
 {
   "name": "solid-hook-form",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "type": "module",
   "main": "./dist/main.umd.cjs",
   "module": "./dist/main.js",
@@ -47,15 +47,13 @@
     "type": "git",
     "url": "https://github.com/tatsmaki/solid-hook-form.git"
   },
-  "homepage": "https://tatsmaki.github.io/solid-hook-form",
+  "homepage": "https://solid-hook-form.vercel.app",
   "keywords": [
     "solid",
+    "solid-hook-form",
     "hooks",
-    "form",
     "forms",
-    "form-validation",
     "validation",
-    "typescript",
-    "solid-hooks"
+    "typescript"
   ]
 }

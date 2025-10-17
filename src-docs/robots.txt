@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tatsmaki.github.io/solid-hook-form/sitemap.xml
+Sitemap: https://solid-hook-form.vercel.app/sitemap.xml
