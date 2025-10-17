@@ -4,7 +4,7 @@
 
 [Get Started](/quickstart)
 
-[Demo](https://solid-hook-form.vercel.app)
+[Playground](https://solid-hook-form-playground.vercel.app)
 
 [GitHub](https://github.com/tatsmaki/solid-hook-form)
 

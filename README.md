@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://tatsmaki.github.io/solid-hook-form/#/quickstart">Get started</a> | 
-  <a href="https://solid-hook-form.vercel.app/">Playground</a> 
+  <a href="https://solid-hook-form-playground.vercel.app">Playground</a> 
 </p>
 
 ### Features
