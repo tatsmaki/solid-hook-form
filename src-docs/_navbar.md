@@ -4,4 +4,6 @@
 
 - [Get started](quickstart.md)
 
-- [Examples](file_upload.md)
+- [API](api)
+
+- [Examples](examples)

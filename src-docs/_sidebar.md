@@ -6,17 +6,17 @@
   - [Register fields](quickstart?id=register-fields)
   - [Apply validation](quickstart?id=apply-validation)
   - [TypeScript](quickstart?id=typescript)
+  - [Handle errors](quickstart?id=handle-errors)
 
 - API
 
-  - [useForm](use_form)
-  - [useFormContext](use_form_context)
+  - [useForm](api/use_form)
+  - [useFormContext](api/use_form_context)
 
 - Examples
 
-  <!-- - [Text Input](text_input.md) -->
-
-  - [File Upload](file_upload.md)
-  <!-- - [Date Picker](date_picker.md) -->
+  - [Validation](examples/validation.md)
+  - [Nested Values](examples/nested_values.md)
+  - [File Upload](examples/file_upload.md)
 
 - [Changelog](changelog.md)
