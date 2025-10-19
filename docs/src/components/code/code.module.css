@@ -1,0 +1,6 @@
+.code {
+  white-space: pre;
+  background: var(--colors-black-900);
+  display: block;
+  padding: 24px;
+}

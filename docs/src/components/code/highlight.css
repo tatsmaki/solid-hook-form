@@ -1,0 +1,11 @@
+.keyword,
+.operator,
+.property {
+  color: #ef3b7d;
+}
+
+.string,
+.function,
+.class-name {
+  color: #e6d06c;
+}

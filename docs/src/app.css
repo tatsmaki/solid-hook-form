@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+main {
+  padding: 1em;
+  margin: 0 auto;
+}
+
+blockquote {
+  border-left: 4px solid var(--colors-accent-500);
+  font-weight: 600;
+  padding: 8px 16px;
+  margin: 16px 0;
+}
+
+blockquote > p {
+  margin: 0;
+}

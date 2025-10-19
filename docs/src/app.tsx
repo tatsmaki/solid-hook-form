@@ -1,0 +1,32 @@
+import { Link, MetaProvider, Title } from "@solidjs/meta";
+import { Router } from "@solidjs/router";
+import { clientOnly } from "@solidjs/start";
+import { FileRoutes } from "@solidjs/start/router";
+import { Suspense } from "solid-js";
+import { Header } from "./components/header/header";
+import "./app.css";
+import style from "solid-uix/dist/main.css?url";
+
+const ClientOnlyScrollAnchor = clientOnly(() => import("./components/scroll/scroll"));
+
+const App = () => {
+  return (
+    <Router
+      root={(props) => (
+        <MetaProvider>
+          <Title>Solid Hook Form</Title>
+          <Link rel="stylesheet" href={style} />
+          <Suspense>
+            <Header />
+            {props.children}
+          </Suspense>
+        </MetaProvider>
+      )}
+    >
+      <FileRoutes />
+      <ClientOnlyScrollAnchor />
+    </Router>
+  );
+};
+
+export default App;
