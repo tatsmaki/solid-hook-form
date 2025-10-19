@@ -6,7 +6,7 @@ export const Link = (props: LinkProps) => {
   const location = useLocation();
 
   return (
-    <a {...props} class={`${sx.link} ${location.pathname === props.href && sx.active}`}>
+    <a {...props} class={`${sx.link} ${location.pathname.includes(props.href) && sx.active}`}>
       {props.children}
     </a>
   );

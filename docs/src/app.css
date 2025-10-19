@@ -14,7 +14,6 @@ main {
 
 blockquote {
   border-left: 4px solid var(--colors-accent-500);
-  font-weight: 600;
   padding: 8px 16px;
   margin: 16px 0;
 }

@@ -1,4 +1,4 @@
-import { Link, MetaProvider, Title } from "@solidjs/meta";
+import { Link, MetaProvider, Title, Meta } from "@solidjs/meta";
 import { Router } from "@solidjs/router";
 import { clientOnly } from "@solidjs/start";
 import { FileRoutes } from "@solidjs/start/router";
@@ -15,6 +15,14 @@ const App = () => {
       root={(props) => (
         <MetaProvider>
           <Title>Solid Hook Form</Title>
+          <Meta
+            name="description"
+            content="Performant, flexible and extensible forms with easy-to-use validation."
+          />
+          <Meta
+            name="keywords"
+            content="solid, solid-hook-form, hooks, forms, validation, typescript"
+          />
           <Link rel="stylesheet" href={style} />
           <Suspense>
             <Header />

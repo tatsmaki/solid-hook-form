@@ -1,6 +1,8 @@
 .keyword,
 .operator,
-.property {
+.property,
+.regex-delimiter,
+.regex-flags {
   color: #ef3b7d;
 }
 
@@ -8,4 +10,11 @@
 .function,
 .class-name {
   color: #e6d06c;
+}
+
+.boolean,
+.number,
+.regex-source,
+.constant {
+  color: #a77afe;
 }

@@ -1,3 +1,3 @@
 import { JSX } from "solid-js";
 
-export type LinkProps = JSX.AnchorHTMLAttributes<HTMLAnchorElement>;
+export type LinkProps = JSX.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };

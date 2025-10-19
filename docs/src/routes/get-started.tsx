@@ -1,3 +1,4 @@
+import { Title } from "@solidjs/meta";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Link } from "~/components/link/link";
@@ -5,6 +6,7 @@ import { Link } from "~/components/link/link";
 const GetStarted = () => {
   return (
     <main>
+      <Title>Get started</Title>
       <Container>
         <h1>Get started</h1>
 
@@ -54,7 +56,7 @@ export const ExampleForm = () => {
             your component into the hook.
           </p>
           <blockquote>
-            <p>Note: form field name should match a registered component name.</p>
+            <p>Form field name should match a registered component name.</p>
           </blockquote>
 
           <Code language="js">

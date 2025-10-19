@@ -7,10 +7,13 @@ export const Header = () => {
       <nav>
         <ul class={sx.links}>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/home">Home</Link>
           </li>
           <li>
             <Link href="/get-started">Get started</Link>
+          </li>
+          <li>
+            <Link href="/docs">Docs</Link>
           </li>
           <li>
             <Link href="/examples">Examples</Link>
