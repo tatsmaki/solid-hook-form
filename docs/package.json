@@ -11,7 +11,7 @@
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
-    "prismjs": "^1.30.0",
+    "prism-esm": "^1.29.0-fix.6",
     "solid-js": "^1.9.5",
     "solid-uix": "^0.4.0",
     "vinxi": "^0.5.7"
