@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 60px;
 }
 
 body {
@@ -8,8 +9,7 @@ body {
 }
 
 main {
-  padding: 1em;
-  margin: 0 auto;
+  padding: 0 16px 64px;
 }
 
 blockquote {
