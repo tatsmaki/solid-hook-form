@@ -23,7 +23,7 @@ const NestedValues = () => {
           .
         </p>
 
-        <Image src="/public/nested_values.png" />
+        <Image src="/nested_values.png" />
 
         <Code language="ts">{`import { useForm } from "solid-hook-form";
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://solid-hook-form.vercel.app/sitemap.xml
+Sitemap: https://solid-hook-form.vercel.app/sitemap/sitemap.xml

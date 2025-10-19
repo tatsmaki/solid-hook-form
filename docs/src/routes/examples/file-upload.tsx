@@ -23,7 +23,7 @@ const FileUpload = () => {
           .
         </p>
 
-        <Image src="/public/file_upload.png" />
+        <Image src="/file_upload.png" />
 
         <Code language="ts">
           {`import { useForm, FormProvider } from "solid-hook-form";

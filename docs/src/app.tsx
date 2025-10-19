@@ -23,6 +23,12 @@ const App = () => {
             name="keywords"
             content="solid, solid-hook-form, hooks, forms, validation, typescript"
           />
+          <Meta property="og:title" content="Solid Hook Form" />
+          <Meta property="og:site_name" content="Solid Hook Form" />
+          <Meta
+            name="og:description"
+            content="Performant, flexible and extensible forms with easy-to-use validation."
+          />
           <Link rel="stylesheet" href={style} />
           <Suspense>
             <Header />

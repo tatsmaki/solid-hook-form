@@ -25,7 +25,7 @@ const Validation = () => {
           .
         </p>
 
-        <Image src="/public/validation.png" />
+        <Image src="/validation.png" />
 
         <Code language="ts">{`import { useForm } from "solid-hook-form";
 
