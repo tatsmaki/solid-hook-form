@@ -9,7 +9,9 @@ import { Layout } from "./components/layout/layout";
 import "./app.css";
 import style from "solid-uix/dist/main.css?url";
 
-const ClientOnlyScrollAnchor = clientOnly(() => import("./components/scroll/scroll"));
+const ScrollToAnchor = clientOnly(async () => ({
+  default: (await import("./components/scroll/scroll")).ScrollToAnchor,
+}));
 
 const App = () => {
   return (
@@ -42,7 +44,7 @@ const App = () => {
       )}
     >
       <FileRoutes />
-      <ClientOnlyScrollAnchor />
+      <ScrollToAnchor />
     </Router>
   );
 };

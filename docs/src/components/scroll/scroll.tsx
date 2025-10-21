@@ -1,4 +1,4 @@
-const ScrollAnchor = () => {
+export const ScrollToAnchor = () => {
   const hash = window.location.hash?.replace("#", "");
 
   if (hash) {
@@ -9,5 +9,3 @@ const ScrollAnchor = () => {
 
   return null;
 };
-
-export default ScrollAnchor;
