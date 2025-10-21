@@ -13,5 +13,5 @@
 
 .active {
   color: var(--colors-accent-500);
-  border-bottom: 1.5px solid var(--colors-accent-500);
+  box-shadow: 0 1.5px 0 var(--colors-accent-500);
 }

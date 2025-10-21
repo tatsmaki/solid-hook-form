@@ -1,0 +1,24 @@
+.navigation {
+  padding: 16px 32px;
+  position: sticky;
+  top: 60px;
+  box-sizing: border-box;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.links ul li::marker {
+  color: var(--colors-accent-500);
+}

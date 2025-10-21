@@ -3,7 +3,7 @@ import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Link } from "~/components/link/link";
 
-const UseFormContext = () => {
+const FormContext = () => {
   return (
     <main>
       <Title>useFormContext</Title>
@@ -65,4 +65,4 @@ export const ExampleForm = () => {
   );
 };
 
-export default UseFormContext;
+export default FormContext;

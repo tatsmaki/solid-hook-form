@@ -19,7 +19,7 @@ const Docs = () => {
             <p>A powerful custom hook to validate your form.</p>
           </Grid.Item>
 
-          <Grid.Item href="/docs/use-form-context">
+          <Grid.Item href="/docs/form-context">
             <h2>
               <span innerHTML={code} />
               useFormContext
