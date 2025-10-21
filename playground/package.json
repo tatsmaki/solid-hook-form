@@ -1,0 +1,18 @@
+{
+  "name": "solid-hook-form-playground",
+  "type": "module",
+  "dependencies": {
+    "solid-hook-form": "^1.5.4",
+    "solid-js": "^1.9.5",
+    "solid-uix": "^0.4.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vite": "^6.0.11",
+    "vite-plugin-solid": "^2.11.6"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  }
+}

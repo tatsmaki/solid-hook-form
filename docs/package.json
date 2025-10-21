@@ -1,5 +1,5 @@
 {
-  "name": "example-basic",
+  "name": "solid-hook-form-docs",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev -- --open",

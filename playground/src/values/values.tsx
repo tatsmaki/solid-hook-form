@@ -1,4 +1,4 @@
-import { useFormContext } from "../../src/use_form_context";
+import { useFormContext } from "solid-hook-form";
 import { DemoFormValues } from "../form";
 import sx from "./values.module.css";
 

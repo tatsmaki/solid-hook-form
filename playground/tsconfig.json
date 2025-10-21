@@ -20,9 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-
-    "types": ["vitest/globals"]
+    "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
 }

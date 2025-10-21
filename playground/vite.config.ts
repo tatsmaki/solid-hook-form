@@ -8,6 +8,6 @@ export default defineConfig({
     open: true,
   },
   build: {
-    outDir: "demo",
+    outDir: "dist",
   },
 });

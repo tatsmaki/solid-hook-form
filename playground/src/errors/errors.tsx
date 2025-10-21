@@ -1,5 +1,4 @@
-import { FieldErrors } from "../../src/main";
-import { useFormContext } from "../../src/use_form_context";
+import { useFormContext, FieldErrors } from "solid-hook-form";
 import { DemoFormValues } from "../form";
 import sx from "./errors.module.css";
 

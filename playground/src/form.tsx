@@ -1,5 +1,4 @@
-import { FormProvider } from "../src/form_provider";
-import { useForm } from "../src/use_form";
+import { useForm, FormProvider } from "solid-hook-form";
 import { Errors } from "./errors/errors";
 import { Values } from "./values/values";
 import { Field, TextInput, Checkbox, Button } from "solid-uix";
@@ -30,6 +29,7 @@ export const Form = () => {
       remember: false,
     },
     mode: "onInput",
+    // resolver,
   });
   const { errors, register, onSubmit, reset } = form;
 
