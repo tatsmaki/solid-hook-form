@@ -25,5 +25,6 @@ export type Rules<F extends FormValues = FormValues, N extends FieldPath<F> = Fi
   maxLength?: ValidationRule<number>;
   minLength?: ValidationRule<number>;
   pattern?: ValidationRule<RegExp>;
+  valueAsNumber?: boolean;
   validate?: Validate<FieldPathValue<F, N>, F>;
 };

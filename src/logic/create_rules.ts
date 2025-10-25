@@ -13,6 +13,7 @@ export const createRules = <F extends FormValues>() => {
       minLength: options.minLength,
       maxLength: options.maxLength,
       pattern: options.pattern,
+      valueAsNumber: options.valueAsNumber,
       validate: options.validate,
     };
   };

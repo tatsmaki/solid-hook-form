@@ -1,4 +1,5 @@
-import { createSignal } from "solid-js";
+import { createMemo, createSignal } from "solid-js";
+import { Resolver } from "react-hook-form";
 import {
   FormValues,
   GetValues,
@@ -18,22 +19,27 @@ import { set } from "./utils/set";
 import { get } from "./utils/get";
 import { createRules } from "./logic/create_rules";
 import { createFields } from "./logic/create_fields";
+import { formatValue } from "./logic/format_value";
 
 type UseFormArg<F extends FormValues> = {
   defaultValues: F;
-  mode?: "onInput" | "onChange" | "onSubmit";
+  mode?: "onChange" | "onSubmit";
+  resolver?: Resolver<F>;
 };
 
 export const useForm = <F extends FormValues>(
   arg: UseFormArg<F> = { defaultValues: {} as F }
 ): UseFormReturn<F> => {
-  const { defaultValues, mode = "onInput" } = arg;
+  const { defaultValues, mode = "onInput", resolver } = arg;
 
   const { fields, getField, setField } = createFields();
   const { rules, addRule, getRule } = createRules<F>();
   const [values, setValues] = createSignal<F>(defaultValues);
   const { errors, appendError, removeError, resetErrors, getError } = createErrors<F>();
-  const [isValid, setIsValid] = createSignal<boolean>(true);
+
+  const isValid = createMemo(() => {
+    return !Object.keys(errors()).length;
+  });
 
   const setFieldError = (name: Path<F>, error: FieldError) => {
     const field = getField(name);
@@ -49,7 +55,32 @@ export const useForm = <F extends FormValues>(
     removeError(name);
   };
 
+  const runSchema = async (names: Path<F>[]) => {
+    if (resolver) {
+      const result = await resolver(values(), null, {
+        fields: {},
+        shouldUseNativeValidation: false,
+      });
+
+      for (const name of names) {
+        const error = get(result.errors, name);
+
+        if (error) {
+          setFieldError(name, error);
+        } else {
+          clearFieldError(name);
+        }
+      }
+    }
+  };
+
   const validateField = (name: Path<F>) => {
+    if (resolver) {
+      runSchema([name]);
+
+      return;
+    }
+
     const rule = getRule(name);
     const error = validate(values(), name, rule);
 
@@ -58,11 +89,15 @@ export const useForm = <F extends FormValues>(
     } else {
       clearFieldError(name);
     }
-
-    setIsValid(!Object.keys(errors()).length);
   };
 
   const validateAllFields = () => {
+    if (resolver) {
+      runSchema(Object.keys(fields) as any);
+
+      return;
+    }
+
     Object.keys(rules).forEach((key) => {
       validateField(key as Path<F>);
     });
@@ -82,7 +117,7 @@ export const useForm = <F extends FormValues>(
   };
 
   const onFieldChange = (event: Event, name: Path<F>) => {
-    const value = getFieldValue(event);
+    const value = formatValue(getFieldValue(event), rules[name]);
 
     setValues((prev) => {
       const newState = { ...prev };
@@ -101,12 +136,12 @@ export const useForm = <F extends FormValues>(
       name,
       // value: get(values(), name),
       onInput(event) {
-        if (mode === "onInput") {
+        if (mode === "onChange") {
           onFieldChange(event, name);
         }
       },
       onChange(event) {
-        if (mode === "onChange" || mode === "onInput") {
+        if (mode === "onChange") {
           onFieldChange(event, name);
         }
       },
@@ -171,7 +206,6 @@ export const useForm = <F extends FormValues>(
 
     setValues(() => newValues);
     resetErrors();
-    setIsValid(true);
 
     Object.entries(fields).forEach(([name, field]) => {
       if (field) {
