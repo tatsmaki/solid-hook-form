@@ -1,9 +1,9 @@
-import { useFormContext } from "solid-hook-form";
-import { DemoFormValues } from "../form";
+import { useFormContext } from "..";
+import { FormValues } from "../schema";
 import sx from "./values.module.css";
 
 export const Values = () => {
-  const { values } = useFormContext<DemoFormValues>();
+  const { values } = useFormContext<FormValues>();
 
   return (
     <div class={sx.values}>

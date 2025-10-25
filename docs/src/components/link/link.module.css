@@ -15,3 +15,7 @@
   color: var(--colors-accent-500);
   box-shadow: 0 1.5px 0 var(--colors-accent-500);
 }
+
+.primary {
+  color: var(--colors-accent-500);
+}

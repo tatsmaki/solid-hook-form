@@ -2,9 +2,11 @@
   "name": "solid-hook-form-playground",
   "type": "module",
   "dependencies": {
-    "solid-hook-form": "^1.5.4",
+    "@hookform/resolvers": "^5.2.2",
+    "solid-hook-form": "^1.6.0",
     "solid-js": "^1.9.5",
-    "solid-uix": "^0.4.0"
+    "solid-uix": "^0.4.0",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "typescript": "~5.7.2",

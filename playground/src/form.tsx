@@ -1,23 +1,13 @@
-import { useForm, FormProvider } from "solid-hook-form";
+import { useForm, FormProvider } from ".";
+import { Field, TextInput, Checkbox, Button } from "solid-uix";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Errors } from "./errors/errors";
 import { Values } from "./values/values";
-import { Field, TextInput, Checkbox, Button } from "solid-uix";
-import "solid-uix/dist/main.css";
+import { formSchema, FormValues } from "./schema";
 import sx from "./form.module.css";
 
-export type DemoFormValues = {
-  date: string;
-  email: string;
-  password: string;
-  profile: {
-    age: number;
-    name: string;
-  };
-  remember: boolean;
-};
-
 export const Form = () => {
-  const form = useForm<DemoFormValues>({
+  const form = useForm<FormValues>({
     defaultValues: {
       date: new Date().toISOString().split("T")[0],
       email: "",
@@ -28,12 +18,12 @@ export const Form = () => {
       },
       remember: false,
     },
-    mode: "onInput",
-    // resolver,
+    mode: "onChange",
+    resolver: zodResolver(formSchema),
   });
   const { errors, register, onSubmit, reset } = form;
 
-  const onSave = (values: DemoFormValues) => {
+  const onSave = (values: FormValues) => {
     console.log(values);
   };
 
@@ -102,6 +92,7 @@ export const Form = () => {
                   value: 100,
                   message: "Max 100",
                 },
+                valueAsNumber: true,
               })}
             />
             <Field.Message level="error">{errors()["profile.age"]?.message}</Field.Message>

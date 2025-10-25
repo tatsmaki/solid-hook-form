@@ -1,0 +1,14 @@
+.table {
+  margin-bottom: 16px;
+}
+
+.th,
+.td {
+  text-align: left;
+  border: 6px transparent solid;
+  vertical-align: top;
+}
+
+.td:nth-child(2) {
+  color: var(--colors-accent-500);
+}

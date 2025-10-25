@@ -15,6 +15,19 @@ const FormContext = () => {
           deeply nested structures, where it would become inconvenient to pass the form as a prop.
         </p>
 
+        <p style={{ "margin-bottom": 0 }}>Returns</p>
+        <hr />
+
+        <p>This hook will return all the useForm return methods and props.</p>
+
+        <Code language="js">{`import { useFormContext } from "solid-hook-form";
+
+export const NestedInput = () => {
+    const { register } = useFormContext();
+
+    return <input {...register("name")} />;
+};`}</Code>
+
         <blockquote>
           <p>
             You need to wrap your form with the <b>FormProvider</b> component for useFormContext to
@@ -22,44 +35,25 @@ const FormContext = () => {
           </p>
         </blockquote>
 
-        <p>This hook will return all the useForm return methods and props.</p>
-
-        <Code language="js">{`import { useFormContext } from "solid-hook-form";
-
-export const NestedInput = () => {
-  const { register } = useFormContext();
-
-  return <input {...register("name")} />;
-};`}</Code>
-
-        <div id="form-provider">
-          <h2>
-            <Link href="#form-provider">FormProvider</Link>
-          </h2>
-
-          <p>
-            This component will host context object and allow consuming component to subscribe to
-            context and use useForm props and methods.
-          </p>
-
-          <blockquote>
-            <p>Avoid using nested FormProvider</p>
-          </blockquote>
-
-          <Code language="js">{`import { useForm, FormProvider } from "solid-hook-form";
+        <Code language="js">{`import { useForm, FormProvider } from "solid-hook-form";
 
 export const ExampleForm = () => {
-  const form = useForm();
+    const form = useForm();
+    const { onSubmit } = form;
 
-  return (
-    <FormProvider form={form}>
-      <form>
-        <NestedInput />
-      </form>
-    </FormProvider>
-  );
+    const onSave = (values) => {
+        console.log(values);
+    };
+
+    return (
+        <FormProvider form={form}>
+            <form onSubmit={onSubmit(onSave)}>
+                <NestedInput />
+                <button type="submit">Save</button>
+            </form>
+        </FormProvider>
+    );
 };`}</Code>
-        </div>
       </Container>
     </main>
   );

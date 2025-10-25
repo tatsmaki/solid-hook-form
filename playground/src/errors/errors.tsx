@@ -1,9 +1,9 @@
-import { useFormContext, FieldErrors } from "solid-hook-form";
-import { DemoFormValues } from "../form";
+import { useFormContext, FieldErrors } from "..";
+import { FormValues } from "../schema";
 import sx from "./errors.module.css";
 
 export const Errors = () => {
-  const { errors } = useFormContext<DemoFormValues>();
+  const { errors } = useFormContext<FormValues>();
   // const [_errors, _setErrors] = createSignal<FieldErrors>({});
 
   // createEffect(() => {
