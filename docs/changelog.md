@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.0 (2025-10-25)
+
+### Added
+
+- add form validation using schema resolver [9712a58](https://github.com/tatsmaki/solid-hook-form/commit/9712a5809058b13ec28db5c3291bdce30039953d)
+- add register valueAsNumber rule [9712a58](https://github.com/tatsmaki/solid-hook-form/commit/9712a5809058b13ec28db5c3291bdce30039953d)
+
 ## 1.5.1 (2025-10-17)
 
 ### Bug fixes
