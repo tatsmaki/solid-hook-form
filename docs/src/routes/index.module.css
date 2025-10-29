@@ -1,0 +1,27 @@
+.h1 {
+  text-align: center;
+  margin-top: 64px;
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.description {
+  margin: 0 auto;
+  width: fit-content;
+  color: var(--colors-accent-500);
+  font-size: 18px;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin: 48px auto;
+  gap: 48px;
+  width: fit-content;
+}
+
+.h2 {
+  text-align: center;
+  font-size: 32px;
+}

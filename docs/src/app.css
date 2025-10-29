@@ -5,7 +5,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: Inter;
 }
 
 main {
@@ -23,4 +23,8 @@ blockquote {
 
 blockquote > p {
   margin: 0;
+}
+
+#playground-form {
+  padding: 0;
 }

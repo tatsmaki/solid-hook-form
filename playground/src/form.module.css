@@ -26,3 +26,7 @@ select {
   background: var(--colors-black-900);
   border-radius: 6px;
 }
+
+pre {
+  white-space: pre-wrap;
+}

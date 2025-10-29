@@ -32,7 +32,7 @@ export const Form = () => {
   };
 
   return (
-    <div class={sx.demo}>
+    <div class={sx.demo} id="playground-form">
       <FormProvider form={form}>
         <form class={sx.form} onSubmit={onSubmit(onSave)}>
           <h2>Form</h2>

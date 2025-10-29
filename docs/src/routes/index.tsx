@@ -1,55 +1,52 @@
+import { clientOnly } from "@solidjs/start";
 import { Container } from "~/components/container/container";
 import { Link } from "~/components/link/link";
-import github from "@phosphor-icons/core/regular/github-logo.svg?raw";
+import { Features } from "~/components/features/features";
+import sx from "./index.module.css";
+
+const ClientForm = clientOnly(async () => ({
+  default: (await import("../../../playground/src/form")).Form,
+}));
 
 const Home = () => {
   return (
     <main>
       <Container>
-        <h1>Solid Hook Form</h1>
+        <div style={{ "min-height": "calc(100vh - 120px)" }}>
+          <h1 class={sx.h1}>Solid Hook Form</h1>
 
-        <blockquote>
-          <p>Performant, flexible and extensible forms with easy-to-use validation.</p>
-        </blockquote>
+          <p class={sx.description}>
+            Performant, flexible and extensible forms with easy-to-use validation.
+          </p>
 
-        <div
-          style={{
-            display: "flex",
-            "align-items": "center",
-            margin: "48px auto",
-            "flex-direction": "column",
-            gap: "48px",
-            "font-size": "24px",
-          }}
-        >
-          <Link href="/get-started" style={{ color: "var(--colors-accent-500)" }}>
-            Get started
-          </Link>
+          <div class={sx.actions}>
+            <Link href="/get-started" variant="button" color="primary">
+              Get started
+            </Link>
+            <Link href="#playground" variant="button">
+              Playground
+            </Link>
 
-          <Link
-            href="https://solid-hook-form-playground.vercel.app"
-            target="_blank"
-            style={{ color: "var(--colors-accent-500)" }}
-          >
-            Playground
-          </Link>
-
-          <Link
-            href="https://github.com/tatsmaki/solid-hook-form"
-            target="_blank"
-            style={{ color: "var(--colors-accent-500)" }}
-          >
+            {/* <Link href="https://github.com/tatsmaki/solid-hook-form" target="_blank" variant="button">
             <span style={{ width: "28px", height: "28px" }} innerHTML={github} />
             GitHub
-          </Link>
+          </Link> */}
+          </div>
+
+          <Features />
         </div>
 
-        <h2>Features</h2>
+        <div id="playground">
+          <h2 class={sx.h2}>
+            <Link href="#playground" variant="outlined">
+              Live Playground
+            </Link>
+          </h2>
 
-        <ul>
-          <li>Validate forms with HTML standard based validation API</li>
-          <li>Super Light (12 kB)</li>
-        </ul>
+          <div style={{ "min-height": "676px" }}>
+            <ClientForm />
+          </div>
+        </div>
       </Container>
     </main>
   );

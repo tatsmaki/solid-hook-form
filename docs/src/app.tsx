@@ -34,6 +34,13 @@ const App = () => {
           />
           <Link rel="stylesheet" href={style} />
 
+          <Link rel="preconnect" href="https://fonts.googleapis.com" />
+          <Link rel="preconnect" href="https://fonts.gstatic.com" />
+          <Link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+            rel="stylesheet"
+          />
+
           <Layout>
             <Header />
             <Suspense>{props.children}</Suspense>
