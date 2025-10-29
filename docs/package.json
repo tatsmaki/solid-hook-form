@@ -2,6 +2,7 @@
   "name": "solid-hook-form-docs",
   "type": "module",
   "scripts": {
+    "preinstall": "cd ../playground && npm ci",
     "dev": "vinxi dev -- --open",
     "build": "vinxi build",
     "start": "vinxi start",
