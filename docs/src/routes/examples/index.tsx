@@ -1,9 +1,10 @@
+import { Title } from "@solidjs/meta";
 import { Container } from "~/components/container/container";
 import { Grid } from "~/components/grid/grid";
 import check from "@phosphor-icons/core/regular/check-circle.svg?raw";
 import textbox from "@phosphor-icons/core/regular/textbox.svg?raw";
 import upload from "@phosphor-icons/core/regular/upload-simple.svg?raw";
-import { Title } from "@solidjs/meta";
+import zodIcon from "/zod.webp";
 
 const Examples = () => {
   return (
@@ -19,6 +20,14 @@ const Examples = () => {
               Validation
             </h2>
             <p>Apply validation rules to inputs and provide accessible error messages.</p>
+          </Grid.Item>
+
+          <Grid.Item href="/examples/zod">
+            <h2>
+              <img src={zodIcon} width={32} />
+              Zod
+            </h2>
+            <p>Integrate Zod schema validation into your form.</p>
           </Grid.Item>
 
           <Grid.Item href="/examples/nested-values">
