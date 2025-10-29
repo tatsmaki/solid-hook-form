@@ -20,6 +20,7 @@ import { get } from "./utils/get";
 import { createRules } from "./logic/create_rules";
 import { createFields } from "./logic/create_fields";
 import { formatValue } from "./logic/format_value";
+import { getResolverFields } from "./utils/resolver";
 
 type UseFormArg<F extends FormValues> = {
   defaultValues: F;
@@ -56,20 +57,22 @@ export const useForm = <F extends FormValues>(
   };
 
   const runSchema = async (names: Path<F>[]) => {
-    if (resolver) {
-      const result = await resolver(values(), null, {
-        fields: {},
-        shouldUseNativeValidation: false,
-      });
+    if (!resolver) {
+      return;
+    }
 
-      for (const name of names) {
-        const error = get(result.errors, name);
+    const result = await resolver(values(), null, {
+      fields: getResolverFields(fields),
+      shouldUseNativeValidation: false,
+    });
 
-        if (error) {
-          setFieldError(name, error);
-        } else {
-          clearFieldError(name);
-        }
+    for (const name of names) {
+      const error = get(result.errors, name);
+
+      if (error) {
+        setFieldError(name, error);
+      } else {
+        clearFieldError(name);
       }
     }
   };
@@ -91,9 +94,9 @@ export const useForm = <F extends FormValues>(
     }
   };
 
-  const validateAllFields = () => {
+  const validateAllFields = async () => {
     if (resolver) {
-      runSchema(Object.keys(fields) as any);
+      await runSchema(Object.keys(fields) as any);
 
       return;
     }
@@ -186,9 +189,9 @@ export const useForm = <F extends FormValues>(
   };
 
   const onSubmit: OnSubmit<F> = (submit) => {
-    return (event) => {
+    return async (event) => {
       event.preventDefault();
-      validateAllFields();
+      await validateAllFields();
 
       if (isValid()) {
         submit(getValues());
