@@ -4,7 +4,8 @@
 
 <p align="center">
   <a href="https://solid-hook-form.vercel.app/get-started">Get started</a> | 
-  <a href="https://solid-hook-form-playground.vercel.app">Playground</a> 
+  <a href="https://solid-hook-form-playground.vercel.app">Playground</a> |
+  <a href="https://solid-hook-form.vercel.app/examples">Examples</a> 
 </p>
 
 ### Features
@@ -12,6 +13,7 @@
 - Embraces native HTML form [validation](https://solid-hook-form.vercel.app/get-started#apply-validation)
 - [Small size](https://bundlephobia.com/package/solid-hook-form@latest) and no [dependencies](./package.json)
 - TypeScript [support](https://solid-hook-form.vercel.app/get-started#typescript)
+- Supports [Yup](https://github.com/jquense/yup), [Zod](https://github.com/colinhacks/zod), [Joi](https://github.com/hapijs/joi) and other [@hookform/resolvers](https://github.com/react-hook-form/resolvers) schema validation integrations.
 
 ### Install
 

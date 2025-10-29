@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.1 (2025-10-29)
+
+### Bug fixes
+
+- missing input refs on schema resolver validation [f99f888](https://github.com/tatsmaki/solid-hook-form/commit/f99f888d2a41ebfba35498adfbf1fe842e2b7ead)
+
 ## 1.6.0 (2025-10-25)
 
 ### Added
