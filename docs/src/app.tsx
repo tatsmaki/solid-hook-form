@@ -4,7 +4,6 @@ import { clientOnly } from "@solidjs/start";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import { Header } from "./components/header/header";
-import { Navigation } from "./components/navigation/navigation";
 import { Layout } from "./components/layout/layout";
 import "./app.css";
 import style from "solid-uix/dist/main.css?url";
@@ -37,7 +36,6 @@ const App = () => {
 
           <Layout>
             <Header />
-            <Navigation />
             <Suspense>{props.children}</Suspense>
           </Layout>
         </MetaProvider>

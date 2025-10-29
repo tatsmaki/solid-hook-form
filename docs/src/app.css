@@ -10,6 +10,9 @@ body {
 
 main {
   padding: 0 16px 64px;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
 }
 
 blockquote {

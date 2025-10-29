@@ -1,42 +1,43 @@
+import { For, JSXElement, ParentProps, Show } from "solid-js";
 import { useLocation } from "@solidjs/router";
-import { Link } from "../link/link";
+import { NavigationProps } from "./navigation.types";
 import sx from "./navigation.module.css";
-import { Show } from "solid-js";
 
-export const Navigation = () => {
+export const Navigation = (props: NavigationProps) => {
   const location = useLocation();
 
   return (
     <aside class={sx.navigation}>
       <nav>
         <ul class={sx.links}>
-          <li>
+          <For each={props.children}>{(item) => <li>{item}</li>}</For>
+          {/* <li>
             <h4>
               <Link href="/get-started">Get started</Link>
-            </h4>
+            </h4> */}
 
-            <Show when={location.pathname.includes("/get-started")}>
-              <ul>
-                <li>
-                  <Link href="/get-started#install">Install</Link>
-                </li>
-                <li>
-                  <Link href="/get-started#register-fields">Register fields</Link>
-                </li>
-                <li>
-                  <Link href="/get-started#apply-validation">Apply validation</Link>
-                </li>
-                <li>
-                  <Link href="/get-started#typescript">TypeScript</Link>
-                </li>
-                <li>
-                  <Link href="/get-started#handle-errors">Handle errors</Link>
-                </li>
-              </ul>
-            </Show>
-          </li>
+          {/* <Show when={location.pathname.includes("/get-started")}>
+            <ul>
+            <li>
+              <Link href="/get-started#install">Install</Link>
+            </li>
+            <li>
+              <Link href="/get-started#register-fields">Register fields</Link>
+            </li>
+            <li>
+              <Link href="/get-started#apply-validation">Apply validation</Link>
+            </li>
+            <li>
+              <Link href="/get-started#typescript">TypeScript</Link>
+            </li>
+            <li>
+              <Link href="/get-started#handle-errors">Handle errors</Link>
+            </li>
+            </ul>
+          </Show> */}
+          {/* </li> */}
 
-          <Show when={location.pathname.endsWith("/docs") || !location.pathname.includes("/docs")}>
+          {/* <Show when={location.pathname.endsWith("/docs") || !location.pathname.includes("/docs")}>
             <li>
               <h4>
                 <Link href="/docs">Docs</Link>
@@ -53,9 +54,9 @@ export const Navigation = () => {
                 </ul>
               </Show>
             </li>
-          </Show>
+          </Show> */}
 
-          <Show when={location.pathname.includes("/use-form")}>
+          {/* <Show when={location.pathname.includes("/use-form")}>
             <li>
               <h4>
                 <Link href="/docs/use-form">useForm</Link>
@@ -70,9 +71,9 @@ export const Navigation = () => {
                 </li>
               </ul>
             </li>
-          </Show>
+          </Show> */}
 
-          <Show when={location.pathname.includes("/form-context")}>
+          {/* <Show when={location.pathname.includes("/form-context")}>
             <li>
               <h4>
                 <Link href="/docs/form-context">useFormContext</Link>
@@ -84,9 +85,9 @@ export const Navigation = () => {
                 </li>
               </ul>
             </li>
-          </Show>
+          </Show> */}
 
-          <li>
+          {/* <li>
             <h4>
               <Link href="/examples">Examples</Link>
             </h4>
@@ -104,9 +105,9 @@ export const Navigation = () => {
                 </li>
               </ul>
             </Show>
-          </li>
+          </li> */}
 
-          <li>
+          {/* <li>
             <h4>
               <Link href="https://solid-hook-form-playground.vercel.app" target="_blank">
                 Playground
@@ -118,7 +119,7 @@ export const Navigation = () => {
             <h4>
               <Link href="/changelog">Changelog</Link>
             </h4>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </aside>

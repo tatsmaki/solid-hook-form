@@ -11,7 +11,8 @@ export const Link = (props: LinkProps) => {
     <a
       {...rest}
       class={`${sx.link} ${local.color === "primary" && sx.primary} ${
-        location.pathname.includes(rest.href) && sx.active
+        (rest.href === "/" ? location.pathname === "/" : location.pathname.includes(rest.href)) &&
+        sx.active
       }`}
     >
       {rest.children}
