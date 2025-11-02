@@ -1,8 +1,8 @@
 import { Title } from "@solidjs/meta";
+import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Image } from "~/components/image/image";
-import { Link } from "~/components/link/link";
 
 const Zod = () => {
   return (
@@ -16,7 +16,7 @@ const Zod = () => {
           <Link
             href="https://stackblitz.com/edit/solidjs-templates-fpxsx83t?file=src%2Fexample_form%2Fexample_schema.ts"
             target="_blank"
-            color="primary"
+            color="accent"
           >
             StackBlitz
           </Link>

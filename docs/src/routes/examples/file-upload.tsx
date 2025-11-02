@@ -1,7 +1,7 @@
+import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Image } from "~/components/image/image";
-import { Link } from "~/components/link/link";
 
 const FileUpload = () => {
   return (
@@ -14,9 +14,7 @@ const FileUpload = () => {
           <Link
             href="https://stackblitz.com/edit/solidjs-templates-jhhjanak?file=src%2Fexample_form%2Fexample_form.tsx"
             target="_blank"
-            style={{
-              color: "var(--colors-accent-500)",
-            }}
+            color="accent"
           >
             StackBlitz
           </Link>

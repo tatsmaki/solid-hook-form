@@ -1,6 +1,5 @@
 import { Title } from "@solidjs/meta";
 import { Container } from "~/components/container/container";
-import { Link } from "~/components/link/link";
 import changelog from "../../changelog.md?raw";
 
 const Changelog = () => {

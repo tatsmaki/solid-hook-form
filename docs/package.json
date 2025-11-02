@@ -15,7 +15,7 @@
     "@solidjs/start": "^1.1.0",
     "prism-esm": "^1.29.0-fix.6",
     "solid-js": "^1.9.5",
-    "solid-uix": "^0.4.0",
+    "solid-uix": "^0.5.2",
     "vinxi": "^0.5.7"
   },
   "engines": {

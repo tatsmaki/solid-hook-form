@@ -1,8 +1,8 @@
 import { clientOnly } from "@solidjs/start";
 import { Container } from "~/components/container/container";
-import { Link } from "~/components/link/link";
 import { Features } from "~/components/features/features";
 import sx from "./index.module.css";
+import { Link, cls, buttonSx } from "solid-uix";
 
 const ClientForm = clientOnly(async () => ({
   default: (await import("../../../playground/src/form")).Form,
@@ -20,10 +20,19 @@ const Home = () => {
           </p>
 
           <div class={sx.actions}>
-            <Link href="/get-started" variant="button" color="primary">
+            <Link
+              href="/get-started"
+              reset
+              class={cls(buttonSx.button, buttonSx.link, buttonSx.solid)}
+            >
               Get started
             </Link>
-            <Link href="#playground" variant="button">
+
+            <Link
+              href="#playground"
+              reset
+              class={cls(buttonSx.button, buttonSx.link, buttonSx.outlined)}
+            >
               Playground
             </Link>
 
@@ -38,9 +47,7 @@ const Home = () => {
 
         <div id="playground">
           <h2 class={sx.h2}>
-            <Link href="#playground" variant="outlined">
-              Live Playground
-            </Link>
+            <Link href="#playground">Live Playground</Link>
           </h2>
 
           <div style={{ "min-height": "676px" }}>

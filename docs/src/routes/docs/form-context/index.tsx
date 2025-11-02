@@ -1,7 +1,6 @@
 import { Title } from "@solidjs/meta";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
-import { Link } from "~/components/link/link";
 
 const FormContext = () => {
   return (

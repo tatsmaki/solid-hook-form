@@ -1,7 +1,7 @@
 import { Title } from "@solidjs/meta";
+import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
-import { Link } from "~/components/link/link";
 import { Table } from "~/components/table/table";
 
 const UseForm = () => {
@@ -30,7 +30,9 @@ const UseForm = () => {
 
         <div id="default-values">
           <h2>
-            <Link href="#default-values">defaultValues</Link>
+            <Link href="#default-values" color="secondary">
+              defaultValues
+            </Link>
           </h2>
 
           <p>
@@ -81,11 +83,11 @@ const UseForm = () => {
 
           <p>
             This function allows you to use any external validation library such as{" "}
-            <Link href="https://github.com/jquense/yup" target="_blank" color="primary">
+            <Link href="https://github.com/jquense/yup" target="_blank" color="accent">
               Yup
             </Link>
             ,{" "}
-            <Link href="https://github.com/colinhacks/zod" target="_blank" color="primary">
+            <Link href="https://github.com/colinhacks/zod" target="_blank" color="accent">
               Zod
             </Link>{" "}
             and many others. The goal is to make sure you can seamlessly integrate whichever
@@ -98,7 +100,7 @@ const UseForm = () => {
             <Link
               href="https://github.com/react-hook-form/resolvers"
               target="_blank"
-              color="primary"
+              color="accent"
             >
               @hookform/resolvers
             </Link>{" "}
@@ -158,12 +160,12 @@ const ExampleForm = () => {
 
         <ul>
           <li>
-            <Link href="/docs/use-form/register" color="primary">
+            <Link href="/docs/use-form/register" color="accent">
               register
             </Link>
           </li>
           <li>
-            <Link href="/docs/use-form/submit" color="primary">
+            <Link href="/docs/use-form/submit" color="accent">
               onSubmit
             </Link>
           </li>

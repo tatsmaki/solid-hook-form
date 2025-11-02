@@ -1,7 +1,7 @@
 import { Title } from "@solidjs/meta";
+import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
-import { Link } from "~/components/link/link";
 import { Table } from "~/components/table/table";
 
 const Register = () => {
@@ -68,7 +68,9 @@ return (
 
         <div id="rules">
           <h2>
-            <Link href="#rules">Rules</Link>
+            <Link href="#rules" color="secondary">
+              Rules
+            </Link>
           </h2>
 
           <p>Options to describe registered input's behavior.</p>

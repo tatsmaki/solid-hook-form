@@ -1,8 +1,8 @@
 import { Title } from "@solidjs/meta";
+import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Image } from "~/components/image/image";
-import { Link } from "~/components/link/link";
 
 const Validation = () => {
   return (
@@ -16,7 +16,7 @@ const Validation = () => {
           <Link
             href="https://stackblitz.com/edit/solidjs-templates-lf7zsywk?file=src%2Fexample_form%2Fexample_form.tsx"
             target="_blank"
-            color="primary"
+            color="accent"
           >
             StackBlitz
           </Link>
@@ -27,7 +27,7 @@ const Validation = () => {
 
         <p>
           You can find full list of validation rules in{" "}
-          <Link href="/docs/use-form/register#rules" color="primary">
+          <Link href="/docs/use-form/register#rules" color="accent">
             useForm - register rules
           </Link>{" "}
           docs section.

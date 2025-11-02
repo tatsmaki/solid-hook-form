@@ -1,7 +1,7 @@
 import { Title } from "@solidjs/meta";
+import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
-import { Link } from "~/components/link/link";
 
 const GetStarted = () => {
   return (
@@ -12,7 +12,9 @@ const GetStarted = () => {
 
         <div id="install">
           <h2>
-            <Link href="#install">Install</Link>
+            <Link href="#install" color="secondary">
+              Install
+            </Link>
           </h2>
           <p>Install Solid Hook Form package.</p>
           <Code language="sh">npm install solid-hook-form</Code>
@@ -20,7 +22,9 @@ const GetStarted = () => {
 
         <div id="example">
           <h2>
-            <Link href="#example">Example</Link>
+            <Link href="#example" color="secondary">
+              Example
+            </Link>
           </h2>
           <p>The following code demonstrates a basic usage example.</p>
           <Code language="js">
@@ -49,7 +53,9 @@ export const ExampleForm = () => {
 
         <div id="register-fields">
           <h2>
-            <Link href="#register-fields">Register fields</Link>
+            <Link href="#register-fields" color="secondary">
+              Register fields
+            </Link>
           </h2>
           <p>
             To make field value available for form validation and submission you need to register
@@ -89,7 +95,9 @@ export const ExampleForm = () => {
 
         <div id="apply-validation">
           <h2>
-            <Link href="#apply-validation">Apply validation</Link>
+            <Link href="#apply-validation" color="secondary">
+              Apply validation
+            </Link>
           </h2>
           <p>
             Solid Hook Form makes form validation easy by aligning with the existing HTML standard
@@ -136,7 +144,9 @@ export const ExampleForm = () => {
 
         <div id="typescript">
           <h2>
-            <Link href="#typescript">TypeScript</Link>
+            <Link href="#typescript" color="secondary">
+              TypeScript
+            </Link>
           </h2>
           <p>Solid Hook Form is built with TypeScript, and you can define a FormValues type.</p>
 
@@ -174,7 +184,9 @@ export const ExampleForm = () => {
 
         <div id="handle-errors">
           <h2>
-            <Link href="#handle-errors">Handle errors</Link>
+            <Link href="#handle-errors" color="secondary">
+              Handle errors
+            </Link>
           </h2>
           <p>
             Solid Hook Form provides an errors accessor to show you the errors in the form. errors'
