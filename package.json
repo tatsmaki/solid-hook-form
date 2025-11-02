@@ -1,14 +1,15 @@
 {
   "name": "solid-hook-form",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "type": "module",
-  "main": "./dist/main.umd.cjs",
+  "main": "./dist/main.js",
   "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/main.js",
-      "require": "./dist/main.umd.cjs"
+      "types": "./dist/main.d.ts",
+      "solid": "./dist/main.jsx",
+      "default": "./dist/main.js"
     }
   },
   "files": [
@@ -21,16 +22,17 @@
   "devDependencies": {
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/user-event": "^14.6.1",
+    "esbuild-plugin-solid": "^0.6.0",
     "happy-dom": "^17.4.4",
     "react-hook-form": "^7.55.0",
+    "tsup": "^8.5.0",
     "typescript": "~5.7.2",
     "vite": "^6.0.11",
-    "vite-plugin-dts": "^4.5.0",
     "vite-plugin-solid": "^2.11.6",
     "vitest": "^3.1.1"
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc && tsup",
     "test": "vitest run"
   },
   "author": "thorn_pear",
