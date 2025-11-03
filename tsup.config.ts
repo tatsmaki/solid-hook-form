@@ -12,7 +12,6 @@ const config: Options = {
     preset: "smallest",
   },
   replaceNodeEnv: true,
-  external: ["react"],
 };
 
 export default defineConfig([
