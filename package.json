@@ -1,6 +1,6 @@
 {
   "name": "solid-hook-form",
-  "version": "1.6.4",
+  "version": "1.6.6",
   "type": "module",
   "main": "./dist/main.js",
   "module": "./dist/main.js",
@@ -40,7 +40,7 @@
   "description": "Performant, flexible and extensible forms with easy to use validation",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tatsmaki/solid-hook-form.git"
+    "url": "git+https://github.com/tatsmaki/solid-hook-form.git"
   },
   "homepage": "https://solid-hook-form.vercel.app",
   "keywords": [

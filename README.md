@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://solid-hook-form.vercel.app/get-started">Get started</a> | 
-  <a href="https://solid-hook-form-playground.vercel.app">Playground</a> |
+  <a href="https://solid-hook-form.vercel.app/#playground">Playground</a> |
   <a href="https://solid-hook-form.vercel.app/examples">Examples</a> 
 </p>
 
