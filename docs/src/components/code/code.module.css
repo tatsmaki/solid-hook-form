@@ -3,5 +3,5 @@
   background: var(--colors-black-900);
   display: block;
   padding: 24px;
-  overflow: scroll;
+  overflow: auto;
 }
