@@ -30,3 +30,20 @@ select {
 pre {
   white-space: pre-wrap;
 }
+
+@media (max-width: 768px) {
+  .demo {
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: auto auto
+  }
+
+  .form {
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .demo {
+    grid-template-columns: 1fr;
+   }
+}
