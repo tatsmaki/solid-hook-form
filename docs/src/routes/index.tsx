@@ -3,6 +3,7 @@ import { Container } from "~/components/container/container";
 import { Features } from "~/components/features/features";
 import sx from "./index.module.css";
 import { Link, cls, buttonSx } from "solid-uix";
+import { Footer } from "~/components/footer/footer";
 
 const ClientForm = clientOnly(async () => ({
   default: (await import("../../../playground/src/form")).Form,
@@ -54,6 +55,8 @@ const Home = () => {
             <ClientForm />
           </div>
         </div>
+
+        <Footer />
       </Container>
     </main>
   );

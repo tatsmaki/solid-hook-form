@@ -25,3 +25,10 @@
   text-align: center;
   font-size: 32px;
 }
+
+
+@media (max-width: 480px) {
+  .actions {
+    gap: 16px
+  }
+}
