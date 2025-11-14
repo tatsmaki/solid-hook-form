@@ -1,7 +1,7 @@
 import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Container } from "~/components/container/container";
-import changelog from "../../changelog.md?raw";
+import changelog from "../../../changelog.md?raw";
 import { For, createMemo, JSX } from "solid-js";
 import { Footer } from "~/components/footer/footer";
 

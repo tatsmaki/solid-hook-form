@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.1 (2025-11-14)
+
+### Bug fixes
+
+- use default onChange mode [da3255e](https://github.com/tatsmaki/solid-hook-form/commit/da3255e0435c48eebb0a99906109ad1a6002eed7)
+
 ## 1.7.0 (2025-11-14)
 
 ### Added
