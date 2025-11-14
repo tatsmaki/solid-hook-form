@@ -32,7 +32,7 @@ type UseFormArg<F extends FormValues> = {
 export const useForm = <F extends FormValues>(
   arg: UseFormArg<F> = { defaultValues: {} as F }
 ): UseFormReturn<F> => {
-  const { defaultValues, mode = "onInput", resolver } = arg;
+  const { defaultValues, mode = "onChange", resolver } = arg;
 
   const { fields, getField, setField } = createFields();
   const { rules, addRule, getRule } = createRules<F>();
