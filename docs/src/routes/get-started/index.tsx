@@ -2,12 +2,35 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
+import { Footer } from "~/components/footer/footer";
 
 const GetStarted = () => {
   return (
     <main>
       <Title>Get started</Title>
+
       <Container>
+        {/* <Navigation>
+          <Link href="/get-started#install" color="secondary">
+            Install
+          </Link>
+          <Link href="/get-started#register-fields" color="secondary">
+            Register fields
+          </Link>
+          <Link href="/get-started#apply-validation" color="secondary">
+            Apply validation
+          </Link>
+          <Link href="/get-started#controller" color="secondary">
+            Controlled Inputs
+          </Link>
+          <Link href="/get-started#handle-errors" color="secondary">
+            Handle errors
+          </Link>
+          <Link href="/get-started#typescript" color="secondary">
+            TypeScript
+          </Link>
+        </Navigation> */}
+
         <h1>Get started</h1>
 
         <div id="install">
@@ -142,44 +165,60 @@ export const ExampleForm = () => {
 };`}</Code>
         </div>
 
-        <div id="typescript">
+        <div id="controller">
           <h2>
-            <Link href="#typescript" color="secondary">
-              TypeScript
+            <Link href="#controller" color="secondary">
+              Controlled Inputs
             </Link>
           </h2>
-          <p>Solid Hook Form is built with TypeScript, and you can define a FormValues type.</p>
+          <p>
+            This library embraces uncontrolled components and native HTML inputs. However, it's hard
+            to avoid working with external controlled components such as{" "}
+            <Link href="https://kobalte.dev" target="_blank">
+              Kobalte
+            </Link>
+            . To make this simple, we provide a wrapper component, Controller.
+          </p>
 
-          <Code language="ts">{`import { useForm } from "solid-hook-form";
+          <p>Using Component API</p>
 
-type ExampleFormValues = {
-  name: string;
-  email: string;
-  agree: boolean
-};
+          <Code language="js">{`import { TextField } from "@kobalte/core/text-field";
+import { useForm, Controller } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const { register, onSubmit } = useForm<ExampleFormValues>({
+  const form = useForm({
     defaultValues: {
-      name: "",
-      email: "",
-      agree: false,
-    },
+      field: ""
+    }
   });
 
-  const saveExample = (values: ExampleFormValues) => {
+  const saveExample = (values) => {
     console.log(values);
   };
 
   return (
-    <form onSubmit={onSubmit(saveExample)}>
-      <input {...register("name")} />
-      <input type="email" {...register("email")} />
-      <input type="checkbox" {...register("agree")}>
-      <button type="submit">Save</button>
+    <form onSubmit={form.onSubmit(saveExample)}>
+      <Controller 
+        control={form.control}
+        name="field"
+        render={({ field, fieldState }) => (
+          <TextField>
+            <TextField.Label>Field</TextField.Label>
+            <TextField.Input
+              {...field}
+              value={field.value()}
+              validationState={fieldState.error() ? "invalid" : "valid"}
+            />
+            <TextField.ErrorMessage>{fieldState.error()?.message}</TextField.ErrorMessage>
+          </TextField>
+        )}
+        rules={{
+          minLength: { value: 5, message: "Min 5" }
+        }}
+      />
     </form>
-  );
-};`}</Code>
+  )
+}`}</Code>
         </div>
 
         <div id="handle-errors">
@@ -224,6 +263,48 @@ export const ExampleForm = () => {
   );
 };`}</Code>
         </div>
+
+        <div id="typescript">
+          <h2>
+            <Link href="#typescript" color="secondary">
+              TypeScript
+            </Link>
+          </h2>
+          <p>Solid Hook Form is built with TypeScript, and you can define a FormValues type.</p>
+
+          <Code language="ts">{`import { useForm } from "solid-hook-form";
+
+type ExampleFormValues = {
+  name: string;
+  email: string;
+  agree: boolean
+};
+
+export const ExampleForm = () => {
+  const { register, onSubmit } = useForm<ExampleFormValues>({
+    defaultValues: {
+      name: "",
+      email: "",
+      agree: false,
+    },
+  });
+
+  const saveExample = (values: ExampleFormValues) => {
+    console.log(values);
+  };
+
+  return (
+    <form onSubmit={onSubmit(saveExample)}>
+      <input {...register("name")} />
+      <input type="email" {...register("email")} />
+      <input type="checkbox" {...register("agree")}>
+      <button type="submit">Save</button>
+    </form>
+  );
+};`}</Code>
+        </div>
+
+        <Footer />
       </Container>
     </main>
   );

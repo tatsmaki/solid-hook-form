@@ -11,31 +11,6 @@ export const Navigation = (props: NavigationProps) => {
       <nav>
         <ul class={sx.links}>
           <For each={props.children}>{(item) => <li>{item}</li>}</For>
-          {/* <li>
-            <h4>
-              <Link href="/get-started">Get started</Link>
-            </h4> */}
-
-          {/* <Show when={location.pathname.includes("/get-started")}>
-            <ul>
-            <li>
-              <Link href="/get-started#install">Install</Link>
-            </li>
-            <li>
-              <Link href="/get-started#register-fields">Register fields</Link>
-            </li>
-            <li>
-              <Link href="/get-started#apply-validation">Apply validation</Link>
-            </li>
-            <li>
-              <Link href="/get-started#typescript">TypeScript</Link>
-            </li>
-            <li>
-              <Link href="/get-started#handle-errors">Handle errors</Link>
-            </li>
-            </ul>
-          </Show> */}
-          {/* </li> */}
 
           {/* <Show when={location.pathname.endsWith("/docs") || !location.pathname.includes("/docs")}>
             <li>

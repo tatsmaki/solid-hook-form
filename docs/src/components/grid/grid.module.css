@@ -4,13 +4,14 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   max-width: 830px;
   gap: 32px;
 }
 
 .item {
-  width: 255px;
-  height: 255px;
+  width: 250px;
+  height: 250px;
 }
 
 .link {
@@ -18,12 +19,13 @@
   width: 100%;
   height: 100%;
   color: var(--colors-black-100);
-  background: var(--colors-black-900);
+  background: var(--colors-background);
   text-decoration: none;
   padding: 0 12px;
   box-sizing: border-box;
   border-radius: 8px;
-  border: 1.5px var(--colors-accent-500) solid;
+  border: 1px var(--colors-accent-500) solid;
+  transition: all 0.3s;
 }
 
 .link h2 {
@@ -31,10 +33,15 @@
   align-items: center;
   gap: 6px;
   transition: color 0.3s;
+  font-size: 22px;
+}
+
+.link:hover {
+  background: var(--colors-black-900);
 }
 
 .link:hover > h2 {
-  color: var(--colors-accent-500);
+  color: var(--colors-accent-400);
 }
 
 .link h2 span {

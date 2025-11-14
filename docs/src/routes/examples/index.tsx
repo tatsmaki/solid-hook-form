@@ -2,13 +2,15 @@ import { Title } from "@solidjs/meta";
 import { Container } from "~/components/container/container";
 import { Grid } from "~/components/grid/grid";
 import check from "@phosphor-icons/core/regular/check-circle.svg?raw";
-import textbox from "@phosphor-icons/core/regular/textbox.svg?raw";
+import curly from "@phosphor-icons/core/regular/brackets-curly.svg?raw";
 import upload from "@phosphor-icons/core/regular/upload-simple.svg?raw";
+import { Footer } from "~/components/footer/footer";
 
 const Examples = () => {
   return (
     <main>
       <Title>Examples</Title>
+
       <Container>
         <h1>Examples</h1>
 
@@ -31,7 +33,7 @@ const Examples = () => {
 
           <Grid.Item href="/examples/nested-values">
             <h2>
-              <span innerHTML={textbox} />
+              <span innerHTML={curly} />
               Nested values
             </h2>
             <p>Access object properties and array items in form fields.</p>
@@ -45,6 +47,8 @@ const Examples = () => {
             <p>Control documents upload using native file input.</p>
           </Grid.Item>
         </Grid>
+
+        <Footer />
       </Container>
     </main>
   );

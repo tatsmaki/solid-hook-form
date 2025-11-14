@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.7.0 (2025-11-14)
+
+### Added
+
+- Controller component for controlled inputs [1176c16](https://github.com/tatsmaki/solid-hook-form/commit/1176c163f4ecf62e1748d86ad4089b9c6ea1ac90)
+
+## 1.6.4 (2025-11-03)
+
+### Added
+
+- get/set utility functions [d82db5f](https://github.com/tatsmaki/solid-hook-form/commit/d82db5f0b5607316f6a3f617ef8f39e16fafc015)
+
 ## 1.6.1 (2025-10-29)
 
 ### Bug fixes

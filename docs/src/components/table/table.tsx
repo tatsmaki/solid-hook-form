@@ -1,7 +1,8 @@
+import { JSX } from "solid-js";
 import sx from "./table.module.css";
 
 type TableProps = {
-  children: any[][];
+  children: JSX.Element[][];
 };
 
 export const Table = (props: TableProps) => {

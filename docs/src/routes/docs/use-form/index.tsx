@@ -52,7 +52,9 @@ const UseForm = () => {
 
         <div id="mode">
           <h2>
-            <Link href="#mode">mode</Link>
+            <Link href="#mode" color="secondary">
+              mode
+            </Link>
           </h2>
 
           <p>This option allows you to configure the validation strategy.</p>
@@ -78,7 +80,9 @@ const UseForm = () => {
 
         <div id="resolver">
           <h2>
-            <Link href="#resolver">resolver</Link>
+            <Link href="#resolver" color="secondary">
+              resolver
+            </Link>
           </h2>
 
           <p>

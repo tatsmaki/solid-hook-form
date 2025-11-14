@@ -1,6 +1,7 @@
-import { ParentProps } from "solid-js";
+import { cls } from "solid-uix";
 import sx from "./container.module.css";
+import { ContainerProps } from "./container.types";
 
-export const Container = (props: ParentProps) => {
-  return <div class={sx.container}>{props.children}</div>;
+export const Container = (props: ContainerProps) => {
+  return <div class={cls(sx.container)}>{props.children}</div>;
 };

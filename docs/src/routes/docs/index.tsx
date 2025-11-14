@@ -2,6 +2,7 @@ import { Container } from "~/components/container/container";
 import { Grid } from "~/components/grid/grid";
 import code from "@phosphor-icons/core/regular/code.svg?raw";
 import { Title } from "@solidjs/meta";
+import { Footer } from "~/components/footer/footer";
 
 const Docs = () => {
   return (
@@ -30,7 +31,18 @@ const Docs = () => {
               larger and multi-step forms.
             </p>
           </Grid.Item>
+
+          <Grid.Item href="/docs/controller">
+            <h2>
+              <span innerHTML={code} />
+              Controller
+            </h2>
+
+            <p>Wrapper component for controlled inputs.</p>
+          </Grid.Item>
         </Grid>
+
+        <Footer />
       </Container>
     </main>
   );
