@@ -1,6 +1,6 @@
 # Solid Hook Form
 
-[<img width="1291" height="834" alt="Screenshot 2025-10-17 at 02 07 00" src="https://github.com/user-attachments/assets/83ec4c9a-60e1-49be-9415-8f8b2df74d53" />](https://solid-hook-form.vercel.app)
+[<img width="985" height="254" alt="placeholder" src="/assets/placeholder.png" />](https://solid-hook-form.vercel.app)
 
 <p align="center">
   <a href="https://solid-hook-form.vercel.app/get-started">Get started</a> | 
