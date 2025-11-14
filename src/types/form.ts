@@ -2,6 +2,7 @@ import type { Accessor } from "solid-js";
 import { FieldPath, FieldPathValue, Path } from "./path";
 import { Rules } from "./validate";
 import { FieldErrors } from "./errors";
+import { Control } from "./control";
 
 export type FormValues = Record<string, any>;
 
@@ -39,6 +40,7 @@ export type OnSubmit<F extends FormValues> = (
 export type Reset<F extends FormValues> = (newDefaultValues?: Partial<F>) => void;
 
 export type UseFormReturn<F extends FormValues = FormValues> = {
+  control: Control<F>;
   values: Accessor<F>;
   errors: Accessor<FieldErrors<F>>;
   isValid: Accessor<boolean>;

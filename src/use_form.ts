@@ -1,5 +1,5 @@
 import { createMemo, createSignal } from "solid-js";
-import { Resolver } from "react-hook-form";
+import type { Resolver } from "react-hook-form";
 import {
   FormValues,
   GetValues,
@@ -21,6 +21,7 @@ import { createRules } from "./logic/create_rules";
 import { createFields } from "./logic/create_fields";
 import { formatValue } from "./logic/format_value";
 import { getResolverFields } from "./utils/resolver";
+import { Control } from "./types/control";
 
 type UseFormArg<F extends FormValues> = {
   defaultValues: F;
@@ -137,7 +138,6 @@ export const useForm = <F extends FormValues>(
 
     return {
       name,
-      // value: get(values(), name),
       onInput(event) {
         if (mode === "onChange") {
           onFieldChange(event, name);
@@ -162,6 +162,12 @@ export const useForm = <F extends FormValues>(
         }
       },
     };
+  };
+
+  const control: Control<F> = {
+    values,
+    errors,
+    register,
   };
 
   const getValues: GetValues<F> = (name?: Path<F>) => {
@@ -218,6 +224,7 @@ export const useForm = <F extends FormValues>(
   };
 
   return {
+    control,
     values,
     errors,
     isValid,
