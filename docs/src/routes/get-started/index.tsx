@@ -4,14 +4,13 @@ import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Footer } from "~/components/footer/footer";
 import { Navigation } from "~/components/navigation/navigation";
-import sx from "./get-started.module.css";
 
 const GetStarted = () => {
   return (
     <main>
       <Title>Get started</Title>
 
-      <Container class={sx.container}>
+      <Container.Grid>
         <Navigation>
           <Link href="/get-started#install" color="secondary">
             Install
@@ -33,7 +32,7 @@ const GetStarted = () => {
           </Link>
         </Navigation>
 
-        <div class={sx.content}>
+        <Container.Content>
           <h1>Get started</h1>
 
           <div id="install">
@@ -306,10 +305,10 @@ export const ExampleForm = () => {
   );
 };`}</Code>
           </div>
-        </div>
+        </Container.Content>
 
         <Footer />
-      </Container>
+      </Container.Grid>
     </main>
   );
 };

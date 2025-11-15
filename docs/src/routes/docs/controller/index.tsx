@@ -3,6 +3,7 @@ import { createMemo } from "solid-js";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
+import { DocsNavigation } from "~/components/navigation/docs_navigation";
 import { Table } from "~/components/table/table";
 
 const Controller = () => {
@@ -33,40 +34,43 @@ const Controller = () => {
     <main>
       <Title>Controller</Title>
 
-      <Container>
-        <h1>Controller</h1>
+      <Container.Grid>
+        <DocsNavigation />
 
-        <p>
-          Solid Hook Form embraces uncontrolled components and native inputs, however it's hard to
-          avoid working with external controlled component such as{" "}
-          <Link href="https://kobalte.dev" target="_blank">
-            Kobalte
-          </Link>
-          . This wrapper component will make it easier for you to work with it.
-        </p>
+        <Container.Content>
+          <h1>Controller</h1>
 
-        <p style={{ "margin-bottom": 0 }}>Props</p>
-        <hr />
+          <p>
+            Solid Hook Form embraces uncontrolled components and native inputs, however it's hard to
+            avoid working with external controlled component such as{" "}
+            <Link href="https://kobalte.dev" target="_blank">
+              Kobalte
+            </Link>
+            . This wrapper component will make it easier for you to work with it.
+          </p>
 
-        <p>The following table contains information about the arguments for Controller.</p>
+          <p style={{ "margin-bottom": 0 }}>Props</p>
+          <hr />
 
-        <Table>
-          {[
-            ["Name", "Type", "Description"],
-            [
-              "control",
-              "Object",
-              "control object is from invoking useForm. Optional when using FormProvider.",
-            ],
-            ["name", "string", "Unique name of your input."],
-            ["render", "Function", renderDescription()],
-            ["rules", "Object", rulesDescription()],
-          ]}
-        </Table>
+          <p>The following table contains information about the arguments for Controller.</p>
 
-        <p>Using Component API</p>
+          <Table>
+            {[
+              ["Name", "Type", "Description"],
+              [
+                "control",
+                "Object",
+                "control object is from invoking useForm. Optional when using FormProvider.",
+              ],
+              ["name", "string", "Unique name of your input."],
+              ["render", "Function", renderDescription()],
+              ["rules", "Object", rulesDescription()],
+            ]}
+          </Table>
 
-        <Code language="js">{`import { TextField } from "@kobalte/core/text-field";
+          <p>Using Component API</p>
+
+          <Code language="js">{`import { TextField } from "@kobalte/core/text-field";
 import { useForm, Controller } from "solid-hook-form"
 
 export const ExampleForm = () => {
@@ -105,7 +109,8 @@ export const ExampleForm = () => {
     </form>
   )
 }`}</Code>
-      </Container>
+        </Container.Content>
+      </Container.Grid>
     </main>
   );
 };

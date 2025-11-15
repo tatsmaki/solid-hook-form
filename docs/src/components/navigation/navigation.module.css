@@ -1,25 +1,34 @@
 .navigation {
   padding: 16px 32px;
   position: sticky;
-  top: 60px;
+  top: 80px;
   align-self: start;
   box-sizing: border-box;
 }
 
 .links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   list-style: circle;
   padding: 0;
   margin: 0;
 }
 
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
 .links li::marker {
   color: var(--colors-accent-500);
+}
+
+.links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+  padding-left: 32px;
+}
+
+.links ul li::marker {
+  color: var(--colors-secondary-500);
 }
 
 @media (max-width: 768px) {

@@ -1,5 +1,5 @@
-import { JSXElement } from "solid-js";
+import { JSX } from "solid-js";
 
 export type NavigationProps = {
-  children: JSXElement[];
+  children: JSX.Element[];
 };
