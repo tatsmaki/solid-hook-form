@@ -3,14 +3,16 @@ import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Footer } from "~/components/footer/footer";
+import { Navigation } from "~/components/navigation/navigation";
+import sx from "./get-started.module.css";
 
 const GetStarted = () => {
   return (
     <main>
       <Title>Get started</Title>
 
-      <Container>
-        {/* <Navigation>
+      <Container class={sx.container}>
+        <Navigation>
           <Link href="/get-started#install" color="secondary">
             Install
           </Link>
@@ -29,29 +31,30 @@ const GetStarted = () => {
           <Link href="/get-started#typescript" color="secondary">
             TypeScript
           </Link>
-        </Navigation> */}
+        </Navigation>
 
-        <h1>Get started</h1>
+        <div class={sx.content}>
+          <h1>Get started</h1>
 
-        <div id="install">
-          <h2>
-            <Link href="#install" color="secondary">
-              Install
-            </Link>
-          </h2>
-          <p>Install Solid Hook Form package.</p>
-          <Code language="sh">npm install solid-hook-form</Code>
-        </div>
+          <div id="install">
+            <h2>
+              <Link href="#install" color="secondary">
+                Install
+              </Link>
+            </h2>
+            <p>Install Solid Hook Form package.</p>
+            <Code language="sh">npm install solid-hook-form</Code>
+          </div>
 
-        <div id="example">
-          <h2>
-            <Link href="#example" color="secondary">
-              Example
-            </Link>
-          </h2>
-          <p>The following code demonstrates a basic usage example.</p>
-          <Code language="js">
-            {`import { useForm } from "solid-hook-form";
+          <div id="example">
+            <h2>
+              <Link href="#example" color="secondary">
+                Example
+              </Link>
+            </h2>
+            <p>The following code demonstrates a basic usage example.</p>
+            <Code language="js">
+              {`import { useForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
   const { register, onSubmit } = useForm({
@@ -71,25 +74,25 @@ export const ExampleForm = () => {
     </form>
   );
 };`}
-          </Code>
-        </div>
+            </Code>
+          </div>
 
-        <div id="register-fields">
-          <h2>
-            <Link href="#register-fields" color="secondary">
-              Register fields
-            </Link>
-          </h2>
-          <p>
-            To make field value available for form validation and submission you need to register
-            your component into the hook.
-          </p>
-          <blockquote>
-            <p>Form field name should match a registered component name.</p>
-          </blockquote>
+          <div id="register-fields">
+            <h2>
+              <Link href="#register-fields" color="secondary">
+                Register fields
+              </Link>
+            </h2>
+            <p>
+              To make field value available for form validation and submission you need to register
+              your component into the hook.
+            </p>
+            <blockquote>
+              <p>Form field name should match a registered component name.</p>
+            </blockquote>
 
-          <Code language="js">
-            {`import { useForm } from "solid-hook-form";
+            <Code language="js">
+              {`import { useForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
   const { register, onSubmit } = useForm({
@@ -113,33 +116,33 @@ export const ExampleForm = () => {
     </form>
   );
 };`}
-          </Code>
-        </div>
+            </Code>
+          </div>
 
-        <div id="apply-validation">
-          <h2>
-            <Link href="#apply-validation" color="secondary">
-              Apply validation
-            </Link>
-          </h2>
-          <p>
-            Solid Hook Form makes form validation easy by aligning with the existing HTML standard
-            for form validation.
-          </p>
+          <div id="apply-validation">
+            <h2>
+              <Link href="#apply-validation" color="secondary">
+                Apply validation
+              </Link>
+            </h2>
+            <p>
+              Solid Hook Form makes form validation easy by aligning with the existing HTML standard
+              for form validation.
+            </p>
 
-          <p>List of validation rules supported:</p>
+            <p>List of validation rules supported:</p>
 
-          <ul>
-            <li>required</li>
-            <li>min</li>
-            <li>max</li>
-            <li>minLength</li>
-            <li>maxLength</li>
-            <li>pattern</li>
-            <li>validate</li>
-          </ul>
+            <ul>
+              <li>required</li>
+              <li>min</li>
+              <li>max</li>
+              <li>minLength</li>
+              <li>maxLength</li>
+              <li>pattern</li>
+              <li>validate</li>
+            </ul>
 
-          <Code language="js">{`import { useForm } from "solid-hook-form";
+            <Code language="js">{`import { useForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
   const { register, onSubmit } = useForm({
@@ -163,26 +166,26 @@ export const ExampleForm = () => {
     </form>
   );
 };`}</Code>
-        </div>
+          </div>
 
-        <div id="controller">
-          <h2>
-            <Link href="#controller" color="secondary">
-              Controlled Inputs
-            </Link>
-          </h2>
-          <p>
-            This library embraces uncontrolled components and native HTML inputs. However, it's hard
-            to avoid working with external controlled components such as{" "}
-            <Link href="https://kobalte.dev" target="_blank">
-              Kobalte
-            </Link>
-            . To make this simple, we provide a wrapper component, Controller.
-          </p>
+          <div id="controller">
+            <h2>
+              <Link href="#controller" color="secondary">
+                Controlled Inputs
+              </Link>
+            </h2>
+            <p>
+              This library embraces uncontrolled components and native HTML inputs. However, it's
+              hard to avoid working with external controlled components such as{" "}
+              <Link href="https://kobalte.dev" target="_blank">
+                Kobalte
+              </Link>
+              . To make this simple, we provide a wrapper component, Controller.
+            </p>
 
-          <p>Using Component API</p>
+            <p>Using Component API</p>
 
-          <Code language="js">{`import { TextField } from "@kobalte/core/text-field";
+            <Code language="js">{`import { TextField } from "@kobalte/core/text-field";
 import { useForm, Controller } from "solid-hook-form"
 
 export const ExampleForm = () => {
@@ -219,21 +222,21 @@ export const ExampleForm = () => {
     </form>
   )
 }`}</Code>
-        </div>
+          </div>
 
-        <div id="handle-errors">
-          <h2>
-            <Link href="#handle-errors" color="secondary">
-              Handle errors
-            </Link>
-          </h2>
-          <p>
-            Solid Hook Form provides an errors accessor to show you the errors in the form. errors'
-            type will return given validation constraints. The following example showcases a
-            required validation rule.
-          </p>
+          <div id="handle-errors">
+            <h2>
+              <Link href="#handle-errors" color="secondary">
+                Handle errors
+              </Link>
+            </h2>
+            <p>
+              Solid Hook Form provides an errors accessor to show you the errors in the form.
+              errors' type will return given validation constraints. The following example showcases
+              a required validation rule.
+            </p>
 
-          <Code language="js">{`import { useForm } from "solid-hook-form";
+            <Code language="js">{`import { useForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
   const { register, errors, onSubmit } = useForm({
@@ -262,17 +265,17 @@ export const ExampleForm = () => {
     </form>
   );
 };`}</Code>
-        </div>
+          </div>
 
-        <div id="typescript">
-          <h2>
-            <Link href="#typescript" color="secondary">
-              TypeScript
-            </Link>
-          </h2>
-          <p>Solid Hook Form is built with TypeScript, and you can define a FormValues type.</p>
+          <div id="typescript">
+            <h2>
+              <Link href="#typescript" color="secondary">
+                TypeScript
+              </Link>
+            </h2>
+            <p>Solid Hook Form is built with TypeScript, and you can define a FormValues type.</p>
 
-          <Code language="ts">{`import { useForm } from "solid-hook-form";
+            <Code language="ts">{`import { useForm } from "solid-hook-form";
 
 type ExampleFormValues = {
   name: string;
@@ -302,6 +305,7 @@ export const ExampleForm = () => {
     </form>
   );
 };`}</Code>
+          </div>
         </div>
 
         <Footer />

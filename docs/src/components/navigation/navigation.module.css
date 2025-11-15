@@ -1,10 +1,9 @@
 .navigation {
   padding: 16px 32px;
-  position: fixed;
-  top: 80px;
+  position: sticky;
+  top: 60px;
+  align-self: start;
   box-sizing: border-box;
-  width: 250px;
-  transform: translateX(-100%);
 }
 
 .links {
