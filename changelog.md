@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.8.0 (2025-11-15)
+
+### Added
+
+- useController hook for controlled inputs [92365e1](https://github.com/tatsmaki/solid-hook-form/commit/92365e138621eb816798e9493e4baba2112f4300)
+
 ## 1.7.1 (2025-11-14)
 
 ### Bug fixes

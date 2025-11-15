@@ -36,6 +36,29 @@ export const DocsNavigation = () => {
 
       <div>
         <Link
+          href="/docs/use-controller"
+          color={location.pathname == "/docs/use-controller" ? "accent" : "secondary"}
+        >
+          useController
+        </Link>
+        <ul>
+          <li>
+            <Link
+              href="/docs/use-controller/controller"
+              color={
+                location.pathname.includes("/docs/use-controller/controller")
+                  ? "accent"
+                  : "secondary"
+              }
+            >
+              Controller
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <Link
           href="/docs/form-context"
           color={location.pathname === "/docs/form-context" ? "accent" : "secondary"}
         >
@@ -54,13 +77,6 @@ export const DocsNavigation = () => {
           </li>
         </ul>
       </div>
-
-      <Link
-        href="/docs/controller"
-        color={location.pathname.includes("/docs/controller") ? "accent" : "secondary"}
-      >
-        Controller
-      </Link>
     </Navigation>
   );
 };

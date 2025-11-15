@@ -20,6 +20,15 @@ const Docs = () => {
             <p>A powerful custom hook to validate your form.</p>
           </Grid.Item>
 
+          <Grid.Item href="/docs/use-controller">
+            <h2>
+              <span innerHTML={code} />
+              useController
+            </h2>
+
+            <p>Custom hook for controlled inputs.</p>
+          </Grid.Item>
+
           <Grid.Item href="/docs/form-context">
             <h2>
               <span innerHTML={code} />
@@ -30,15 +39,6 @@ const Docs = () => {
               Access your useForm methods and properties from nested components. Great for building
               larger and multi-step forms.
             </p>
-          </Grid.Item>
-
-          <Grid.Item href="/docs/controller">
-            <h2>
-              <span innerHTML={code} />
-              Controller
-            </h2>
-
-            <p>Wrapper component for controlled inputs.</p>
           </Grid.Item>
         </Grid>
 
