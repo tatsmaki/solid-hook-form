@@ -3,6 +3,7 @@ import { FieldPath, FieldPathValue, Path } from "./path";
 import { Rules } from "./validate";
 import { FieldErrors } from "./errors";
 import { Control } from "./controller";
+import type { Resolver } from "react-hook-form";
 
 export type FormValues = Record<string, any>;
 
@@ -39,7 +40,13 @@ export type OnSubmit<F extends FormValues> = (
 
 export type Reset<F extends FormValues> = (newDefaultValues?: Partial<F>) => void;
 
-export type UseFormReturn<F extends FormValues = FormValues> = {
+export type CreateFormArg<F extends FormValues> = {
+  defaultValues: F;
+  mode?: "onChange" | "onSubmit";
+  resolver?: Resolver<F>;
+};
+
+export type CreateFormReturn<F extends FormValues = FormValues> = {
   control: Control<F>;
   values: Accessor<F>;
   errors: Accessor<FieldErrors<F>>;
@@ -48,7 +55,10 @@ export type UseFormReturn<F extends FormValues = FormValues> = {
   getValues: GetValues<F>;
   setValue: SetValue<F>;
   onSubmit: OnSubmit<F>;
+  handleSubmit: OnSubmit<F>;
   reset: Reset<F>;
 };
+
+export type CreateForm = <F extends FormValues>(arg?: CreateFormArg<F>) => CreateFormReturn<F>;
 
 export type FormFields = Record<string, Ref>;

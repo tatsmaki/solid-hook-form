@@ -1,13 +1,14 @@
 import { createMemo, createSignal } from "solid-js";
-import type { Resolver } from "react-hook-form";
 import {
+  CreateForm,
+  CreateFormArg,
+  CreateFormReturn,
   FormValues,
   GetValues,
   OnSubmit,
   Register,
   Reset,
   SetValue,
-  UseFormReturn,
 } from "./types/form";
 import { Path } from "./types/path";
 import { FieldError } from "./types/errors";
@@ -23,15 +24,9 @@ import { formatValue } from "./logic/format_value";
 import { getResolverFields } from "./utils/resolver";
 import { Control } from "./types/controller";
 
-type UseFormArg<F extends FormValues> = {
-  defaultValues: F;
-  mode?: "onChange" | "onSubmit";
-  resolver?: Resolver<F>;
-};
-
-export const useForm = <F extends FormValues>(
-  arg: UseFormArg<F> = { defaultValues: {} as F }
-): UseFormReturn<F> => {
+export const createForm: CreateForm = <F extends FormValues>(
+  arg: CreateFormArg<F> = { defaultValues: {} as F }
+): CreateFormReturn<F> => {
   const { defaultValues, mode = "onChange", resolver } = arg;
 
   const { fields, getField, setField } = createFields();
@@ -232,6 +227,7 @@ export const useForm = <F extends FormValues>(
     getValues,
     setValue,
     onSubmit,
+    handleSubmit: onSubmit,
     reset,
   };
 };
