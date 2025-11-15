@@ -21,7 +21,7 @@ import { createRules } from "./logic/create_rules";
 import { createFields } from "./logic/create_fields";
 import { formatValue } from "./logic/format_value";
 import { getResolverFields } from "./utils/resolver";
-import { Control } from "./types/control";
+import { Control } from "./types/controller";
 
 type UseFormArg<F extends FormValues> = {
   defaultValues: F;

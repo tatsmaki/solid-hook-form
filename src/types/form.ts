@@ -2,7 +2,7 @@ import type { Accessor } from "solid-js";
 import { FieldPath, FieldPathValue, Path } from "./path";
 import { Rules } from "./validate";
 import { FieldErrors } from "./errors";
-import { Control } from "./control";
+import { Control } from "./controller";
 
 export type FormValues = Record<string, any>;
 
