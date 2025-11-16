@@ -16,10 +16,10 @@ export type RegisterReturn<F extends FormValues> = {
   onChange(event: Event): void;
 };
 
-export type Register<T extends FormValues> = (
-  name: Path<T>,
-  options?: Rules<T, Path<T>>
-) => RegisterReturn<T>;
+export type Register<F extends FormValues> = (
+  name: Path<F>,
+  options?: Rules<F, Path<F>>
+) => RegisterReturn<F>;
 
 export type GetValues<F extends FormValues> = {
   (): F;
