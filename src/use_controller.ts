@@ -6,7 +6,7 @@ import { useFormContext } from "./use_form_context";
 
 export const useController = <F extends FormValues>(
   arg: UseControllerArg<F>
-): UseControllerReturn => {
+): UseControllerReturn<F> => {
   const form = useFormContext<F>();
   const control = form?.control || arg.control;
   const fieldProps = control.register(arg.name, arg.rules);

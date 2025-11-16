@@ -1,25 +1,11 @@
 import type { Accessor } from "solid-js";
 import { FieldPath, FieldPathValue, Path } from "./path";
-import { Rules } from "./validate";
 import { FieldErrors } from "./errors";
 import { Control } from "./controller";
 import type { Resolver } from "react-hook-form";
+import { Ref, Register } from "./register";
 
 export type FormValues = Record<string, any>;
-
-export type Ref = HTMLElement | null;
-
-export type RegisterReturn<F extends FormValues> = {
-  name: Path<F>;
-  ref(ref: Ref): void;
-  onInput(event: Event): void;
-  onChange(event: Event): void;
-};
-
-export type Register<F extends FormValues> = (
-  name: Path<F>,
-  options?: Rules<F, Path<F>>
-) => RegisterReturn<F>;
 
 export type GetValues<F extends FormValues> = {
   (): F;

@@ -1,4 +1,10 @@
-export const getFieldValue = (event: Event) => {
+export const getFieldValue = (event: Event | unknown) => {
+  const isEvent = event instanceof Event;
+
+  if (!isEvent) {
+    return event;
+  }
+
   const field = event.target;
 
   if (field instanceof HTMLSelectElement) {

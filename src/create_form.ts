@@ -6,7 +6,6 @@ import {
   FormValues,
   GetValues,
   OnSubmit,
-  Register,
   Reset,
   SetValue,
 } from "./types/form";
@@ -23,6 +22,7 @@ import { createFields } from "./logic/create_fields";
 import { formatValue } from "./logic/format_value";
 import { getResolverFields } from "./utils/resolver";
 import { Control } from "./types/controller";
+import { Register } from "./types/register";
 
 export const createForm: CreateForm = <F extends FormValues>(
   arg: CreateFormArg<F> = { defaultValues: {} as F }
@@ -115,7 +115,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     }
   };
 
-  const onFieldChange = (event: Event, name: Path<F>) => {
+  const onFieldChange = (event: Event | unknown, name: Path<F>) => {
     const value = formatValue(getFieldValue(event), rules[name]);
 
     setValues((prev) => {

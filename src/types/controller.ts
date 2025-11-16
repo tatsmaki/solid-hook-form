@@ -1,8 +1,9 @@
 import type { Accessor, JSXElement } from "solid-js";
-import { FormValues, Register } from "./form";
+import { FormValues } from "./form";
 import { FieldError, FieldErrors } from "./errors";
 import { Path } from "./path";
 import { Rules } from "./validate";
+import { Register, RegisterReturn } from "./register";
 
 export type Control<F extends FormValues> = {
   values: Accessor<F>;
@@ -14,27 +15,25 @@ export type UseControllerArg<F extends FormValues> = {
   control: Control<F>;
   name: Path<F>;
   rules?: Rules<F>;
-  render(arg: UseControllerReturn): JSXElement;
+  render(arg: UseControllerReturn<F>): JSXElement;
 };
 
-export type UseControllerReturn = {
-  field: {
-    name: string;
+export type UseControllerReturn<F extends FormValues> = {
+  field: RegisterReturn<F> & {
     value: Accessor<any>;
-    onInput(event: Event): void;
-    onChange(event: Event): void;
-    ref(element: HTMLElement): void;
   };
   fieldState: {
     error: Accessor<FieldError | undefined>;
   };
 };
 
-export type UseController = <F extends FormValues>(arg: UseControllerArg<F>) => UseControllerReturn;
+export type UseController = <F extends FormValues>(
+  arg: UseControllerArg<F>
+) => UseControllerReturn<F>;
 
 export type ControllerProps<F extends FormValues> = {
   control: Control<F>;
   name: Path<F>;
   rules?: Rules<F>;
-  render(arg: UseControllerReturn): JSXElement;
+  render(arg: UseControllerReturn<F>): JSXElement;
 };
