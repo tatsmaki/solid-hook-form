@@ -48,6 +48,10 @@ export type CreateFormArg<F extends FormValues> = {
 
 export type CreateFormReturn<F extends FormValues = FormValues> = {
   control: Control<F>;
+  formState: {
+    errors: Accessor<FieldErrors<F>>;
+    isValid: Accessor<boolean>;
+  };
   values: Accessor<F>;
   errors: Accessor<FieldErrors<F>>;
   isValid: Accessor<boolean>;

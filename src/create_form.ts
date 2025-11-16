@@ -220,6 +220,10 @@ export const createForm: CreateForm = <F extends FormValues>(
 
   return {
     control,
+    formState: {
+      errors,
+      isValid,
+    },
     values,
     errors,
     isValid,
