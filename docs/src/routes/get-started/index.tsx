@@ -141,6 +141,14 @@ export const ExampleForm = () => {
               <li>validate</li>
             </ul>
 
+            <p>
+              You can read more detail on each rule in the{" "}
+              <Link href="/docs/create-form/register" color="accent">
+                register section
+              </Link>
+              .
+            </p>
+
             <Code language="js">{`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {

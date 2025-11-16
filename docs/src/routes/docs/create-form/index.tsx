@@ -56,7 +56,7 @@ const UseForm = () => {
     firstName: "",
     lastName: ""
   }
-});`}
+})`}
             </Code>
           </div>
 
@@ -84,7 +84,7 @@ const UseForm = () => {
             <Code language="js">
               {`createForm({
   mode: 'onChange'
-});`}
+})`}
             </Code>
           </div>
 
@@ -126,14 +126,14 @@ const UseForm = () => {
             <p>Define a schema:</p>
 
             <Code language="ts">
-              {`import z, { object, string, number } from "zod";
+              {`import z, { object, string, number } from "zod"
 
 const formSchema = object({
   name: string().min(1, "Required"),
   age: number()
-});
+})
 
-type FormValues = z.infer<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>
 `}
             </Code>
 
@@ -179,13 +179,16 @@ const ExampleForm = () => {
               </Link>
             </li>
             <li>
+              <Link href="/docs/create-form/form-state" color="accent">
+                formState
+              </Link>
+            </li>
+            <li>
               <Link href="/docs/create-form/submit" color="accent">
                 handleSubmit
               </Link>
             </li>
             <li>values</li>
-            <li>errors</li>
-            <li>isValid</li>
             <li>getValues</li>
             <li>setValue</li>
             <li>reset</li>

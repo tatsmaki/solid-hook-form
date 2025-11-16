@@ -25,14 +25,16 @@ export const DocsNavigation = () => {
               register
             </Link>
           </li>
-          {/* <li>
+          <li>
             <Link
-              href="/docs/create-form/values"
-              color={location.pathname.includes("/docs/create-form/values") ? "accent" : "secondary"}
+              href="/docs/create-form/form-state"
+              color={
+                location.pathname.includes("/docs/create-form/form-state") ? "accent" : "secondary"
+              }
             >
-              values
+              formState
             </Link>
-          </li> */}
+          </li>
           <li>
             <Link
               href="/docs/create-form/submit"

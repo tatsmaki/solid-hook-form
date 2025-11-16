@@ -14,8 +14,8 @@ const Controller = () => {
         events and value into the component. This simplifies integrating with external controlled
         components with non-standard prop names.
         <br />
-        Provides onInput, onChange, name, ref and value to the child component, and also a fieldState
-        object which contains specific input state.
+        Provides onInput, onChange, name, ref and value to the child component, and also a
+        fieldState object which contains specific input state.
       </>
     );
   });
@@ -64,7 +64,7 @@ const Controller = () => {
               ],
               ["name", "string", "Unique name of your input."],
               ["render", "Function", renderDescription()],
-              ["rules", "Object", rulesDescription()],
+              ["rules", "Rules", rulesDescription()],
             ]}
           </Table>
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.1 (2025-11-16)
+
+### Added
+
+- formState isValid and errors accessor [b1d3a34](https://github.com/tatsmaki/solid-hook-form/commit/b1d3a3419fa33001da54e4d982a0c9e2af54f12c)
+
 ## 1.9.0 (2025-11-16)
 
 ### Changed

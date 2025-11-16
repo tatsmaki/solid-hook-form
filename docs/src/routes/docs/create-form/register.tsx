@@ -31,14 +31,14 @@ const Register = () => {
             ]}
           </Table>
 
-          <Code language="js">{`const { register } = createForm();
+          <Code language="js">{`const { register } = createForm()
 
 return (
-    <form>
-        <input {...register("firstName", { required: true })} />
-        <input {...register("lastName", { minLength: 5 })} />
-    </form>
-);`}</Code>
+  <form>
+    <input {...register("firstName", { required: true })} />
+    <input {...register("lastName", { minLength: 5 })} />
+  </form>
+)`}</Code>
 
           <p style={{ "margin-bottom": 0 }}>Returns</p>
           <hr />
@@ -46,7 +46,7 @@ return (
             {[
               ["Name", "Type", "Description"],
               ["name", "string", "Input's name being registered."],
-              ["ref", "HTMLElement", "Element ref used to connect form to the input."],
+              ["ref", "Function", "Element ref used to connect form to the input."],
               ["onInput", "Function", "onInput prop to subscribe the input change"],
               ["onChange", "Function", "onChange prop to subscribe the input change"],
             ]}
@@ -57,19 +57,19 @@ return (
           </blockquote>
 
           <Code language="js">{`const { register } = createForm({
-    defaultValues: {
-        user: {
-            profile: {
-                firstName: ""
-            }
-        }
+  defaultValues: {
+    user: {
+      profile: {
+        firstName: ""
+      }
     }
-});
+  }
+})
 
 return (
-   <form>
-        <input {...register("user.profile.firstName")} />
-   </form>
+  <form>
+    <input {...register("user.profile.firstName")} />
+  </form>
 )`}</Code>
 
           <div id="rules">
@@ -113,6 +113,17 @@ return (
                 ],
               ]}
             </Table>
+
+            <p>Provide both validation rule and error message:</p>
+
+            <Code language="js">{`const { register } = createForm()
+
+return (
+  <form>
+    <input {...register("firstName", { required: "First name is required" })} />
+    <input {...register("lastName", { minLength: { value: 5, "Min 5 characters" } })} />
+  </form>
+)`}</Code>
           </div>
         </Container.Content>
       </Container.Grid>
