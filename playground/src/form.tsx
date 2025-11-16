@@ -1,4 +1,4 @@
-import { useForm, FormProvider } from ".";
+import { createForm, FormProvider, Controller } from ".";
 import { Field, TextInput, Checkbox, Button } from "solid-uix";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Errors } from "./errors/errors";
@@ -7,7 +7,7 @@ import { formSchema, FormValues } from "./schema";
 import sx from "./form.module.css";
 
 export const Form = () => {
-  const form = useForm<FormValues>({
+  const form = createForm<FormValues>({
     defaultValues: {
       date: new Date().toISOString().split("T")[0],
       email: "",
@@ -21,9 +21,9 @@ export const Form = () => {
     mode: "onChange",
     resolver: zodResolver(formSchema),
   });
-  const { errors, register, onSubmit, reset } = form;
+  const { errors, register, handleSubmit, reset } = form;
 
-  const onSave = (values: FormValues) => {
+  const onSubmit = (values: FormValues) => {
     console.log(values);
   };
 
@@ -34,7 +34,7 @@ export const Form = () => {
   return (
     <div class={sx.demo} id="playground-form">
       <FormProvider form={form}>
-        <form class={sx.form} onSubmit={onSubmit(onSave)}>
+        <form class={sx.form} onSubmit={handleSubmit(onSubmit)}>
           <h2>Form</h2>
 
           <Field error={!!errors().date}>
@@ -67,6 +67,21 @@ export const Form = () => {
             />
             <Field.Message level="error">{errors().password?.message}</Field.Message>
           </Field>
+          {/* <Controller
+            control={form.control}
+            name="password"
+            render={({ field, fieldState }) => (
+              <Field error={!!fieldState.error()}>
+                <Field.Label>Password</Field.Label>
+                <TextInput {...field} value={field.value()} />
+                <Field.Message level="error">{fieldState.error()?.message}</Field.Message>
+              </Field>
+            )}
+            rules={{
+              required: "Required",
+              minLength: { value: 8, message: "Min 8" },
+            }}
+          /> */}
 
           <Field error={!!errors()["profile.name"]}>
             <Field.Label>Name</Field.Label>

@@ -8,17 +8,23 @@ import { Table } from "~/components/table/table";
 const UseForm = () => {
   return (
     <main>
-      <Title>useForm</Title>
+      <Title>createForm</Title>
       <Container.Grid>
         <DocsNavigation />
 
         <Container.Content>
-          <h1>useForm</h1>
+          <h1>createForm</h1>
 
           <p>
-            useForm is a custom hook for managing forms with ease. It takes one object as optional
+            createForm is function used to create a form instance. It takes one object as optional
             argument. The following example demonstrates all of its properties and methods.
           </p>
+
+          <blockquote>
+            <p>
+              <b>useForm</b> alias will be removed in the future.
+            </p>
+          </blockquote>
 
           <p style={{ "margin-bottom": 0 }}>Props</p>
           <hr />
@@ -26,8 +32,8 @@ const UseForm = () => {
           <Table>
             {[
               ["Name", "Type", "Description"],
-              ["defaultValue", "Object", "Default values for the form."],
-              ["mode", "string", "Validation strategy."],
+              ["defaultValues", "Object", "Default values for the form."],
+              ["mode", "string", "Validation strategy. Defaults to 'onChange'."],
               ["resolver", "Resolver", "Integrates with your preferred schema validation library."],
             ]}
           </Table>
@@ -45,7 +51,7 @@ const UseForm = () => {
             </p>
 
             <Code language="js">
-              {`useForm({
+              {`createForm({
   defaultValues: {
     firstName: "",
     lastName: ""
@@ -76,7 +82,7 @@ const UseForm = () => {
             </Table>
 
             <Code language="js">
-              {`useForm({
+              {`createForm({
   mode: 'onChange'
 });`}
             </Code>
@@ -134,47 +140,47 @@ type FormValues = z.infer<typeof formSchema>;
             <p>Apply resolver:</p>
 
             <Code language="ts">
-              {`import { zodResolver } from '@hookform/resolvers';
+              {`import { zodResolver } from '@hookform/resolvers'
+import { createForm } from 'solid-hook-form'
 
 const ExampleForm = () => {
-  const form = useForm({
+  const { register, handleSubmit } = createForm<FormValues>({
     defaultValues: {
       name: '',
       age: 0
     },
-    resolver: 'zodResolver(schema)'
-  });
-  const { register, onSubmit } = form;
+    resolver: zodResolver(formSchema)
+  })
 
-  const onSave = (values: FormValues) => {
-    console.log(values);
-  };
+  const onSubmit = (values: FormValues) => {
+    console.log(values)
+  }
 
   return (
-    <form onSubmit={onSubmit(onSave)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register('name')} />
         <input type="number" {...register('age', { valueAsNumber: true })} />
         <button type="submit">Save</button>
-    </form>      
-  );
-};`}
+    </form>
+  )
+}`}
             </Code>
           </div>
 
           <p style={{ "margin-bottom": 0 }}>Returns</p>
           <hr />
 
-          <p>The following list contains reference to useForm return props.</p>
+          <p>The following list contains reference to createForm return props.</p>
 
           <ul>
             <li>
-              <Link href="/docs/use-form/register" color="accent">
+              <Link href="/docs/create-form/register" color="accent">
                 register
               </Link>
             </li>
             <li>
-              <Link href="/docs/use-form/submit" color="accent">
-                onSubmit
+              <Link href="/docs/create-form/submit" color="accent">
+                handleSubmit
               </Link>
             </li>
             <li>values</li>

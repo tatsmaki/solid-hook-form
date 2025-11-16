@@ -23,7 +23,7 @@ const NestedValues = () => {
 
         <Image src="/nested_values.png" />
 
-        <Code language="ts">{`import { useForm } from "solid-hook-form";
+        <Code language="ts">{`import { createForm } from "solid-hook-form";
 
 type ExampleFormValues = {
   user: {
@@ -35,7 +35,7 @@ type ExampleFormValues = {
 };
 
 export const ExampleForm = () => {
-  const form = useForm<ExampleFormValues>({
+  const form = createForm<ExampleFormValues>({
     defaultValues: {
       user: {
         email: "",
@@ -45,15 +45,15 @@ export const ExampleForm = () => {
       },
     },
   });
-  const { values, register, onSubmit } = form;
+  const { values, register, handleSubmit } = form;
 
-  const saveExample = (values: ExampleFormValues) => {
+  const onSubmit = (values: ExampleFormValues) => {
     console.log(values);
   };
 
   return (
     <FormProvider form={form}>
-      <form onSubmit={onSubmit(saveExample)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register("user.email")} />
         <input {...register("user.profile.name")} />
 

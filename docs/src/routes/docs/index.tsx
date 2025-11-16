@@ -12,12 +12,12 @@ const Docs = () => {
         <h1>Documentation</h1>
 
         <Grid>
-          <Grid.Item href="/docs/use-form">
+          <Grid.Item href="/docs/create-form">
             <h2>
-              <span innerHTML={code} /> useForm
+              <span innerHTML={code} /> createForm
             </h2>
 
-            <p>A powerful custom hook to validate your form.</p>
+            <p>A powerful function to validate form.</p>
           </Grid.Item>
 
           <Grid.Item href="/docs/use-controller">
@@ -36,7 +36,7 @@ const Docs = () => {
             </h2>
 
             <p>
-              Access your useForm methods and properties from nested components. Great for building
+              Access createForm methods and properties from nested components. Great for building
               larger and multi-step forms.
             </p>
           </Grid.Item>

@@ -24,19 +24,19 @@ npm install solid-hook-form
 ### Quick start
 
 ```jsx
-import { useForm } from "solid-hook-form";
+import { createForm } from "solid-hook-form";
 
 const ExampleForm = () => {
-  const { errors, register, onSubmit } = useForm({
+  const { errors, register, handleSubmit } = createForm({
     defaultValues: {
       name: "",
     },
   });
 
-  const submitExample = (values) => console.log(values);
+  const onSubmit = (values) => console.log(values);
 
   return (
-    <form onSubmit={onSubmit(submitExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name", { minLength: 2, pattern: /[A-Za-z]/ })} />;
       <button type="submit">Submit</button>
     </form>

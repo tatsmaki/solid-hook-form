@@ -16,7 +16,7 @@ const Provider = () => {
 
           <p>
             This component will host context object and allow consuming component to subscribe to
-            context and use useForm props and methods.
+            context and use createForm props and methods.
           </p>
 
           <p style={{ "margin-bottom": 0 }}>Props</p>
@@ -25,7 +25,7 @@ const Provider = () => {
           <Table>
             {[
               ["Name", "Type", "Description"],
-              ["form", "UseFormReturn", "FormProvider requires all useForm methods."],
+              ["form", "UseFormReturn", "FormProvider requires all createForm methods."],
             ]}
           </Table>
 
@@ -33,25 +33,25 @@ const Provider = () => {
             <p>Avoid using nested FormProvider</p>
           </blockquote>
 
-          <Code language="js">{`import { useForm, FormProvider } from "solid-hook-form";
+          <Code language="js">{`import { createForm, FormProvider } from "solid-hook-form"
 
 export const ExampleForm = () => {
-    const form = useForm();
-    const { onSubmit } = form;
+    const form = createForm()
+    const { handleSubmit } = form
 
-    const onSave = (values) => {
-        console.log(values);
-    };
+    const onSubmit = (values) => {
+        console.log(values)
+    }
 
     return (
         <FormProvider form={form}>
-            <form onSubmit={onSubmit(onSave)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <NestedInput />
                 <button type="submit">Save</button>
             </form>
         </FormProvider>
-    );
-};`}</Code>
+    )
+}`}</Code>
         </Container.Content>
       </Container.Grid>
     </main>

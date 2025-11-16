@@ -8,7 +8,7 @@ import { Table } from "~/components/table/table";
 const Register = () => {
   return (
     <main>
-      <Title>register - useForm</Title>
+      <Title>register - createForm</Title>
 
       <Container.Grid>
         <DocsNavigation />
@@ -31,7 +31,7 @@ const Register = () => {
             ]}
           </Table>
 
-          <Code language="js">{`const { register } = useForm();
+          <Code language="js">{`const { register } = createForm();
 
 return (
     <form>
@@ -47,6 +47,7 @@ return (
               ["Name", "Type", "Description"],
               ["name", "string", "Input's name being registered."],
               ["ref", "HTMLElement", "Element ref used to connect form to the input."],
+              ["onInput", "Function", "onInput prop to subscribe the input change"],
               ["onChange", "Function", "onChange prop to subscribe the input change"],
             ]}
           </Table>
@@ -55,21 +56,21 @@ return (
             <p>It is possible to use nested form values:</p>
           </blockquote>
 
-          <Code language="js">{`const { register } = useForm({
+          <Code language="js">{`const { register } = createForm({
     defaultValues: {
         user: {
             profile: {
-                firstName: "",
-            },
-        },
-    },
+                firstName: ""
+            }
+        }
+    }
 });
 
 return (
    <form>
         <input {...register("user.profile.firstName")} />
    </form>
-);`}</Code>
+)`}</Code>
 
           <div id="rules">
             <h2>

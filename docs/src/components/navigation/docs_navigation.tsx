@@ -9,26 +9,38 @@ export const DocsNavigation = () => {
     <Navigation>
       <div>
         <Link
-          href="/docs/use-form"
-          color={location.pathname === "/docs/use-form" ? "accent" : "secondary"}
+          href="/docs/create-form"
+          color={location.pathname === "/docs/create-form" ? "accent" : "secondary"}
         >
-          useForm
+          createForm
         </Link>
         <ul>
           <li>
             <Link
-              href="/docs/use-form/register"
-              color={location.pathname.includes("/docs/use-form/register") ? "accent" : "secondary"}
+              href="/docs/create-form/register"
+              color={
+                location.pathname.includes("/docs/create-form/register") ? "accent" : "secondary"
+              }
             >
               register
             </Link>
           </li>
+          {/* <li>
+            <Link
+              href="/docs/create-form/values"
+              color={location.pathname.includes("/docs/create-form/values") ? "accent" : "secondary"}
+            >
+              values
+            </Link>
+          </li> */}
           <li>
             <Link
-              href="/docs/use-form/submit"
-              color={location.pathname.includes("/docs/use-form/submit") ? "accent" : "secondary"}
+              href="/docs/create-form/submit"
+              color={
+                location.pathname.includes("/docs/create-form/submit") ? "accent" : "secondary"
+              }
             >
-              onSubmit
+              handleSubmit
             </Link>
           </li>
         </ul>

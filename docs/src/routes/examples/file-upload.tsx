@@ -24,7 +24,7 @@ const FileUpload = () => {
         <Image src="/file_upload.png" />
 
         <Code language="ts">
-          {`import { useForm, FormProvider } from "solid-hook-form";
+          {`import { createForm, FormProvider } from "solid-hook-form";
 import { FileUpload } from "./file_upload";
 
 type ExampleFormValues = {
@@ -32,20 +32,20 @@ type ExampleFormValues = {
 };
 
 export const ExampleForm = () => {
-  const form = useForm<ExampleFormValues>({
+  const form = createForm<ExampleFormValues>({
     defaultValues: {
       documents: [],
     },
   });
-  const { register, onSubmit } = form;
+  const { register, handleSubmit } = form;
 
-  const saveExample = (values: ExampleFormValues) => {
+  const onSubmit = (values: ExampleFormValues) => {
     console.log(values);
   };
 
   return (
     <FormProvider form={form}>
-      <form onSubmit={onSubmit(saveExample)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <FileUpload {...register("documents")} label="Documents" multiple accept="image/*,.pdf" />
       </form>
     </FormProvider>

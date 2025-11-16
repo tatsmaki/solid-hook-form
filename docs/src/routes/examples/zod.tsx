@@ -50,12 +50,12 @@ export const exampleSchema = object({
 
         <p>Connect schema to the form:</p>
 
-        <Code language="js">{`import { useForm } from 'solid-hook-form';
+        <Code language="js">{`import { createForm } from 'solid-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { exampleSchema } from './example_schema';
 
 export const ExampleForm = () => {
-  const form = useForm({
+  const form = createForm({
     defaultValues: {
       email: '',
       name: '',
@@ -63,14 +63,14 @@ export const ExampleForm = () => {
     },
     resolver: zodResolver(exampleSchema),
   });
-  const { errors, register, onSubmit } = form;
+  const { errors, register, handleSubmit } = form;
 
-  const saveExample = (values) => {
+  const onSubmit = (values) => {
     console.log(values);
   };
 
   return (
-    <form onSubmit={onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('email')} aria-invalid={Boolean(errors().email)} />
       {errors().email && <p role="alert">{errors().email.message}</p>}    
 

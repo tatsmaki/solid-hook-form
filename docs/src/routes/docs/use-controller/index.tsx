@@ -11,7 +11,7 @@ const UseController = () => {
     return (
       <>
         Validation rules in the same format for{" "}
-        <Link href="/docs/use-form/register#rules">register options</Link>, which includes:
+        <Link href="/docs/create-form/register#rules">register options</Link>, which includes:
         required, min, max, minLength, maxLength, pattern, validate
       </>
     );
@@ -44,7 +44,7 @@ const UseController = () => {
               [
                 "control",
                 "Object",
-                "control object is from invoking useForm. Optional when using FormProvider.",
+                "control object is from invoking createForm. Optional when using FormProvider.",
               ],
               ["name", "string", "Unique name of your input."],
               ["rules", "Object", rulesDescription()],
@@ -94,7 +94,7 @@ const UseController = () => {
 
           <Code language="js">
             {`import { TextField } from "@kobalte/core/text-field"
-import { useForm, useController } from "solid-hook-form"
+import { createForm, useController } from "solid-hook-form"
 
 const ControlledInput = (props) => {
   const { field, fieldState } = useController({
@@ -116,20 +116,20 @@ const ControlledInput = (props) => {
 }
 
 export const ExampleForm = () => {
-  const form = useForm({
+  const form = createForm({
     defaultValues: {
       firstName: ""
     },
     mode: "onChange"
   })
-  const { onSubmit, control } = form
+  const { control, handleSubmit } = form
 
-  const onSave = (values) => {
+  const onSubmit = (values) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={onSubmit(onSave)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <ControlledInput control={control} />
       <button type="submit">Save</button>
     </form>

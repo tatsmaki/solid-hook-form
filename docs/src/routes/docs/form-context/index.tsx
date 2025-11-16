@@ -22,15 +22,15 @@ const FormContext = () => {
           <p style={{ "margin-bottom": 0 }}>Returns</p>
           <hr />
 
-          <p>This hook will return all the useForm return methods and props.</p>
+          <p>This hook will return all the createForm return methods and props.</p>
 
-          <Code language="js">{`import { useFormContext } from "solid-hook-form";
+          <Code language="js">{`import { useFormContext } from "solid-hook-form"
 
 export const NestedInput = () => {
-    const { register } = useFormContext();
+    const { register } = useFormContext()
 
-    return <input {...register("name")} />;
-};`}</Code>
+    return <input {...register("name")} />
+}`}</Code>
 
           <blockquote>
             <p>
@@ -39,25 +39,25 @@ export const NestedInput = () => {
             </p>
           </blockquote>
 
-          <Code language="js">{`import { useForm, FormProvider } from "solid-hook-form";
+          <Code language="js">{`import { createForm, FormProvider } from "solid-hook-form"
 
 export const ExampleForm = () => {
-    const form = useForm();
-    const { onSubmit } = form;
+    const form = createForm()
+    const { handleSubmit } = form
 
-    const onSave = (values) => {
-        console.log(values);
-    };
+    const onSubmit = (values) => {
+        console.log(values)
+    }
 
     return (
         <FormProvider form={form}>
-            <form onSubmit={onSubmit(onSave)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <NestedInput />
                 <button type="submit">Save</button>
             </form>
         </FormProvider>
-    );
-};`}</Code>
+    )
+}`}</Code>
         </Container.Content>
       </Container.Grid>
     </main>

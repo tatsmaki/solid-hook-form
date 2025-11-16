@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.0 (2025-11-16)
+
+### Changed
+
+- rename useForm to createForm [7c9a04f](https://github.com/tatsmaki/solid-hook-form/commit/7c9a04f0a2779d0595cfb5b408cea0318c599994)
+- rename onSubmit to handleSubmit [7c9a04f](https://github.com/tatsmaki/solid-hook-form/commit/7c9a04f0a2779d0595cfb5b408cea0318c599994)
+- add missing useController export [7c9a04f](https://github.com/tatsmaki/solid-hook-form/commit/7c9a04f0a2779d0595cfb5b408cea0318c599994)
+
 ## 1.8.0 (2025-11-15)
 
 ### Added

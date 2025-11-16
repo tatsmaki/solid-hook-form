@@ -27,31 +27,31 @@ const Validation = () => {
 
         <p>
           You can find full list of validation rules in{" "}
-          <Link href="/docs/use-form/register#rules" color="accent">
-            useForm - register rules
+          <Link href="/docs/create-form/register#rules" color="accent">
+            createForm - register rules
           </Link>{" "}
           docs section.
         </p>
 
         <p>Register input and apply validation rules:</p>
 
-        <Code language="js">{`import { useForm } from "solid-hook-form";
+        <Code language="js">{`import { createForm } from "solid-hook-form";
 
 export const ExampleForm = () => {
-  const form = useForm({
+  const form = createForm({
     defaultValues: {
       email: "",
     },
   });
-  const { errors, register, onSubmit } = form;
+  const { errors, register, handleSubmit } = form;
 
-  const saveExample = (values) => {
+  const onSubmit = (values) => {
     console.log(values);
   };
 
   return (
     <FormProvider form={form}>
-      <form onSubmit={onSubmit(saveExample)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register("email", {
             required: "Required",
@@ -94,7 +94,7 @@ export const ExampleForm = () => {
 };
 
 const ExampleForm = () => {
-  const form = useForm<ExampleFormValues>({
+  const form = createForm<ExampleFormValues>({
     defaultValues: {
       email: "",
     },

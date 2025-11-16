@@ -53,21 +53,21 @@ const GetStarted = () => {
             </h2>
             <p>The following code demonstrates a basic usage example.</p>
             <Code language="js">
-              {`import { useForm } from "solid-hook-form"
+              {`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const { register, onSubmit } = useForm({
+  const { register, handleSubmit } = createForm({
     defaultValues: {
       name: ""
     }
   })
 
-  const saveExample = (values) => {
+  const onSubmit = (values) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name")} />
       <button type="submit">Save</button>
     </form>
@@ -91,10 +91,10 @@ export const ExampleForm = () => {
             </blockquote>
 
             <Code language="js">
-              {`import { useForm } from "solid-hook-form"
+              {`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const { register, onSubmit } = useForm({
+  const { register, handleSubmit } = createForm({
     defaultValues: {
       name: "",
       email: "",
@@ -102,12 +102,12 @@ export const ExampleForm = () => {
     }
   })
 
-  const saveExample = (values) => {
+  const onSubmit = (values) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name")} />
       <input type="email" {...register("email")} />
       <input type="checkbox" {...register("agree")}>
@@ -141,10 +141,10 @@ export const ExampleForm = () => {
               <li>validate</li>
             </ul>
 
-            <Code language="js">{`import { useForm } from "solid-hook-form"
+            <Code language="js">{`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const { register, onSubmit } = useForm({
+  const { register, handleSubmit } = createForm({
     defaultValues: {
       name: "",
       email: "",
@@ -152,12 +152,12 @@ export const ExampleForm = () => {
     }
   })
 
-  const saveExample = (values) => {
+  const onSubmit = (values) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name", { minLength: 2, pattern: /[A-Za-z]/ })} />
       <input type="email" {...register("email", { maxLength: 254 })} />
       <input type="checkbox" {...register("agree", { required: true })}>
@@ -185,23 +185,23 @@ export const ExampleForm = () => {
             <p>Using Component API</p>
 
             <Code language="js">{`import { TextField } from "@kobalte/core/text-field"
-import { useForm, Controller } from "solid-hook-form"
+import { createForm, Controller } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const form = useForm({
+  const { control, handleSubmit } = createForm({
     defaultValues: {
       field: ""
     }
   })
 
-  const saveExample = (values) => {
+  const onSubmit = (values) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={form.onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Controller 
-        control={form.control}
+        control={control}
         name="field"
         render={({ field, fieldState }) => (
           <TextField>
@@ -225,7 +225,7 @@ export const ExampleForm = () => {
 
             <Code language="js">
               {`import { TextField } from "@kobalte/core/text-field"
-import { useForm, useController } from "solid-hook-form"
+import { createForm, useController } from "solid-hook-form"
 
 const ControlledInput = (props) => {
   const { field, fieldState } = useController({
@@ -247,20 +247,19 @@ const ControlledInput = (props) => {
 }
 
 export const ExampleForm = () => {
-  const form = useForm({
+  const { control, handleSubmit } = createForm({
     defaultValues: {
       firstName: ""
     },
     mode: "onChange"
   })
-  const { onSubmit, control } = form
 
-  const onSave = (values) => {
+  const onSubmit = (values) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={onSubmit(onSave)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <ControlledInput control={control} />
       <button type="submit">Save</button>
     </form>
@@ -281,22 +280,22 @@ export const ExampleForm = () => {
               a required validation rule.
             </p>
 
-            <Code language="js">{`import { useForm } from "solid-hook-form"
+            <Code language="js">{`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const { register, errors, onSubmit } = useForm({
+  const { register, errors, handleSubmit } = createForm({
     defaultValues: {
       name: "",
       email: ""
     }
   })
 
-  const saveExample = (values) => {
+  const onSubmit = (values) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name", { required: true })} aria-invalid={Boolean(errors().name)} />
       {errors().name && <p role="alert">Name is required</p>}
 
@@ -320,7 +319,7 @@ export const ExampleForm = () => {
             </h2>
             <p>Solid Hook Form is built with TypeScript, and you can define a FormValues type.</p>
 
-            <Code language="ts">{`import { useForm } from "solid-hook-form"
+            <Code language="ts">{`import { createForm } from "solid-hook-form"
 
 type ExampleFormValues = {
   name: string;
@@ -329,7 +328,7 @@ type ExampleFormValues = {
 }
 
 export const ExampleForm = () => {
-  const { register, onSubmit } = useForm<ExampleFormValues>({
+  const { register, handleSubmit } = createForm<ExampleFormValues>({
     defaultValues: {
       name: "",
       email: "",
@@ -337,12 +336,12 @@ export const ExampleForm = () => {
     }
   })
 
-  const saveExample = (values: ExampleFormValues) => {
+  const onSubmit = (values: ExampleFormValues) => {
     console.log(values)
   }
 
   return (
-    <form onSubmit={onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name")} />
       <input type="email" {...register("email")} />
       <input type="checkbox" {...register("agree")}>

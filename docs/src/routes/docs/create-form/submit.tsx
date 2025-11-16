@@ -6,26 +6,32 @@ import { DocsNavigation } from "~/components/navigation/docs_navigation";
 const Submit = () => {
   return (
     <main>
-      <Title>onSubmit - useForm</Title>
+      <Title>handleSubmit - createForm</Title>
       <Container.Grid>
         <DocsNavigation />
 
         <Container.Content>
-          <h1>onSubmit</h1>
+          <h1>handleSubmit</h1>
 
           <p>This function will receive the form data if form validation is successful.</p>
 
-          <Code language="js">{`const { onSubmit } = useForm();
+          <blockquote>
+            <p>
+              Additionally, there is <b>onSubmit</b> alias for this method.
+            </p>
+          </blockquote>
 
-const onSave = (values) => {
+          <Code language="js">{`const { handleSubmit } = createForm()
+
+const onSubmit = (values) => {
   console.log(values);
 };
 
 return (
-  <form onSubmit={onSubmit(onSave)}>
+  <form onSubmit={handleSubmit(onSubmit)}>
     <button type="submit">Save</button>
   </form>
-);`}</Code>
+)`}</Code>
         </Container.Content>
       </Container.Grid>
     </main>

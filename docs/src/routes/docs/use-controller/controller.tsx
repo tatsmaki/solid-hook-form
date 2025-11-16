@@ -14,7 +14,7 @@ const Controller = () => {
         events and value into the component. This simplifies integrating with external controlled
         components with non-standard prop names.
         <br />
-        Provides onChange, onBlur, name, ref and value to the child component, and also a fieldState
+        Provides onInput, onChange, name, ref and value to the child component, and also a fieldState
         object which contains specific input state.
       </>
     );
@@ -24,7 +24,7 @@ const Controller = () => {
     return (
       <>
         Validation rules in the same format for{" "}
-        <Link href="/docs/use-form/register#rules">register options</Link>, which includes:
+        <Link href="/docs/create-form/register#rules">register options</Link>, which includes:
         required, min, max, minLength, maxLength, pattern, validate
       </>
     );
@@ -60,7 +60,7 @@ const Controller = () => {
               [
                 "control",
                 "Object",
-                "control object is from invoking useForm. Optional when using FormProvider.",
+                "control object is from invoking createForm. Optional when using FormProvider.",
               ],
               ["name", "string", "Unique name of your input."],
               ["render", "Function", renderDescription()],
@@ -70,24 +70,24 @@ const Controller = () => {
 
           <p>Using Component API</p>
 
-          <Code language="js">{`import { TextField } from "@kobalte/core/text-field";
-import { useForm, Controller } from "solid-hook-form"
+          <Code language="js">{`import { TextField } from "@kobalte/core/text-field"
+import { createForm, Controller } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const form = useForm({
+  const { control, handleSubmit } = createForm({
     defaultValues: {
       field: ""
     }
-  });
+  })
 
-  const saveExample = (values) => {
-    console.log(values);
-  };
+  const onSubmit = (values) => {
+    console.log(values)
+  }
 
   return (
-    <form onSubmit={form.onSubmit(saveExample)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Controller 
-        control={form.control}
+        control={control}
         name="field"
         render={({ field, fieldState }) => (
           <TextField>

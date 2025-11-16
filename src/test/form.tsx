@@ -1,7 +1,7 @@
 import { For, JSXElement } from "solid-js";
 import { FormValues, Register, SubmitCallback } from "../types/form";
 import { Path } from "../types/path";
-import { useForm } from "../main";
+import { createForm } from "../main";
 
 type FormProps<F extends FormValues> = {
   defaultValues: F;
@@ -10,12 +10,12 @@ type FormProps<F extends FormValues> = {
 };
 
 export const Form = <F extends FormValues>(props: FormProps<F>) => {
-  const { register, errors, onSubmit } = useForm({
+  const { register, errors, handleSubmit } = createForm({
     defaultValues: props.defaultValues,
   });
 
   return (
-    <form onSubmit={onSubmit(props.submitCallback)}>
+    <form onSubmit={handleSubmit(props.submitCallback)}>
       <For each={Object.keys(props.fields)}>
         {(name) => {
           const path = name as Path<F>;
