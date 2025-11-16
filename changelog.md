@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.2 (2025-11-17)
+
+### Bug fixes
+
+- use FormContext control by default [4b7927d](https://github.com/tatsmaki/solid-hook-form/commit/4b7927dc5544c588ea9e5cdd453ff820f96146e9)
+- handle raw value in onChange/onInput handler without event object [9258ccc](https://github.com/tatsmaki/solid-hook-form/commit/9258cccde227c2715be73b632650b796f5a73c4c)
+
 ## 1.9.1 (2025-11-16)
 
 ### Added
