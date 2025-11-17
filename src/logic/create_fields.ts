@@ -1,4 +1,5 @@
-import { FormFields, Ref } from "../types/form";
+import { FormFields } from "../types/form";
+import { Ref } from "../types/register";
 
 export const createFields = () => {
   const fields: FormFields = {};

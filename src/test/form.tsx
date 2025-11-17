@@ -1,7 +1,8 @@
 import { For, JSXElement } from "solid-js";
-import { FormValues, Register, SubmitCallback } from "../types/form";
+import { FormValues, SubmitCallback } from "../types/form";
 import { Path } from "../types/path";
 import { createForm } from "../main";
+import { Register } from "../types/register";
 
 type FormProps<F extends FormValues> = {
   defaultValues: F;
