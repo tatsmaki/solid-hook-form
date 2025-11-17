@@ -27,7 +27,7 @@ const Validation = () => {
           <Link href="/docs/create-form/register#rules" color="accent">
             createForm - register rules
           </Link>{" "}
-          docs section.
+          section.
         </p>
 
         <p>Register input and apply validation rules:</p>
@@ -53,9 +53,9 @@ export const ExampleForm = () => {
           {...register("email", {
             required: "Required",
             pattern: {
-              value: /^your-email-regex$/,
-              message: "Invalid email",
-            },
+              value: /^[^@]+@[^@]+\.[^@]+$/,  // your email regex
+              message: "Invalid email"
+            }
           })}
         />
 
@@ -73,7 +73,7 @@ export const ExampleForm = () => {
   {...register("email", {
     required: "Required",
     pattern: {
-      value: /^your-email-regex$/, // your email regex
+      value: /^[^@]+@[^@]+\.[^@]+$/, // your email regex
       message: "Invalid email"
     }
   })}
