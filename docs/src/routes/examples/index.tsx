@@ -31,6 +31,11 @@ const Examples = () => {
             <p>Integrate Zod schema validation into your form.</p>
           </Grid.Item>
 
+          <Grid.Item href="/examples/yup">
+            <h2>Yup</h2>
+            <p>Integrate Yup schema validation into your form.</p>
+          </Grid.Item>
+
           <Grid.Item href="/examples/nested-values">
             <h2>
               <span innerHTML={curly} />

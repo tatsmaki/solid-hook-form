@@ -2,7 +2,6 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
-import { Image } from "~/components/image/image";
 
 const Validation = () => {
   return (
@@ -12,7 +11,7 @@ const Validation = () => {
         <h1>Validation</h1>
 
         <p>
-          Check full example at{" "}
+          You can find full example at{" "}
           <Link
             href="https://stackblitz.com/edit/solidjs-templates-lf7zsywk?file=src%2Fexample_form%2Fexample_form.tsx"
             target="_blank"
@@ -22,8 +21,6 @@ const Validation = () => {
           </Link>
           .
         </p>
-
-        <Image src="/validation.png" />
 
         <p>
           You can find full list of validation rules in{" "}
@@ -35,19 +32,19 @@ const Validation = () => {
 
         <p>Register input and apply validation rules:</p>
 
-        <Code language="js">{`import { createForm } from "solid-hook-form";
+        <Code language="js">{`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
   const form = createForm({
     defaultValues: {
-      email: "",
-    },
-  });
-  const { errors, register, handleSubmit } = form;
+      email: ""
+    }
+  })
+  const { errors, register, handleSubmit } = form
 
   const onSubmit = (values) => {
-    console.log(values);
-  };
+    console.log(values)
+  }
 
   return (
     <FormProvider form={form}>
@@ -67,8 +64,8 @@ export const ExampleForm = () => {
         <button type="submit">Save</button>
       </form>
     </FormProvider>
-  );
-};`}</Code>
+  )
+}`}</Code>
 
         <p>Don't forget to display an accessible error message:</p>
 
@@ -76,9 +73,9 @@ export const ExampleForm = () => {
   {...register("email", {
     required: "Required",
     pattern: {
-      value: /^your-email-regex$/,
-      message: "Invalid email",
-    },
+      value: /^your-email-regex$/, // your email regex
+      message: "Invalid email"
+    }
   })}
   aria-invalid={Boolean(errors().email)}
 />
@@ -91,15 +88,15 @@ export const ExampleForm = () => {
 
         <Code language="ts">{`type ExampleFormValues = {
   email: string;
-};
+}
 
 const ExampleForm = () => {
   const form = createForm<ExampleFormValues>({
     defaultValues: {
-      email: "",
-    },
-  });
-};`}</Code>
+      email: ""
+    }
+  })
+}`}</Code>
       </Container>
     </main>
   );

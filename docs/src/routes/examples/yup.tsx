@@ -3,17 +3,17 @@ import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 
-const Zod = () => {
+const Yup = () => {
   return (
     <main>
-      <Title>Zod</Title>
+      <Title>Yup</Title>
       <Container>
-        <h1>Zod</h1>
+        <h1>Yup</h1>
 
         <p>
           You can find full example at{" "}
           <Link
-            href="https://stackblitz.com/edit/solidjs-templates-fpxsx83t?file=src%2Fexample_form%2Fexample_schema.ts"
+            href="https://stackblitz.com/edit/solidjs-templates-mnwtfxjb?file=src%2Fexample_form%2Fexample_schema.ts"
             target="_blank"
             color="accent"
           >
@@ -24,39 +24,33 @@ const Zod = () => {
 
         <p>
           Check{" "}
-          <Link href="https://zod.dev" target="_blank" color="accent">
-            Zod
+          <Link href="https://github.com/jquense/yup" target="_blank" color="accent">
+            Yup
           </Link>{" "}
           documentation for more details.
         </p>
 
         <p>Define a schema:</p>
 
-        <Code language="js">{`import z, { object, email, string, boolean } from 'zod'
+        <Code language="js">{`import { object, string, boolean } from 'yup'
 
 export const exampleSchema = object({
-  email: email(),
-  name: string().min(1, 'Required'),
-  consent: boolean(),
-}).superRefine((values, ctx) => {
-  if (!values.consent) {
-    ctx.addIssue({
-      code: 'custom',
-      path: ['consent'],
-      message: 'Please agree'
-    })
-  }
+  email: string().email().required(),
+  name: string().required(),
+  consent: boolean().isTrue()
 })
 `}</Code>
 
         <p>When using TypeScript, infer form values type from the schema:</p>
 
-        <Code language="ts">{`export type ExampleFormValues = z.infer<typeof exampleSchema>`}</Code>
+        <Code language="ts">{`import { InferType } from 'yup'
+
+export type ExampleFormValues = InferType<typeof exampleSchema>`}</Code>
 
         <p>Connect schema to the form:</p>
 
         <Code language="js">{`import { createForm } from 'solid-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { exampleSchema } from './example_schema'
 
 export const ExampleForm = () => {
@@ -66,7 +60,7 @@ export const ExampleForm = () => {
       name: '',
       consent: false
     },
-    resolver: zodResolver(exampleSchema)
+    resolver: yupResolver(exampleSchema)
   })
   const { errors, register, handleSubmit } = form
 
@@ -95,4 +89,4 @@ export const ExampleForm = () => {
   );
 };
 
-export default Zod;
+export default Yup;
