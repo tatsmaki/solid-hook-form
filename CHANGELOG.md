@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.0 (2025-11-22)
+
+## Added
+
+- formState touchedFields [33e2d0a](https://github.com/tatsmaki/solid-hook-form/commit/33e2d0ad581f6f82d13cc27aefac3b29a4f08297)
+- reset keepTouched option [33e2d0a](https://github.com/tatsmaki/solid-hook-form/commit/33e2d0ad581f6f82d13cc27aefac3b29a4f08297)
+- handleSubmit onError callback [7f8f6bb](https://github.com/tatsmaki/solid-hook-form/commit/7f8f6bb64c3090acdcad13d79b0f8df8ab155e9a)
+
 ## 1.9.2 (2025-11-17)
 
 ### Bug fixes
