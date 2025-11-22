@@ -7,7 +7,7 @@ export { FormProvider } from "./form_provider";
 export { get } from "./utils/get";
 export { set } from "./utils/set";
 
-export type { FormValues, CreateFormArg, CreateFormReturn } from "./types/form";
+export type { FormValues, CreateFormArg, CreateFormReturn, SubmitCallback } from "./types/form";
 export type { Control, UseControllerArg, UseControllerReturn } from "./types/controller";
 export type { Path } from "./types/path";
 export type { Rules } from "./types/validate";

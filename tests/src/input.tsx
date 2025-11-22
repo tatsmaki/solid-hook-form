@@ -1,8 +1,7 @@
-import { createUniqueId, splitProps } from "solid-js";
-import { FieldError } from "../../src/main";
-import { RegisterReturn } from "../../src/types/register";
+import { createUniqueId, JSX, splitProps } from "solid-js";
+import { FieldError } from "./import";
 
-type InputProps = RegisterReturn<any> & {
+type InputProps = JSX.InputHTMLAttributes<HTMLInputElement> & {
   error?: FieldError;
 };
 

@@ -2,7 +2,7 @@ import { render } from "vitest-browser-solid";
 import { Form } from "../form";
 import { Input } from "../input";
 
-const submitCallback = vi.fn(() => {});
+const onSubmit = vi.fn(() => {});
 const minLength = 5;
 const badResult = "test";
 const okResult = "long-string";
@@ -19,26 +19,25 @@ describe("minLength", () => {
         defaultValues={{
           email: "",
         }}
-        fields={{
-          email: ({ register, errors }) => (
-            <Input {...register("email", { minLength })} error={errors().email} />
-          ),
-        }}
-        submitCallback={submitCallback}
+        render={({ register, errors }) => (
+          <Input {...register("email", { minLength })} error={errors().email} />
+        )}
+        onSubmit={onSubmit}
       />
     ));
 
     const input = page.getByRole("textbox", { name: "email" });
     const submit = page.getByRole("button", { name: "Submit" });
+    expect(input).toHaveValue("");
     await input.fill(badResult);
     await submit.click();
     expect(input).toHaveAttribute("aria-invalid", "true");
-    expect(submitCallback).not.toHaveBeenCalled();
+    expect(onSubmit).not.toHaveBeenCalled();
 
     await input.fill(okResult);
     expect(input).toHaveAttribute("aria-invalid", "false");
     await submit.click();
-    expect(submitCallback).toHaveBeenCalledWith({ email: okResult });
+    expect(onSubmit).toHaveBeenCalledWith({ email: okResult });
   });
 
   it("display error message", async () => {
@@ -47,28 +46,27 @@ describe("minLength", () => {
         defaultValues={{
           email: "",
         }}
-        fields={{
-          email: ({ register, errors }) => (
-            <Input
-              {...register("email", { minLength: { value: 5, message: errorMessage } })}
-              error={errors().email}
-            />
-          ),
-        }}
-        submitCallback={submitCallback}
+        render={({ register, errors }) => (
+          <Input
+            {...register("email", { minLength: { value: 5, message: errorMessage } })}
+            error={errors().email}
+          />
+        )}
+        onSubmit={onSubmit}
       />
     ));
 
     const input = page.getByRole("textbox", { name: "email" });
     const submit = page.getByRole("button", { name: "Submit" });
+    expect(input).toHaveValue("");
     await input.fill(badResult);
     await submit.click();
     expect(input).toHaveAccessibleErrorMessage(errorMessage);
-    expect(submitCallback).not.toHaveBeenCalled();
+    expect(onSubmit).not.toHaveBeenCalled();
 
     await input.fill(okResult);
     expect(input).not.toHaveAccessibleErrorMessage();
     await submit.click();
-    expect(submitCallback).toHaveBeenCalledWith({ email: okResult });
+    expect(onSubmit).toHaveBeenCalledWith({ email: okResult });
   });
 });

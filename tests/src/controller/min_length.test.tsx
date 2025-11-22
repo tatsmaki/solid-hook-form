@@ -1,26 +1,34 @@
 import { render } from "vitest-browser-solid";
 import { Form } from "../form";
 import { Input } from "../input";
+import { Controller } from "../import";
 
 const onSubmit = vi.fn(() => {});
-const maxLength = 5;
-const badResult = "long-string";
-const okResult = "test";
-const errorMessage = "Max length is 5";
+const minLength = 5;
+const badResult = "test";
+const okResult = "long-string";
+const errorMessage = "Min length is 5";
 
 beforeEach(() => {
   vi.resetAllMocks();
 });
 
-describe("maxLength", () => {
-  it("should validate", async () => {
+describe("Controller", () => {
+  it("validate minLength", async () => {
     const page = render(() => (
       <Form
         defaultValues={{
           email: "",
         }}
-        render={({ register, errors }) => (
-          <Input {...register("email", { maxLength })} error={errors().email} />
+        render={({ control }) => (
+          <Controller
+            control={control}
+            name="email"
+            render={({ field, fieldState }) => (
+              <Input {...field} value={field.value()} error={fieldState.error()} />
+            )}
+            rules={{ minLength }}
+          />
         )}
         onSubmit={onSubmit}
       />
@@ -40,16 +48,20 @@ describe("maxLength", () => {
     expect(onSubmit).toHaveBeenCalledWith({ email: okResult });
   });
 
-  it("display error message", async () => {
+  it("display minLength message", async () => {
     const page = render(() => (
       <Form
         defaultValues={{
           email: "",
         }}
-        render={({ register, errors }) => (
-          <Input
-            {...register("email", { maxLength: { value: maxLength, message: errorMessage } })}
-            error={errors().email}
+        render={({ control }) => (
+          <Controller
+            control={control}
+            name="email"
+            render={({ field, fieldState }) => (
+              <Input {...field} value={field.value()} error={fieldState.error()} />
+            )}
+            rules={{ minLength: { value: minLength, message: errorMessage } }}
           />
         )}
         onSubmit={onSubmit}
