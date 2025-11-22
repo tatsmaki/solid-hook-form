@@ -21,6 +21,10 @@ const Register = () => {
             for custom validation methods.
           </p>
 
+          <pre style={{ color: "var(--colors-accent-500)", "white-space": "break-spaces" }}>
+            {`(name: string, options?: Rules) => ({ ref, name, onInput, onChange, onBlur })`}
+          </pre>
+
           <p style={{ "margin-bottom": 0 }}>Props</p>
           <hr />
           <Table>
@@ -49,6 +53,7 @@ return (
               ["ref", "Function", "Element ref used to connect form to the input."],
               ["onInput", "Function", "onInput prop to subscribe the input change"],
               ["onChange", "Function", "onChange prop to subscribe the input change"],
+              ["onBlur", "Function", "onBlur prop to subscribe the input blur"],
             ]}
           </Table>
 

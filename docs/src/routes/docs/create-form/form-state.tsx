@@ -28,6 +28,11 @@ const FormState = () => {
               ["Name", "Type", "Description"],
               ["isValid", "Accessor<boolean>", "Set to true if the form doesn't have any errors."],
               ["errors", "Accessor<FieldErrors>", "Accessor to get field errors."],
+              [
+                "touchedFields",
+                "Accessor<TouchedFields>",
+                "Accessor to get all the inputs the user has interacted with.",
+              ],
             ]}
           </Table>
 

@@ -10,6 +10,10 @@ body {
   font-family: Inter;
 }
 
+pre {
+  font-family: Inter;
+}
+
 #app {
   width: 100%;
 }
