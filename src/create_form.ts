@@ -23,6 +23,7 @@ import { formatValue } from "./logic/format_value";
 import { getResolverFields } from "./utils/resolver";
 import { Control } from "./types/controller";
 import { Register } from "./types/register";
+import { createTouched } from "./logic/create_touched";
 
 export const createForm: CreateForm = <F extends FormValues>(
   arg: CreateFormArg<F> = { defaultValues: {} as F }
@@ -33,6 +34,7 @@ export const createForm: CreateForm = <F extends FormValues>(
   const { rules, addRule, getRule } = createRules<F>();
   const [values, setValues] = createSignal<F>(defaultValues);
   const { errors, appendError, removeError, resetErrors, getError } = createErrors<F>();
+  const { touchedFields, addTouched, resetTouched } = createTouched<F>();
 
   const isValid = createMemo(() => {
     return !Object.keys(errors()).length;
@@ -143,6 +145,13 @@ export const createForm: CreateForm = <F extends FormValues>(
           onFieldChange(event, name);
         }
       },
+      onBlur(event) {
+        if (mode === "onBlur") {
+          onFieldChange(event, name);
+        }
+
+        addTouched(name);
+      },
       ref(element) {
         const field = getField(name);
 
@@ -202,7 +211,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     };
   };
 
-  const reset: Reset<F> = (newDefaultValues = {}) => {
+  const reset: Reset<F> = (newDefaultValues = {}, options = {}) => {
     const newValues = {
       ...structuredClone(defaultValues),
       ...newDefaultValues,
@@ -210,6 +219,7 @@ export const createForm: CreateForm = <F extends FormValues>(
 
     setValues(() => newValues);
     resetErrors();
+    resetTouched(options.keepTouched);
 
     Object.entries(fields).forEach(([name, field]) => {
       if (field) {
@@ -223,6 +233,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     formState: {
       errors,
       isValid,
+      touchedFields,
     },
     values,
     errors,

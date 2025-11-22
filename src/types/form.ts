@@ -4,6 +4,7 @@ import { FieldErrors } from "./errors";
 import { Control } from "./controller";
 import type { Resolver } from "react-hook-form";
 import { Ref, Register } from "./register";
+import { TouchedFields } from "./touched";
 
 export type FormValues = Record<string, any>;
 
@@ -24,11 +25,18 @@ export type OnSubmit<F extends FormValues> = (
   submit: SubmitCallback<F>
 ) => (event: SubmitEvent) => void;
 
-export type Reset<F extends FormValues> = (newDefaultValues?: Partial<F>) => void;
+export type ResetOptions = {
+  keepTouched?: boolean;
+};
+
+export type Reset<F extends FormValues> = (
+  newDefaultValues?: Partial<F>,
+  options?: ResetOptions
+) => void;
 
 export type CreateFormArg<F extends FormValues> = {
   defaultValues: F;
-  mode?: "onChange" | "onSubmit";
+  mode?: "onChange" | "onSubmit" | "onBlur";
   resolver?: Resolver<F>;
 };
 
@@ -37,6 +45,7 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
   formState: {
     errors: Accessor<FieldErrors<F>>;
     isValid: Accessor<boolean>;
+    touchedFields: Accessor<TouchedFields<F>>;
   };
   values: Accessor<F>;
   errors: Accessor<FieldErrors<F>>;
