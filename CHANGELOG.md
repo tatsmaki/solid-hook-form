@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.0 (2025-11-22)
+
+## Added
+
+- formState touchedFields
+- reset keepTouched option
+- handleSubmit onError callback
+
 ## 1.9.2 (2025-11-17)
 
 ### Bug fixes
