@@ -5,7 +5,7 @@ import {
   CreateFormReturn,
   FormValues,
   GetValues,
-  OnSubmit,
+  HandleSubmit,
   Reset,
   SetValue,
 } from "./types/form";
@@ -198,15 +198,17 @@ export const createForm: CreateForm = <F extends FormValues>(
     }
   };
 
-  const onSubmit: OnSubmit<F> = (submit) => {
+  const handleSubmit: HandleSubmit<F> = (onSubmit, onError) => {
     return async (event) => {
       event.preventDefault();
       await validateAllFields();
 
       if (isValid()) {
-        submit(getValues());
+        onSubmit(getValues());
+        return;
       }
 
+      onError?.(errors());
       focusFirstError();
     };
   };
@@ -241,8 +243,8 @@ export const createForm: CreateForm = <F extends FormValues>(
     register,
     getValues,
     setValue,
-    onSubmit,
-    handleSubmit: onSubmit,
+    onSubmit: handleSubmit,
+    handleSubmit,
     reset,
   };
 };

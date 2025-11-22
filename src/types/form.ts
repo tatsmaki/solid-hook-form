@@ -19,10 +19,13 @@ export type SetValue<F extends FormValues> = (
   value: FieldPathValue<F, Path<F>>
 ) => void;
 
-export type SubmitCallback<F extends FormValues> = (values: F) => void;
+export type SubmitHandler<F extends FormValues> = (values: F) => void;
 
-export type OnSubmit<F extends FormValues> = (
-  submit: SubmitCallback<F>
+export type SubmitErrorHandler<F extends FormValues> = (errors: FieldErrors<F>) => void;
+
+export type HandleSubmit<F extends FormValues> = (
+  onSubmit: SubmitHandler<F>,
+  onError?: SubmitErrorHandler<F>
 ) => (event: SubmitEvent) => void;
 
 export type ResetOptions = {
@@ -53,8 +56,8 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
   register: Register<F>;
   getValues: GetValues<F>;
   setValue: SetValue<F>;
-  onSubmit: OnSubmit<F>;
-  handleSubmit: OnSubmit<F>;
+  onSubmit: HandleSubmit<F>;
+  handleSubmit: HandleSubmit<F>;
   reset: Reset<F>;
 };
 
