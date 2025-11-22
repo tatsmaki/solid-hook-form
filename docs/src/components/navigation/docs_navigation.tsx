@@ -45,6 +45,14 @@ export const DocsNavigation = () => {
               handleSubmit
             </Link>
           </li>
+          <li>
+            <Link
+              href="/docs/create-form/reset"
+              color={location.pathname.includes("/docs/create-form/reset") ? "accent" : "secondary"}
+            >
+              reset
+            </Link>
+          </li>
         </ul>
       </div>
 
