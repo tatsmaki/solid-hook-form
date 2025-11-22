@@ -1,4 +1,4 @@
-import { createForm, FormProvider, Controller } from ".";
+import { createForm, FormProvider, Controller } from "./import";
 import { Field, TextInput, Checkbox, Button } from "solid-uix";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Errors } from "./errors/errors";
@@ -121,18 +121,6 @@ export const Form = () => {
             />
             <Field.Message level="error">{errors().remember?.message}</Field.Message>
           </Field>
-
-          {/* <Field>
-            <Field.Label>Title</Field.Label>
-            <select {...register("title", { required: "Required" })}>
-              <option value="">Select...</option>
-              <option value="Mr">Mr</option>
-              <option value="Mrs">Mrs</option>
-              <option value="Ms">Ms</option>
-              <option value="Dr">Dr</option>
-            </select>
-            <Field.Message level="error">{errors().title?.message}</Field.Message>
-          </Field> */}
 
           <Button type="submit">Submit</Button>
           <Button variant="outlined" onClick={onReset}>

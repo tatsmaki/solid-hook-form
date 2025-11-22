@@ -3,7 +3,7 @@ import { Form } from "../form";
 import { Input } from "../input";
 import { Controller } from "../../../src/controller";
 
-const submitCallback = vi.fn(() => {});
+const onSubmit = vi.fn(() => {});
 
 beforeEach(() => {
   vi.resetAllMocks();
@@ -16,24 +16,23 @@ describe("Controller", () => {
         defaultValues={{
           email: "",
         }}
-        fields={{
-          email: ({ control }) => (
-            <Controller
-              control={control}
-              name="email"
-              render={({ field }) => <Input {...field} />}
-            />
-          ),
-        }}
-        submitCallback={submitCallback}
+        render={({ control }) => (
+          <Controller
+            control={control}
+            name="email"
+            render={({ field }) => <Input {...field} value={field.value()} />}
+          />
+        )}
+        onSubmit={onSubmit}
       />
     ));
 
     const input = page.getByRole("textbox", { name: "email" });
     const submit = page.getByRole("button", { name: "Submit" });
+    expect(input).toHaveValue("");
     await input.fill("test");
     await submit.click();
 
-    expect(submitCallback).toHaveBeenCalledWith({ email: "test" });
+    expect(onSubmit).toHaveBeenCalledWith({ email: "test" });
   });
 });

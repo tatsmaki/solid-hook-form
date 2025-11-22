@@ -1,4 +1,4 @@
-import { useFormContext, FieldErrors } from "..";
+import { useFormContext, FieldErrors } from "../import";
 import { FormValues } from "../schema";
 import sx from "./errors.module.css";
 

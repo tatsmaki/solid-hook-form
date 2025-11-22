@@ -1,31 +1,34 @@
-import { For, JSXElement } from "solid-js";
-import { CreateFormReturn, FormValues, SubmitCallback } from "../../src/types/form";
-import { Path } from "../../src/types/path";
-import { createForm } from "../../src/main";
+import { JSXElement } from "solid-js";
+import { createForm, CreateFormReturn, FormValues, SubmitCallback } from "./import";
 
 type FormProps<F extends FormValues> = {
+  mode?: "onChange" | "onSubmit" | "onBlur";
   defaultValues: F;
-  fields: Record<Path<F>, (form: CreateFormReturn<F>) => JSXElement>;
-  submitCallback: SubmitCallback<F>;
+  render: (form: CreateFormReturn<F>) => JSXElement;
+  onSubmit: SubmitCallback<F>;
+  onReset?(form: CreateFormReturn<F>): void;
 };
 
 export const Form = <F extends FormValues>(props: FormProps<F>) => {
+  const { mode, defaultValues } = props;
+
   const form = createForm({
-    defaultValues: props.defaultValues,
+    defaultValues,
+    mode,
   });
+  const { formState, handleSubmit } = form;
 
   return (
-    <form onSubmit={form.handleSubmit(props.submitCallback)}>
-      <For each={Object.keys(props.fields)}>
-        {(name) => {
-          const path = name as Path<F>;
-          const render = props.fields[path];
-
-          return render(form);
-        }}
-      </For>
+    <form onSubmit={handleSubmit(props.onSubmit)}>
+      {props.render(form)}
 
       <button type="submit">Submit</button>
+
+      <button type="button" onClick={() => props.onReset?.(form)}>
+        Reset
+      </button>
+
+      <pre aria-label="touched">{JSON.stringify(formState.touchedFields(), null, 2)}</pre>
     </form>
   );
 };

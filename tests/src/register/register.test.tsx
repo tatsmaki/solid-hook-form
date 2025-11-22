@@ -2,7 +2,7 @@ import { render } from "vitest-browser-solid";
 import { Form } from "../form";
 import { Input } from "../input";
 
-const submitCallback = vi.fn(() => {});
+const onSubmit = vi.fn(() => {});
 
 beforeEach(() => {
   vi.resetAllMocks();
@@ -15,18 +15,17 @@ describe("register", () => {
         defaultValues={{
           email: "",
         }}
-        fields={{
-          email: ({ register }) => <Input {...register("email")} />,
-        }}
-        submitCallback={submitCallback}
+        render={({ register }) => <Input {...register("email")} />}
+        onSubmit={onSubmit}
       />
     ));
 
     const input = page.getByRole("textbox", { name: "email" });
     const submit = page.getByRole("button", { name: "Submit" });
+    expect(input).toHaveValue("");
     await input.fill("test");
     await submit.click();
 
-    expect(submitCallback).toHaveBeenCalledWith({ email: "test" });
+    expect(onSubmit).toHaveBeenCalledWith({ email: "test" });
   });
 });
