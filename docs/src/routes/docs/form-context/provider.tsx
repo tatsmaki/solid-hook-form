@@ -36,7 +36,11 @@ const Provider = () => {
           <Code language="js">{`import { createForm, FormProvider } from "solid-hook-form"
 
 export const ExampleForm = () => {
-    const form = createForm()
+    const form = createForm({
+      defaultValues: {
+        nested: ""
+      }
+    })
     const { handleSubmit } = form
 
     const onSubmit = (values) => {

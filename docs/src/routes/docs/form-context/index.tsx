@@ -29,7 +29,7 @@ const FormContext = () => {
 export const NestedInput = () => {
     const { register } = useFormContext()
 
-    return <input {...register("name")} />
+    return <input {...register("nested")} />
 }`}</Code>
 
           <blockquote>
@@ -42,7 +42,11 @@ export const NestedInput = () => {
           <Code language="js">{`import { createForm, FormProvider } from "solid-hook-form"
 
 export const ExampleForm = () => {
-    const form = createForm()
+    const form = createForm({
+      defaultValues: {
+        nested: ""
+      }
+    })
     const { handleSubmit } = form
 
     const onSubmit = (values) => {

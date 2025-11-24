@@ -35,7 +35,12 @@ const Register = () => {
             ]}
           </Table>
 
-          <Code language="js">{`const { register } = createForm()
+          <Code language="js">{`const { register } = createForm({
+  defaultValues: {
+    firstName: "",
+    lastName: ""
+  }
+})
 
 return (
   <form>
@@ -121,7 +126,12 @@ return (
 
             <p>Provide both validation rule and error message:</p>
 
-            <Code language="js">{`const { register } = createForm()
+            <Code language="js">{`const { register } = createForm({
+  defaultValues: {
+    firstName: "",
+    lastName: ""
+  }
+})
 
 return (
   <form>

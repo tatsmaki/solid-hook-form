@@ -39,7 +39,11 @@ const FormState = () => {
           <Code language="js">{`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const { formState, register, handleSubmit } = createForm()
+  const { formState, register, handleSubmit } = createForm({
+    defaultValues: {
+      test: ""
+    }
+  })
 
   const onSubmit = (values) => {
     console.log(values)
