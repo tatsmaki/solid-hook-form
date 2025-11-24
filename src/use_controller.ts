@@ -21,8 +21,8 @@ export const useController = <F extends FormValues>(
 
   return {
     field: {
-      value,
       ...fieldProps,
+      value,
     },
     fieldState: {
       error,

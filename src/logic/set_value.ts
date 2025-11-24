@@ -1,4 +1,12 @@
-export const setFieldValue = (field: HTMLElement, value: any) => {
+export const setFieldValue = (field: HTMLElement | null, value: any) => {
+  if (!field) {
+    return;
+  }
+
+  if (value === undefined) {
+    return;
+  }
+
   if (field instanceof HTMLSelectElement) {
     field.value = value;
 
