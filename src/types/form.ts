@@ -52,11 +52,9 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
   };
   values: Accessor<F>;
   errors: Accessor<FieldErrors<F>>;
-  isValid: Accessor<boolean>;
   register: Register<F>;
   getValues: GetValues<F>;
   setValue: SetValue<F>;
-  onSubmit: HandleSubmit<F>;
   handleSubmit: HandleSubmit<F>;
   reset: Reset<F>;
 };
