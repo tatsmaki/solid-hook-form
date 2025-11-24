@@ -11,7 +11,7 @@ export const Input = (props: InputProps) => {
   const [, rest] = splitProps(props, ["error"]);
 
   return (
-    <div>
+    <div style={{ display: "flex", "flex-direction": "column" }}>
       <label for={inputId}>{props.name}</label>
       <input
         id={inputId}

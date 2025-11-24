@@ -24,7 +24,7 @@ export const Form = () => {
   const { errors, register, handleSubmit, reset } = form;
 
   const onSubmit = (values: FormValues) => {
-    console.log(values);
+    console.log("onSubmit", values);
   };
 
   const onReset = () => {
