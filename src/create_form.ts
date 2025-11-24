@@ -230,11 +230,9 @@ export const createForm: CreateForm = <F extends FormValues>(
     },
     values,
     errors,
-    isValid,
     register,
     getValues,
     setValue,
-    onSubmit: handleSubmit,
     handleSubmit,
     reset,
   };

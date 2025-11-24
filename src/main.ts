@@ -1,4 +1,4 @@
-export { createForm, createForm as useForm } from "./create_form";
+export { createForm } from "./create_form";
 export { useController } from "./use_controller";
 export { Controller } from "./controller";
 export { useFormContext } from "./use_form_context";
