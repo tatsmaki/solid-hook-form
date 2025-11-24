@@ -16,15 +16,10 @@ const UseForm = () => {
           <h1>createForm</h1>
 
           <p>
-            createForm is function used to create a form instance. It takes one object as optional
+            createForm is function used to create a form instance. It takes one object as{" "}
+            <b>required</b>
             argument. The following example demonstrates all of its properties and methods.
           </p>
-
-          <blockquote>
-            <p>
-              <b>useForm</b> alias will be removed in the future.
-            </p>
-          </blockquote>
 
           <p style={{ "margin-bottom": 0 }}>Props</p>
           <hr />
@@ -46,8 +41,9 @@ const UseForm = () => {
             </h2>
 
             <p>
-              The defaultValues prop populates the entire form with default values. It is
-              recommended to use defaultValues for the entire form.
+              The defaultValues prop populates the entire form with default values. It is{" "}
+              <b>required</b>
+              to use defaultValues for the entire form.
             </p>
 
             <Code language="js">

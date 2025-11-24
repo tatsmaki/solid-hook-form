@@ -31,7 +31,12 @@ const Submit = () => {
             ]}
           </Table>
 
-          <Code language="js">{`const { register, handleSubmit } = createForm()
+          <Code language="js">{`const { register, handleSubmit } = createForm({
+  defaultValues: {
+    firstName: "",
+    lastName: ""
+  }
+})
 
 const onSubmit = (values) => {
   console.log(values);

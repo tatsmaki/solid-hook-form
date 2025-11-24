@@ -45,7 +45,12 @@ const Reset = () => {
           <Code language="js">{`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
-  const form = useForm()
+  const form = createForm({
+    defaultValues: {
+      firstName: "",
+      lastName: ""
+    }
+  })
   const { register, handleSubmit, reset } = form
 
   const onSubmit = (values) => {
