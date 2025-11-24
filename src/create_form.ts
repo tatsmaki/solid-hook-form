@@ -26,7 +26,7 @@ import { Register } from "./types/register";
 import { createTouched } from "./logic/create_touched";
 
 export const createForm: CreateForm = <F extends FormValues>(
-  arg: CreateFormArg<F> = { defaultValues: {} as F }
+  arg: CreateFormArg<F>
 ): CreateFormReturn<F> => {
   const { defaultValues, mode = "onChange", resolver } = arg;
 
@@ -59,7 +59,7 @@ export const createForm: CreateForm = <F extends FormValues>(
       return;
     }
 
-    const result = await resolver(values(), null, {
+    const result = await resolver(values() || {}, null, {
       fields: getResolverFields(fields),
       shouldUseNativeValidation: false,
     });
@@ -118,7 +118,8 @@ export const createForm: CreateForm = <F extends FormValues>(
   };
 
   const onFieldChange = (event: Event | unknown, name: Path<F>) => {
-    const value = formatValue(getFieldValue(event), rules[name]);
+    const fieldValue = getFieldValue(event);
+    const value = formatValue(fieldValue, rules[name]);
 
     setValues((prev) => {
       const newState = { ...prev };
@@ -160,10 +161,7 @@ export const createForm: CreateForm = <F extends FormValues>(
         }
 
         setField(name, element);
-
-        if (element) {
-          setFieldValue(element, get(values(), name));
-        }
+        setFieldValue(element, get(values(), name));
       },
     };
   };
@@ -193,9 +191,7 @@ export const createForm: CreateForm = <F extends FormValues>(
 
     const field = getField(name);
 
-    if (field) {
-      setFieldValue(field, value);
-    }
+    setFieldValue(field, value);
   };
 
   const handleSubmit: HandleSubmit<F> = (onSubmit, onError) => {
@@ -213,20 +209,15 @@ export const createForm: CreateForm = <F extends FormValues>(
     };
   };
 
-  const reset: Reset<F> = (newDefaultValues = {}, options = {}) => {
-    const newValues = {
-      ...structuredClone(defaultValues),
-      ...newDefaultValues,
-    };
+  const reset: Reset<F> = (values, options = {}) => {
+    const newValues = values ? (values as F) : structuredClone(defaultValues);
 
     setValues(() => newValues);
     resetErrors();
     resetTouched(options.keepTouched);
 
     Object.entries(fields).forEach(([name, field]) => {
-      if (field) {
-        setFieldValue(field, get(newValues, name));
-      }
+      setFieldValue(field, get(newValues, name));
     });
   };
 

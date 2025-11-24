@@ -61,6 +61,6 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
   reset: Reset<F>;
 };
 
-export type CreateForm = <F extends FormValues>(arg?: CreateFormArg<F>) => CreateFormReturn<F>;
+export type CreateForm = <F extends FormValues>(arg: CreateFormArg<F>) => CreateFormReturn<F>;
 
 export type FormFields = Record<string, Ref>;
