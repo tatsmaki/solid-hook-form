@@ -15,8 +15,8 @@ const Provider = () => {
           <h1>FormProvider</h1>
 
           <p>
-            This component will host context object and allow consuming component to subscribe to
-            context and use createForm props and methods.
+            This component hosts the form context and allows consuming components to subscribe to
+            the context and use createForm props and methods.
           </p>
 
           <p style={{ "margin-bottom": 0 }}>Props</p>
@@ -25,7 +25,7 @@ const Provider = () => {
           <Table>
             {[
               ["Name", "Type", "Description"],
-              ["form", "UseFormReturn", "FormProvider requires all createForm methods."],
+              ["form", "UseFormReturn", "FormProvider requires the complete form object returned by createForm."],
             ]}
           </Table>
 

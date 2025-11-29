@@ -83,8 +83,8 @@ export const ExampleForm = () => {
               </Link>
             </h2>
             <p>
-              To make field value available for form validation and submission you need to register
-              your component into the hook.
+              To make field values available for form validation and submission, you need to
+              register your input elements with the form using the register function.
             </p>
             <blockquote>
               <p>Form field name should match a registered component name.</p>
@@ -110,7 +110,7 @@ export const ExampleForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name")} />
       <input type="email" {...register("email")} />
-      <input type="checkbox" {...register("agree")}>
+      <input type="checkbox" {...register("agree")} />
       <button type="submit">Save</button>
     </form>
   )
@@ -168,7 +168,7 @@ export const ExampleForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name", { minLength: 2, pattern: /[A-Za-z]/ })} />
       <input type="email" {...register("email", { maxLength: 254 })} />
-      <input type="checkbox" {...register("agree", { required: true })}>
+      <input type="checkbox" {...register("agree", { required: true })} />
       <button type="submit">Save</button>
     </form>
   )
@@ -304,7 +304,10 @@ export const ExampleForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("name", { required: true })} aria-invalid={Boolean(errors().name)} />
+      <input
+        {...register("name", { required: true })}
+        aria-invalid={Boolean(errors().name)}
+      />
       {errors().name && <p role="alert">Name is required</p>}
 
       <input
@@ -352,7 +355,7 @@ export const ExampleForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name")} />
       <input type="email" {...register("email")} />
-      <input type="checkbox" {...register("agree")}>
+      <input type="checkbox" {...register("agree")} />
       <button type="submit">Save</button>
     </form>
   )

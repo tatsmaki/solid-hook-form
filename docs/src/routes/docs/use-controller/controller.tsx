@@ -41,12 +41,12 @@ const Controller = () => {
           <h1>Controller</h1>
 
           <p>
-            Solid Hook Form embraces uncontrolled components and native inputs, however it's hard to
-            avoid working with external controlled component such as{" "}
+            Solid Hook Form embraces uncontrolled components and native inputs; however, it's hard
+            to avoid working with external controlled components such as{" "}
             <Link href="https://kobalte.dev" target="_blank">
               Kobalte
             </Link>
-            . This wrapper component will make it easier for you to work with it.
+            . This wrapper component will make it easier for you to work with them.
           </p>
 
           <p style={{ "margin-bottom": 0 }}>Props</p>
@@ -99,7 +99,9 @@ export const ExampleForm = () => {
               onChange={field.onChange}
               validationState={fieldState.error() ? "invalid" : "valid"}
             />
-            <TextField.ErrorMessage>{fieldState.error()?.message}</TextField.ErrorMessage>
+            <TextField.ErrorMessage>
+              {fieldState.error()?.message}
+            </TextField.ErrorMessage>
           </TextField>
         )}
         rules={{

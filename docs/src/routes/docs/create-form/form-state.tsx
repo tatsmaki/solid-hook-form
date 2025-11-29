@@ -27,7 +27,17 @@ const FormState = () => {
             {[
               ["Name", "Type", "Description"],
               ["isValid", "Accessor<boolean>", "Set to true if the form doesn't have any errors."],
+              [
+                "isDirty",
+                "Accessor<boolean>",
+                "Set to true after the user modifies any of the inputs.",
+              ],
               ["errors", "Accessor<FieldErrors>", "Accessor to get field errors."],
+              [
+                "dirtyFields",
+                "Accessor<DirtyFields>",
+                "Accessor to get user-modified fields. Make sure to provide all inputs' defaultValues via createForm, so the library can compare against the defaultValues.",
+              ],
               [
                 "touchedFields",
                 "Accessor<TouchedFields>",
@@ -44,6 +54,7 @@ export const ExampleForm = () => {
       test: ""
     }
   })
+  const { isValid, isDirty, errors } = formState
 
   const onSubmit = (values) => {
     console.log(values)
@@ -51,8 +62,13 @@ export const ExampleForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("test")} />
-      <button type="submit" disabled={!formState.isValid()}>Submit</button>
+      <input
+        {...register("test", { required: true })}
+        aria-invalid={!!errors().test}
+      />
+      <button type="submit" disabled={!isValid() || !isDirty()}>
+        Submit
+      </button>
     </form>
   )
 }`}</Code>
