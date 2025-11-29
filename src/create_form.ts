@@ -39,7 +39,7 @@ export const createForm: CreateForm = <F extends FormValues>(
   const { dirtyFields, isDirty, checkDirty, resetDirty } = createDirtyFields<F>(defaultValues);
 
   const isValid = createMemo(() => {
-    return !Object.keys(errors()).length;
+    return !Object.keys(errors).length;
   });
 
   const setFieldError = (name: Path<F>, error: FieldError) => {
@@ -207,7 +207,7 @@ export const createForm: CreateForm = <F extends FormValues>(
         return;
       }
 
-      onError?.(errors());
+      onError?.(errors);
       focusFirstError();
     };
   };

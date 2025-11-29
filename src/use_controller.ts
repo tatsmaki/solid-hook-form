@@ -16,7 +16,7 @@ export const useController = <F extends FormValues>(
   });
 
   const error = createMemo(() => {
-    return control.errors()[arg.name];
+    return control.errors[arg.name];
   });
 
   return {
