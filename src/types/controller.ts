@@ -7,7 +7,7 @@ import { Register, RegisterReturn } from "./register";
 
 export type Control<F extends FormValues> = {
   values: Accessor<F>;
-  errors: Accessor<FieldErrors<F>>;
+  errors: FieldErrors<F>;
   register: Register<F>;
 };
 

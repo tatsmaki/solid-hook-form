@@ -1,36 +1,33 @@
-import { createSignal } from "solid-js";
+import { createStore, reconcile, produce } from "solid-js/store";
 import { FieldError, FieldErrors } from "../types/errors";
 import { FormValues } from "../types/form";
 import { Path } from "../types/path";
-import { get } from "../utils/get";
 
 export const createErrors = <F extends FormValues>() => {
-  const [errors, setErrors] = createSignal<FieldErrors<F>>({});
+  const [errors, setErrors] = createStore<FieldErrors<F>>({});
 
-  const getError = (name: string) => {
-    return get(errors(), name);
+  const getError = (name: Path<F>) => {
+    return errors[name];
   };
 
   const appendError = (name: Path<F>, error: FieldError) => {
-    setErrors((prev) => {
-      const newState = { ...prev, [name]: error };
-
-      return newState;
-    });
+    setErrors(
+      produce((prevState) => {
+        prevState[name] = error;
+      })
+    );
   };
 
   const removeError = (name: Path<F>) => {
-    setErrors((prev) => {
-      const newState = { ...prev };
-
-      delete newState[name];
-
-      return newState;
-    });
+    setErrors(
+      produce((prevState) => {
+        delete prevState[name];
+      })
+    );
   };
 
   const resetErrors = () => {
-    setErrors({});
+    setErrors(reconcile({}));
   };
 
   return {
