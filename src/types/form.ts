@@ -5,6 +5,7 @@ import { Control } from "./controller";
 import type { Resolver } from "react-hook-form";
 import { Ref, Register } from "./register";
 import { TouchedFields } from "./touched";
+import { DirtyFields } from "./dirty";
 
 export type FormValues = Record<string, any>;
 
@@ -30,6 +31,7 @@ export type HandleSubmit<F extends FormValues> = (
 
 export type ResetOptions = {
   keepTouched?: boolean;
+  keepDirty?: boolean;
 };
 
 export type Reset<F extends FormValues> = (
@@ -48,7 +50,9 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
   formState: {
     errors: Accessor<FieldErrors<F>>;
     isValid: Accessor<boolean>;
+    isDirty: Accessor<boolean>;
     touchedFields: Accessor<TouchedFields<F>>;
+    dirtyFields: Accessor<DirtyFields<F>>;
   };
   values: Accessor<F>;
   errors: Accessor<FieldErrors<F>>;
