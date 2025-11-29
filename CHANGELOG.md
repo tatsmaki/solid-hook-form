@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 (2025-11-29)
+
+### Bug fixes
+
+- fixed useController arg types [4b5a2cd](https://github.com/tatsmaki/solid-hook-form/commit/4b5a2cd6b8b56feb14763e43b7f85638041f01af)
+
 ## 2.0.0 (2025-11-29)
 
 ### Breaking changes
