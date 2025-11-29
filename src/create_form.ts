@@ -23,7 +23,8 @@ import { formatValue } from "./logic/format_value";
 import { getResolverFields } from "./utils/resolver";
 import { Control } from "./types/controller";
 import { Register } from "./types/register";
-import { createTouched } from "./logic/create_touched";
+import { createTouchedFields } from "./logic/create_touched_fields";
+import { createDirtyFields } from "./logic/create_dirty_fields";
 
 export const createForm: CreateForm = <F extends FormValues>(
   arg: CreateFormArg<F>
@@ -32,9 +33,10 @@ export const createForm: CreateForm = <F extends FormValues>(
 
   const { fields, getField, setField } = createFields();
   const { rules, addRule, getRule } = createRules<F>();
-  const [values, setValues] = createSignal<F>(defaultValues);
+  const [values, setValues] = createSignal<F>(structuredClone(defaultValues));
   const { errors, appendError, removeError, resetErrors, getError } = createErrors<F>();
-  const { touchedFields, addTouched, resetTouched } = createTouched<F>();
+  const { touchedFields, addTouched, resetTouched } = createTouchedFields<F>();
+  const { dirtyFields, isDirty, checkDirty, resetDirty } = createDirtyFields<F>(defaultValues);
 
   const isValid = createMemo(() => {
     return !Object.keys(errors()).length;
@@ -129,6 +131,7 @@ export const createForm: CreateForm = <F extends FormValues>(
       return newState;
     });
     validateField(name);
+    checkDirty(name, value);
   };
 
   const register: Register<F> = (name, options = {}) => {
@@ -215,6 +218,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     setValues(() => newValues);
     resetErrors();
     resetTouched(options.keepTouched);
+    resetDirty(options.keepDirty);
 
     Object.entries(fields).forEach(([name, field]) => {
       setFieldValue(field, get(newValues, name));
@@ -226,7 +230,9 @@ export const createForm: CreateForm = <F extends FormValues>(
     formState: {
       errors,
       isValid,
+      isDirty,
       touchedFields,
+      dirtyFields,
     },
     values,
     errors,

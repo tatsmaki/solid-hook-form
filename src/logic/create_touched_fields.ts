@@ -4,7 +4,7 @@ import { set } from "../utils/set";
 import { Path } from "../types/path";
 import { TouchedFields } from "../types/touched";
 
-export const createTouched = <F extends FormValues>() => {
+export const createTouchedFields = <F extends FormValues>() => {
   const [touchedFields, setTouchedFields] = createSignal<TouchedFields<F>>({});
 
   const addTouched = (name: Path<F>) => {
