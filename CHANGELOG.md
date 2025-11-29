@@ -1,8 +1,24 @@
 # Changelog
 
+## 2.0.0 (2025-11-29)
+
+### Breaking changes
+
+- switched formState errors to createStore proxy object instead of createSignal accessor [ac1f339](https://github.com/tatsmaki/solid-hook-form/commit/ac1f33947f6d6e38277e4b563e0079652c25f4eb)
+- form defaultValues is a required argument to allow proper form initialization and reset [ad668b0](https://github.com/tatsmaki/solid-hook-form/commit/ad668b0a02d65d7b016332e1fe3601f78d0d0074)
+
+### Added
+
+- formState dirtyFields [63a7f78](https://github.com/tatsmaki/solid-hook-form/commit/63a7f784beffcfad97c00f6856b8aed4ce8ecf5f)
+
+### Bug fixes
+
+- removed preinstall script from public package [0bb96c3](https://github.com/tatsmaki/solid-hook-form/commit/0bb96c3490b958722d6042901352ca1093cef6e6)
+- fixed validation behavior without provided defaultValues [ad668b0](https://github.com/tatsmaki/solid-hook-form/commit/ad668b0a02d65d7b016332e1fe3601f78d0d0074)
+
 ## 1.10.0 (2025-11-22)
 
-## Added
+### Added
 
 - formState touchedFields [33e2d0a](https://github.com/tatsmaki/solid-hook-form/commit/33e2d0ad581f6f82d13cc27aefac3b29a4f08297)
 - reset keepTouched option [33e2d0a](https://github.com/tatsmaki/solid-hook-form/commit/33e2d0ad581f6f82d13cc27aefac3b29a4f08297)
