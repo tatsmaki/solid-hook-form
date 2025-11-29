@@ -59,7 +59,7 @@ export const ExampleForm = () => {
           })}
         />
 
-        <pre>{JSON.stringify(errors(), null, 2)}</pre>
+        <pre>{JSON.stringify(errors, null, 2)}</pre>
 
         <button type="submit">Save</button>
       </form>
@@ -77,9 +77,9 @@ export const ExampleForm = () => {
       message: "Invalid email"
     }
   })}
-  aria-invalid={Boolean(errors().email)}
+  aria-invalid={Boolean(errors.email)}
 />
-{errors().email && <p role="alert">{errors().email.message}</p>}`}</Code>
+{errors.email && <p role="alert">{errors.email.message}</p>}`}</Code>
 
         <p>
           When using TypeScript, define form values type and apply it to the form for additional

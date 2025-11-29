@@ -70,14 +70,14 @@ export const ExampleForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('email')} aria-invalid={Boolean(errors().email)} />
-      {errors().email && <p role="alert">{errors().email.message}</p>}    
+      <input {...register('email')} aria-invalid={Boolean(errors.email)} />
+      {errors.email && <p role="alert">{errors.email.message}</p>}    
 
-      <input {...register('name')} aria-invalid={Boolean(errors().name)} />
-      {errors().name && <p role="alert">{errors().name.message}</p>}
+      <input {...register('name')} aria-invalid={Boolean(errors.name)} />
+      {errors.name && <p role="alert">{errors.name.message}</p>}
 
-      <input type="checkbox" {...register('consent')} aria-invalid={Boolean(errors().consent)} />
-      {errors().consent && <p role="alert">{errors().consent.message}</p>}
+      <input type="checkbox" {...register('consent')} aria-invalid={Boolean(errors.consent)} />
+      {errors.consent && <p role="alert">{errors.consent.message}</p>}
 
       <button type="submit">Save</button>
     </form>
