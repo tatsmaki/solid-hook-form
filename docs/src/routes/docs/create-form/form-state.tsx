@@ -32,7 +32,7 @@ const FormState = () => {
                 "Accessor<boolean>",
                 "Set to true after the user modifies any of the inputs.",
               ],
-              ["errors", "Accessor<FieldErrors>", "Accessor to get field errors."],
+              ["errors", "FieldErrors", "Store proxy object with field errors."],
               [
                 "dirtyFields",
                 "Accessor<DirtyFields>",
@@ -64,7 +64,7 @@ export const ExampleForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
         {...register("test", { required: true })}
-        aria-invalid={!!errors().test}
+        aria-invalid={!!errors.test}
       />
       <button type="submit" disabled={!isValid() || !isDirty()}>
         Submit

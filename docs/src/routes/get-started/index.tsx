@@ -306,15 +306,15 @@ export const ExampleForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
         {...register("name", { required: true })}
-        aria-invalid={Boolean(errors().name)}
+        aria-invalid={Boolean(errors.name)}
       />
-      {errors().name && <p role="alert">Name is required</p>}
+      {errors.name && <p role="alert">Name is required</p>}
 
       <input
         {...register("email", { required: "Email is required" })}
-        aria-invalid={Boolean(errors().email)}
+        aria-invalid={Boolean(errors.email)}
       />
-      {errors().email && <p role="alert">{errors().email.message}</p>}
+      {errors.email && <p role="alert">{errors.email.message}</p>}
 
       <button type="submit">Save</button>
     </form>
