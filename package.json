@@ -26,10 +26,7 @@
     "typescript": "~5.7.2"
   },
   "scripts": {
-    "preinstall": "cd ./tests && npm ci",
-    "build": "tsc && tsup",
-    "test": "cd ./tests && npm run test",
-    "test:ui": "cd ./tests && npm run test:ui"
+    "build": "tsc && tsup"
   },
   "author": "thorn_pear",
   "license": "ISC",
