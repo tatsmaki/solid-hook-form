@@ -13,5 +13,6 @@ export default defineConfig({
       headless: true,
       instances: [{ browser: "chromium" }],
     },
+    // disableConsoleIntercept: true,
   },
 });
