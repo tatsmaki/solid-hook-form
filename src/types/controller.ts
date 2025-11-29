@@ -12,10 +12,9 @@ export type Control<F extends FormValues> = {
 };
 
 export type UseControllerArg<F extends FormValues> = {
-  control: Control<F>;
+  control?: Control<F>;
   name: Path<F>;
   rules?: Rules<F>;
-  render(arg: UseControllerReturn<F>): JSXElement;
 };
 
 export type UseControllerReturn<F extends FormValues> = {
@@ -32,7 +31,7 @@ export type UseController = <F extends FormValues>(
 ) => UseControllerReturn<F>;
 
 export type ControllerProps<F extends FormValues> = {
-  control: Control<F>;
+  control?: Control<F>;
   name: Path<F>;
   rules?: Rules<F>;
   render(arg: UseControllerReturn<F>): JSXElement;
