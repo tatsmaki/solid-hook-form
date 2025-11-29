@@ -25,7 +25,7 @@ export const Errors = () => {
   return (
     <div class={sx.errors}>
       <h2>Errors</h2>
-      <pre>{JSON.stringify(removeRef(errors()), null, 2)}</pre>
+      <pre>{JSON.stringify(removeRef(errors), null, 2)}</pre>
     </div>
   );
 };

@@ -20,7 +20,7 @@ describe("maxLength", () => {
           email: "",
         }}
         render={({ register, errors }) => (
-          <Input {...register("email", { maxLength })} error={errors().email} />
+          <Input {...register("email", { maxLength })} error={errors.email} />
         )}
         onSubmit={onSubmit}
       />
@@ -49,7 +49,7 @@ describe("maxLength", () => {
         render={({ register, errors }) => (
           <Input
             {...register("email", { maxLength: { value: maxLength, message: errorMessage } })}
-            error={errors().email}
+            error={errors.email}
           />
         )}
         onSubmit={onSubmit}

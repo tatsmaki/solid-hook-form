@@ -20,7 +20,7 @@ describe("minLength", () => {
           email: "",
         }}
         render={({ register, errors }) => (
-          <Input {...register("email", { minLength })} error={errors().email} />
+          <Input {...register("email", { minLength })} error={errors.email} />
         )}
         onSubmit={onSubmit}
       />
@@ -49,7 +49,7 @@ describe("minLength", () => {
         render={({ register, errors }) => (
           <Input
             {...register("email", { minLength: { value: 5, message: errorMessage } })}
-            error={errors().email}
+            error={errors.email}
           />
         )}
         onSubmit={onSubmit}

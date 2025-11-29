@@ -20,7 +20,7 @@ describe("pattern", () => {
           email: "",
         }}
         render={({ register, errors }) => (
-          <Input {...register("email", { pattern })} error={errors().email} />
+          <Input {...register("email", { pattern })} error={errors.email} />
         )}
         onSubmit={onSubmit}
       />
@@ -51,7 +51,7 @@ describe("pattern", () => {
             {...register("email", {
               pattern: { value: pattern, message: errorMessage },
             })}
-            error={errors().email}
+            error={errors.email}
           />
         )}
         onSubmit={onSubmit}
