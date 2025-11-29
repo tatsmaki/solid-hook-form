@@ -28,9 +28,9 @@ const UseController = () => {
           <h1>UseController</h1>
 
           <p>
-            This custom hook powers <Link href="/docs/use-controller/controller">Controller</Link>.
-            Additionally, it shares the same props and methods as Controller. It's useful for
-            creating reusable Controlled input.
+            This custom hook powers the <Link href="/docs/use-controller/controller">Controller</Link>.
+            It accepts the same props and returns the same methods as Controller. It's useful for
+            creating reusable controlled inputs.
           </p>
 
           <p style={{ "margin-bottom": 0 }}>Props</p>

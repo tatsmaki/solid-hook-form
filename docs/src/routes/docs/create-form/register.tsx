@@ -135,8 +135,16 @@ return (
 
 return (
   <form>
-    <input {...register("firstName", { required: "First name is required" })} />
-    <input {...register("lastName", { minLength: { value: 5, "Min 5 characters" } })} />
+    <input
+      {...register("firstName", {
+        required: "First name is required"
+      })}
+    />
+    <input
+      {...register("lastName", {
+        minLength: { value: 5, message: "Min 5 characters" }
+      })}
+    />
   </form>
 )`}</Code>
           </div>
