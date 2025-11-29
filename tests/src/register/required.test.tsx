@@ -18,7 +18,7 @@ describe("required", () => {
           email: "",
         }}
         render={({ register, errors }) => (
-          <Input {...register("email", { required: true })} error={errors().email} />
+          <Input {...register("email", { required: true })} error={errors.email} />
         )}
         onSubmit={onSubmit}
       />
@@ -44,7 +44,7 @@ describe("required", () => {
           email: "",
         }}
         render={({ register, errors }) => (
-          <Input {...register("email", { required: errorMessage })} error={errors().email} />
+          <Input {...register("email", { required: errorMessage })} error={errors.email} />
         )}
         onSubmit={onSubmit}
       />

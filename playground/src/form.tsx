@@ -37,13 +37,13 @@ export const Form = () => {
         <form class={sx.form} onSubmit={handleSubmit(onSubmit)}>
           <h2>Form</h2>
 
-          <Field error={!!errors().date}>
+          <Field error={!!errors.date}>
             <Field.Label>Date</Field.Label>
             <TextInput type="date" {...register("date", { required: "Required" })} />
-            <Field.Message level="error">{errors().date?.message}</Field.Message>
+            <Field.Message level="error">{errors.date?.message}</Field.Message>
           </Field>
 
-          <Field error={!!errors().email}>
+          <Field error={!!errors.email}>
             <Field.Label>Email</Field.Label>
             <TextInput
               {...register("email", {
@@ -54,10 +54,10 @@ export const Form = () => {
                 },
               })}
             />
-            <Field.Message level="error">{errors().email?.message}</Field.Message>
+            <Field.Message level="error">{errors.email?.message}</Field.Message>
           </Field>
 
-          <Field error={!!errors().password}>
+          <Field error={!!errors.password}>
             <Field.Label>Password</Field.Label>
             <TextInput
               {...register("password", {
@@ -65,7 +65,7 @@ export const Form = () => {
                 minLength: { value: 8, message: "Min 8" },
               })}
             />
-            <Field.Message level="error">{errors().password?.message}</Field.Message>
+            <Field.Message level="error">{errors.password?.message}</Field.Message>
           </Field>
           {/* <Controller
             control={form.control}
@@ -83,7 +83,7 @@ export const Form = () => {
             }}
           /> */}
 
-          <Field error={!!errors()["profile.name"]}>
+          <Field error={!!errors["profile.name"]}>
             <Field.Label>Name</Field.Label>
             <TextInput
               {...register("profile.name", {
@@ -91,10 +91,10 @@ export const Form = () => {
                 maxLength: { value: 10, message: "Max 10" },
               })}
             />
-            <Field.Message level="error">{errors()["profile.name"]?.message}</Field.Message>
+            <Field.Message level="error">{errors["profile.name"]?.message}</Field.Message>
           </Field>
 
-          <Field error={!!errors()["profile.age"]}>
+          <Field error={!!errors["profile.age"]}>
             <Field.Label>Age</Field.Label>
             <TextInput
               type="number"
@@ -110,16 +110,16 @@ export const Form = () => {
                 valueAsNumber: true,
               })}
             />
-            <Field.Message level="error">{errors()["profile.age"]?.message}</Field.Message>
+            <Field.Message level="error">{errors["profile.age"]?.message}</Field.Message>
           </Field>
 
-          <Field error={!!errors().remember}>
+          <Field error={!!errors.remember}>
             <Checkbox
               label="Remember me"
               {...register("remember", { required: "Required" })}
-              error={!!errors().remember}
+              error={!!errors.remember}
             />
-            <Field.Message level="error">{errors().remember?.message}</Field.Message>
+            <Field.Message level="error">{errors.remember?.message}</Field.Message>
           </Field>
 
           <Button type="submit">Submit</Button>
