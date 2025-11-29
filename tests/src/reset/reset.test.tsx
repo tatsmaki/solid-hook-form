@@ -12,7 +12,7 @@ beforeEach(() => {
 describe("reset", () => {
   it("should reset", async () => {
     const page = render(() => (
-      <Form<any>
+      <Form
         defaultValues={{
           email: "",
           password: "",

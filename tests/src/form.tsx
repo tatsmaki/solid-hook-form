@@ -35,8 +35,17 @@ export const Form = <F extends FormValues>(props: FormProps<F>) => {
 
       <br />
       <br />
+      <p>values</p>
       <pre aria-label="values">{JSON.stringify(values(), null, 2)}</pre>
       <br />
+      <p>
+        isDirty <span aria-label="isDirty">{formState.isDirty() ? "true" : "false"}</span>
+      </p>
+
+      <p>dirtyFields</p>
+      <pre aria-label="dirtyFields">{JSON.stringify(formState.dirtyFields(), null, 2)}</pre>
+      <br />
+      <p>touchedFields</p>
       <pre aria-label="touched">{JSON.stringify(formState.touchedFields(), null, 2)}</pre>
     </div>
   );
