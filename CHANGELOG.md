@@ -5,11 +5,12 @@
 ### Breaking changes
 
 - switched formState errors to createStore proxy object instead of createSignal accessor [ac1f339](https://github.com/tatsmaki/solid-hook-form/commit/ac1f33947f6d6e38277e4b563e0079652c25f4eb)
-- form defaultValues is a required argument to allow proper form initialization and reset [ad668b0](https://github.com/tatsmaki/solid-hook-form/commit/ad668b0a02d65d7b016332e1fe3601f78d0d0074)
+- createForm defaultValues is a required argument to allow proper form initialization and reset [ad668b0](https://github.com/tatsmaki/solid-hook-form/commit/ad668b0a02d65d7b016332e1fe3601f78d0d0074)
+- removed useForm and onSubmit aliases - use createForm and handleSubmit instead [a2d25b6](https://github.com/tatsmaki/solid-hook-form/commit/a2d25b6f37ac9d0d2fc2aaff5a1f9cdef108e502)
 
 ### Added
 
-- formState dirtyFields [63a7f78](https://github.com/tatsmaki/solid-hook-form/commit/63a7f784beffcfad97c00f6856b8aed4ce8ecf5f)
+- formState dirtyFields to track user-modified fields against defaultValues [63a7f78](https://github.com/tatsmaki/solid-hook-form/commit/63a7f784beffcfad97c00f6856b8aed4ce8ecf5f)
 
 ### Bug fixes
 
