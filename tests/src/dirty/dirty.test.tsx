@@ -121,7 +121,7 @@ describe("dirtyFields", () => {
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}
-        onReset={({ reset }) => reset({}, { keepDirty: true })}
+        onReset={({ reset }) => reset(undefined, { keepDirty: true })}
       />
     ));
 
