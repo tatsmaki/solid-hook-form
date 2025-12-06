@@ -15,9 +15,16 @@ export type GetValues<F extends FormValues> = {
   //   <N extends FieldPath<F>[]>(names: readonly [...N]): [...FieldPathValues<F, N>];
 };
 
+export type SetValueOptions = {
+  shouldValidate?: boolean;
+  shouldDirty?: boolean;
+  shouldTouch?: boolean;
+};
+
 export type SetValue<F extends FormValues> = (
   name: Path<F>,
-  value: FieldPathValue<F, Path<F>>
+  value: FieldPathValue<F, Path<F>>,
+  options?: SetValueOptions
 ) => void;
 
 export type SubmitHandler<F extends FormValues> = (values: F) => void;

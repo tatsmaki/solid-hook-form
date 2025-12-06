@@ -183,7 +183,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     return values();
   };
 
-  const setValue: SetValue<F> = (name, value) => {
+  const setValue: SetValue<F> = (name, value, options = {}) => {
     setValues((prev) => {
       const newValues = { ...prev };
 
@@ -195,6 +195,18 @@ export const createForm: CreateForm = <F extends FormValues>(
     const field = getField(name);
 
     setFieldValue(field, value);
+
+    if (options.shouldValidate) {
+      validateField(name);
+    }
+
+    if (options.shouldDirty) {
+      checkDirty(name, value);
+    }
+
+    if (options.shouldTouch) {
+      addTouched(name);
+    }
   };
 
   const handleSubmit: HandleSubmit<F> = (onSubmit, onError) => {
