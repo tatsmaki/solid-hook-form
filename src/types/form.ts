@@ -28,6 +28,15 @@ export type SetValue<F extends FormValues> = (
   options?: SetValueOptions
 ) => void;
 
+export type TriggerOptions = {
+  shouldFocus?: boolean;
+};
+
+export type Trigger<F extends FormValues> = (
+  name?: Path<F> | Path<F>[],
+  options?: TriggerOptions
+) => void;
+
 export type SubmitHandler<F extends FormValues> = (values: F) => void;
 
 export type SubmitErrorHandler<F extends FormValues> = (errors: FieldErrors<F>) => void;
@@ -69,6 +78,7 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
   setValue: SetValue<F>;
   handleSubmit: HandleSubmit<F>;
   reset: Reset<F>;
+  trigger: Trigger<F>;
 };
 
 export type CreateForm = <F extends FormValues>(arg: CreateFormArg<F>) => CreateFormReturn<F>;
