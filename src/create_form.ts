@@ -18,7 +18,8 @@ import type {
   GetValues,
   HandleSubmit,
   Reset,
-  SetValue
+  SetValue,
+  Trigger
 } from "./types/form";
 import type { Path } from "./types/path";
 import type { Register } from "./types/register";
@@ -237,6 +238,20 @@ export const createForm: CreateForm = <F extends FormValues>(
     });
   };
 
+  const trigger: Trigger<F> = async (name) => {
+    if (!name) {
+      await validateAllFields();
+      return;
+    }
+
+    if (typeof name === "string") {
+      validateField(name);
+      return;
+    }
+
+    name.forEach(validateField);
+  };
+
   return {
     control,
     formState: {
@@ -252,6 +267,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     getValues,
     setValue,
     handleSubmit,
-    reset
+    reset,
+    trigger
   };
 };
