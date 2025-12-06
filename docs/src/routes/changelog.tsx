@@ -1,8 +1,8 @@
 import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
+import { For, createMemo, type JSX } from "solid-js";
 import { Container } from "~/components/container/container";
 import changelog from "../../../CHANGELOG.md?raw";
-import { For, createMemo, JSX } from "solid-js";
 import { Footer } from "~/components/footer/footer";
 
 const Changelog = () => {
@@ -74,12 +74,12 @@ const parseLineWithLinks = (text: string): JSX.Element[] => {
   const parts: JSX.Element[] = [];
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
   let lastIndex = 0;
-  let match;
+  let match: RegExpExecArray | null = linkRegex.exec(text);
 
-  while ((match = linkRegex.exec(text)) !== null) {
+  while (match !== null) {
     // Add text before the link
     if (match.index > lastIndex) {
-      parts.push(<>{text.substring(lastIndex, match.index)}</>);
+      parts.push(text.substring(lastIndex, match.index));
     }
 
     // Add the Link component
@@ -90,16 +90,17 @@ const parseLineWithLinks = (text: string): JSX.Element[] => {
     );
 
     lastIndex = linkRegex.lastIndex;
+    match = linkRegex.exec(text);
   }
 
   // Add remaining text after the last link
   if (lastIndex < text.length) {
-    parts.push(<>{text.substring(lastIndex)}</>);
+    parts.push(text.substring(lastIndex));
   }
 
   // If no links were found, return the text as-is
   if (parts.length === 0) {
-    return [<>{text}</>];
+    return [text];
   }
 
   return parts;

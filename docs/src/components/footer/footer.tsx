@@ -20,11 +20,11 @@ export const Footer = () => {
         Changelog
       </Link>
       <Link href="https://github.com/tatsmaki/solid-hook-form" target="_blank" color="secondary">
-        <img width={24} height={24} src="/github.svg" />
+        <img width={24} height={24} src="/github.svg" aria-hidden />
         GitHub
       </Link>
       <Link href="https://www.npmjs.com/package/solid-hook-form" target="_blank" color="secondary">
-        <img width={24} height={24} src="/npm.svg" />
+        <img width={24} height={24} src="/npm.svg" aria-hidden />
         solid-hook-form
       </Link>
     </footer>

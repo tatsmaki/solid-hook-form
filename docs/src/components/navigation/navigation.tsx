@@ -1,6 +1,6 @@
 import { For } from "solid-js";
-import { NavigationProps } from "./navigation.types";
 import sx from "./navigation.module.css";
+import type { NavigationProps } from "./navigation.types";
 
 export const Navigation = (props: NavigationProps) => {
   return (

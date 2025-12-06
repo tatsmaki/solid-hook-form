@@ -1,6 +1,6 @@
-import { defineConfig } from "vitest/config";
-import solidPlugin from "vite-plugin-solid";
 import { playwright } from "@vitest/browser-playwright";
+import solidPlugin from "vite-plugin-solid";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [solidPlugin()],
@@ -11,8 +11,8 @@ export default defineConfig({
       provider: playwright(),
       enabled: true,
       headless: true,
-      instances: [{ browser: "chromium" }],
-    },
+      instances: [{ browser: "chromium" }]
+    }
     // disableConsoleIntercept: true,
-  },
+  }
 });

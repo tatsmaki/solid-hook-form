@@ -7,11 +7,11 @@ html {
 body {
   width: 100%;
   margin: 0;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
 }
 
 pre {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
 }
 
 #app {

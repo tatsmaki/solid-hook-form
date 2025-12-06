@@ -1,7 +1,7 @@
-import { createStore, reconcile, produce } from "solid-js/store";
-import { FieldError, FieldErrors } from "../types/errors";
-import { FormValues } from "../types/form";
-import { Path } from "../types/path";
+import { createStore, produce, reconcile } from "solid-js/store";
+import type { FieldError, FieldErrors } from "../types/errors";
+import type { FormValues } from "../types/form";
+import type { Path } from "../types/path";
 
 export const createErrors = <F extends FormValues>() => {
   const [errors, setErrors] = createStore<FieldErrors<F>>({});
@@ -35,6 +35,6 @@ export const createErrors = <F extends FormValues>() => {
     appendError,
     removeError,
     resetErrors,
-    getError,
+    getError
   };
 };

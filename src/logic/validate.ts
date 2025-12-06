@@ -1,9 +1,10 @@
-import { FieldError } from "../types/errors";
-import { FormValues } from "../types/form";
-import { Path } from "../types/path";
-import { Rules, ValidationRule } from "../types/validate";
+import type { FieldError } from "../types/errors";
+import type { FormValues } from "../types/form";
+import type { Path } from "../types/path";
+import type { Rules, ValidationRule } from "../types/validate";
 import { get } from "../utils/get";
 
+// biome-ignore lint/suspicious/noExplicitAny: value can be any
 const getRuleValue = (rule: ValidationRule<any>) => {
   if (rule instanceof RegExp) {
     return rule;
@@ -16,6 +17,7 @@ const getRuleValue = (rule: ValidationRule<any>) => {
   return rule.value;
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: value can be any
 const getRuleMessage = (rule: ValidationRule<any>) => {
   if (typeof rule === "string") {
     return rule;

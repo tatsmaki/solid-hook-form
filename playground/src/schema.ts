@@ -1,4 +1,5 @@
-import z, { object, string, iso, email, number, boolean } from "zod";
+import type z from "zod";
+import { boolean, email, iso, number, object, string } from "zod";
 
 export const formSchema = object({
   date: iso.date(),
@@ -6,15 +7,15 @@ export const formSchema = object({
   password: string().min(8),
   profile: object({
     age: number().min(18).max(100),
-    name: string().min(1, "Required").max(10),
+    name: string().min(1, "Required").max(10)
   }),
-  remember: boolean(),
+  remember: boolean()
 }).superRefine((values, ctx) => {
   if (!values.remember) {
     ctx.addIssue({
       code: "custom",
       path: ["remember"],
-      message: "Required",
+      message: "Required"
     });
   }
 });

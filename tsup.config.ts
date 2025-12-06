@@ -1,5 +1,5 @@
-import { defineConfig, Options } from "tsup";
 import { solidPlugin } from "esbuild-plugin-solid";
+import { defineConfig, type Options } from "tsup";
 
 const config: Options = {
   entry: ["src/main.ts"],
@@ -9,9 +9,9 @@ const config: Options = {
   clean: true,
   outDir: "dist/",
   treeshake: {
-    preset: "smallest",
+    preset: "smallest"
   },
-  replaceNodeEnv: true,
+  replaceNodeEnv: true
 };
 
 export default defineConfig([
@@ -25,9 +25,9 @@ export default defineConfig([
     },
     outExtension() {
       return {
-        js: ".jsx",
+        js: ".jsx"
       };
-    },
+    }
   },
   {
     ...config,
@@ -36,6 +36,6 @@ export default defineConfig([
       options.chunkNames = "[name]/[hash]";
       options.drop = ["console", "debugger"];
     },
-    esbuildPlugins: [solidPlugin({ solid: { generate: "dom" } })],
-  },
+    esbuildPlugins: [solidPlugin({ solid: { generate: "dom" } })]
+  }
 ]);

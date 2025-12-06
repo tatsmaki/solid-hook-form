@@ -1,7 +1,7 @@
 import { render } from "vitest-browser-solid";
+import { Controller } from "../../../src/controller";
 import { Form } from "../form";
 import { Input } from "../input";
-import { Controller } from "../../../src/controller";
 
 const onSubmit = vi.fn(() => {});
 const okResult = "test";
@@ -16,7 +16,7 @@ describe("Controller", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ control }) => (
           <Controller
@@ -50,7 +50,7 @@ describe("Controller", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ control }) => (
           <Controller

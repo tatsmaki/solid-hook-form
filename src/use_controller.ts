@@ -1,8 +1,8 @@
 import { createMemo } from "solid-js";
-import { UseControllerArg, UseControllerReturn } from "./types/controller";
-import { FormValues } from "./types/form";
-import { get } from "./utils/get";
+import type { UseControllerArg, UseControllerReturn } from "./types/controller";
+import type { FormValues } from "./types/form";
 import { useFormContext } from "./use_form_context";
+import { get } from "./utils/get";
 
 export const useController = <F extends FormValues>(
   arg: UseControllerArg<F>
@@ -22,10 +22,10 @@ export const useController = <F extends FormValues>(
   return {
     field: {
       ...fieldProps,
-      value,
+      value
     },
     fieldState: {
-      error,
-    },
+      error
+    }
   };
 };

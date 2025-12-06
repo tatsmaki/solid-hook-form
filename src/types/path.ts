@@ -1,8 +1,8 @@
 export type {
-  Path,
-  FieldPath,
   ArrayPath,
-  PathValue,
+  FieldPath,
   FieldPathValue,
   FieldPathValues,
+  Path,
+  PathValue
 } from "react-hook-form";

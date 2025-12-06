@@ -59,7 +59,7 @@ export const DocsNavigation = () => {
       <div>
         <Link
           href="/docs/use-controller"
-          color={location.pathname == "/docs/use-controller" ? "accent" : "secondary"}
+          color={location.pathname === "/docs/use-controller" ? "accent" : "secondary"}
         >
           useController
         </Link>

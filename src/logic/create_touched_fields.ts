@@ -1,8 +1,8 @@
 import { createSignal } from "solid-js";
-import { FormValues } from "../types/form";
+import type { FormValues } from "../types/form";
+import type { Path } from "../types/path";
+import type { TouchedFields } from "../types/touched";
 import { set } from "../utils/set";
-import { Path } from "../types/path";
-import { TouchedFields } from "../types/touched";
 
 export const createTouchedFields = <F extends FormValues>() => {
   const [touchedFields, setTouchedFields] = createSignal<TouchedFields<F>>({});

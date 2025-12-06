@@ -1,6 +1,6 @@
-import { Message } from "./errors";
-import { FormValues } from "./form";
-import { FieldPath, FieldPathValue } from "./path";
+import type { Message } from "./errors";
+import type { FormValues } from "./form";
+import type { FieldPath, FieldPathValue } from "./path";
 
 // export type ValidateResult = Message | Message[] | boolean | undefined;
 export type ValidateResult = Message | boolean | undefined;

@@ -1,6 +1,6 @@
-import { Path } from "react-hook-form";
-import { FormValues } from "../types/form";
-import { Rules } from "../types/validate";
+import type { Path } from "react-hook-form";
+import type { FormValues } from "../types/form";
+import type { Rules } from "../types/validate";
 
 export const formatValue = <F extends FormValues, T>(value: T, rules: Rules<F, Path<F>>) => {
   if (rules.valueAsNumber) {

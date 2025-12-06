@@ -1,14 +1,6 @@
-import { FormValues } from "./form";
-import { Rules } from "./validate";
-import {
-  LiteralUnion,
-  // IsAny,
-  // BrowserNativeObject,
-  // DeepRequired,
-  // GlobalError,
-  // Merge,
-  Path,
-} from "react-hook-form";
+import type { LiteralUnion, Path } from "react-hook-form";
+import type { FormValues } from "./form";
+import type { Rules } from "./validate";
 
 export type Message = string;
 

@@ -1,7 +1,7 @@
 import { render } from "vitest-browser-solid";
 import { Form } from "../form";
-import { Input } from "../input";
 import { Controller } from "../import";
+import { Input } from "../input";
 
 const onSubmit = vi.fn(() => {});
 
@@ -15,7 +15,7 @@ describe("reset", () => {
       <Form
         defaultValues={{
           email: "",
-          password: "",
+          password: ""
         }}
         render={({ control, register }) => (
           <>

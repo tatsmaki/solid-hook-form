@@ -1,3 +1,3 @@
-import { JSX } from "solid-js";
+import type { JSX } from "solid-js";
 
 export type ImageProps = JSX.ImgHTMLAttributes<HTMLImageElement>;

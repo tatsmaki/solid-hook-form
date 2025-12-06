@@ -1,9 +1,9 @@
 import { Prism } from "prism-esm";
-import { loader as typescriptLoader } from "prism-esm/components/prism-typescript.js";
 import { loader as bashLoader } from "prism-esm/components/prism-bash.js";
-import { CodeProps } from "./code.types";
-import sx from "./code.module.css";
+import { loader as typescriptLoader } from "prism-esm/components/prism-typescript.js";
+import type { CodeProps } from "./code.types";
 import "./highlight.css";
+import sx from "./code.module.css";
 
 const prism = new Prism();
 
@@ -13,7 +13,7 @@ bashLoader(prism);
 const languages = {
   js: prism.languages.js,
   ts: prism.languages.ts,
-  sh: prism.languages.sh,
+  sh: prism.languages.sh
 };
 
 export const Code = (props: CodeProps) => {

@@ -1,9 +1,9 @@
 import type { Accessor, JSXElement } from "solid-js";
-import { FormValues } from "./form";
-import { FieldError, FieldErrors } from "./errors";
-import { Path } from "./path";
-import { Rules } from "./validate";
-import { Register, RegisterReturn } from "./register";
+import type { FieldError, FieldErrors } from "./errors";
+import type { FormValues } from "./form";
+import type { Path } from "./path";
+import type { Register, RegisterReturn } from "./register";
+import type { Rules } from "./validate";
 
 export type Control<F extends FormValues> = {
   values: Accessor<F>;
@@ -19,6 +19,7 @@ export type UseControllerArg<F extends FormValues> = {
 
 export type UseControllerReturn<F extends FormValues> = {
   field: RegisterReturn<F> & {
+    // biome-ignore lint/suspicious/noExplicitAny: value can be any
     value: Accessor<any>;
   };
   fieldState: {

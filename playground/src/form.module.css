@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   --colors-black-100: #ffffff;
   background: #191d3a;
 }
@@ -33,8 +33,8 @@ pre {
 
 @media (max-width: 768px) {
   .demo {
-   grid-template-columns: 1fr 1fr;
-   grid-template-rows: auto auto
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
   }
 
   .form {
@@ -45,5 +45,5 @@ pre {
 @media (max-width: 480px) {
   .demo {
     grid-template-columns: 1fr;
-   }
+  }
 }

@@ -1,5 +1,5 @@
-import { render } from "vitest-browser-solid";
 import { userEvent } from "vitest/browser";
+import { render } from "vitest-browser-solid";
 import { Form } from "../form";
 import { Input } from "../input";
 
@@ -14,7 +14,7 @@ describe("touchedFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}
@@ -36,7 +36,7 @@ describe("touchedFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ setValue }) => (
           <Input
@@ -58,7 +58,7 @@ describe("touchedFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}
@@ -81,7 +81,7 @@ describe("touchedFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}

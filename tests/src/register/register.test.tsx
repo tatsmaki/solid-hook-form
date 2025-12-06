@@ -13,7 +13,7 @@ describe("register", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}

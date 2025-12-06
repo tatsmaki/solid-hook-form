@@ -1,5 +1,4 @@
 import { HttpStatusCode } from "@solidjs/start";
-import { Button, buttonSx, cls, Link } from "solid-uix";
 import { Container } from "~/components/container/container";
 
 const NotFound = () => {
