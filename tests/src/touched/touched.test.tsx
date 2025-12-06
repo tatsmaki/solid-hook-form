@@ -22,13 +22,35 @@ describe("touchedFields", () => {
     ));
 
     const input = page.getByRole("textbox", { name: "email" });
-    const touched = page.getByLabelText("touched");
+    const touched = page.getByLabelText("touchedFields");
     await input.click();
     expect(input).toHaveFocus();
     expect(touched).toHaveTextContent("{}");
 
     await userEvent.tab();
     expect(input).not.toHaveFocus();
+    expect(touched).toHaveTextContent('{ "email": true }');
+  });
+
+  it("should use setValue options", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: "",
+        }}
+        render={({ setValue }) => (
+          <Input
+            name="email"
+            onInput={(event) => setValue("email", event.target.value, { shouldTouch: true })}
+          />
+        )}
+        onSubmit={onSubmit}
+      />
+    ));
+
+    const input = page.getByRole("textbox", { name: "email" });
+    const touched = page.getByLabelText("touchedFields");
+    await input.fill("email");
     expect(touched).toHaveTextContent('{ "email": true }');
   });
 
@@ -45,7 +67,7 @@ describe("touchedFields", () => {
     ));
 
     const input = page.getByRole("textbox", { name: "email" });
-    const touched = page.getByLabelText("touched");
+    const touched = page.getByLabelText("touchedFields");
     const reset = page.getByRole("button", { name: "Reset" });
     await input.click();
     await userEvent.tab();
@@ -68,7 +90,7 @@ describe("touchedFields", () => {
     ));
 
     const input = page.getByRole("textbox", { name: "email" });
-    const touched = page.getByLabelText("touched");
+    const touched = page.getByLabelText("touchedFields");
     const reset = page.getByRole("button", { name: "Reset" });
     await input.click();
     await userEvent.tab();

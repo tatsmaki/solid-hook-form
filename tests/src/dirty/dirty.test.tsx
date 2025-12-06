@@ -66,6 +66,30 @@ describe("dirtyFields", () => {
     expect(dirtyFields).toHaveTextContent('{ "profile": { "name": false } }');
   });
 
+  it("should use setValue options", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: "",
+        }}
+        render={({ setValue }) => (
+          <Input
+            name="email"
+            onInput={(event) => setValue("email", event.target.value, { shouldDirty: true })}
+          />
+        )}
+        onSubmit={onSubmit}
+      />
+    ));
+
+    const input = page.getByRole("textbox", { name: "email" });
+    const isDirty = page.getByLabelText("isDirty");
+    const dirtyFields = page.getByLabelText("dirtyFields");
+    await input.fill("email");
+    expect(isDirty).toHaveTextContent("true");
+    expect(dirtyFields).toHaveTextContent('{ "email": true }');
+  });
+
   it("should reset dirty fields", async () => {
     const page = render(() => (
       <Form
