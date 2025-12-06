@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.0 (2025-12-06)
+
+### Added
+
+- trigger API to manually trigger form or fields validation [bce9944](https://github.com/tatsmaki/solid-hook-form/commit/bce9944b25cd5d651832be3c3b475ca78ed6a9bf)
+- setValue options including shouldValidate, shouldDirty and shouldTouch [49860c9](https://github.com/tatsmaki/solid-hook-form/commit/49860c9c97aa976c1f7ed0f11d68b9c5565c3413)
+
 ## 2.0.1 (2025-11-29)
 
 ### Bug fixes
