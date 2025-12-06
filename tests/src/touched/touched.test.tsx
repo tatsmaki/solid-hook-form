@@ -85,7 +85,7 @@ describe("touchedFields", () => {
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}
-        onReset={({ reset }) => reset({}, { keepTouched: true })}
+        onReset={({ reset }) => reset(undefined, { keepTouched: true })}
       />
     ));
 
