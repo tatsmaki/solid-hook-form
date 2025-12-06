@@ -226,10 +226,26 @@ export const createForm: CreateForm = <F extends FormValues>(
   };
 
   const reset: Reset<F> = (values, options = {}) => {
+    const currentValues = values;
     const newValues = values ? (values as F) : structuredClone(defaultValues);
 
-    setValues(() => newValues);
-    resetErrors();
+    /**
+     * checks the option keepValues to retain the 
+     * state info towards the reset option
+     */
+    const finalValues = options.keepValues 
+      ? { ...newValues, ...currentValues }
+      : newValues
+
+    setValues(() => finalValues);
+
+    /**
+     * checks the option keepsError to retain the error
+     * in the state.
+     */
+    if(!options.keepErrors) {
+      resetErrors();
+    }
     resetTouched(options.keepTouched);
     resetDirty(options.keepDirty);
 
