@@ -41,6 +41,11 @@ export type SubmitHandler<F extends FormValues> = (values: F) => void;
 
 export type SubmitErrorHandler<F extends FormValues> = (errors: FieldErrors<F>) => void;
 
+export type KeepStateOptions = Partial<{
+  keepErrors: boolean;
+  keepValues: boolean;
+}>
+
 export type HandleSubmit<F extends FormValues> = (
   onSubmit: SubmitHandler<F>,
   onError?: SubmitErrorHandler<F>
@@ -53,7 +58,7 @@ export type ResetOptions = {
 
 export type Reset<F extends FormValues> = (
   newDefaultValues?: Partial<F>,
-  options?: ResetOptions
+  options?: ResetOptions & KeepStateOptions
 ) => void;
 
 export type CreateFormArg<F extends FormValues> = {
