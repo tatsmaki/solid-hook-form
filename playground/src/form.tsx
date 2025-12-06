@@ -1,10 +1,10 @@
-import { createForm, FormProvider, Controller } from "./import";
-import { Field, TextInput, Checkbox, Button } from "solid-uix";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Checkbox, Field, TextInput } from "solid-uix";
 import { Errors } from "./errors/errors";
-import { Values } from "./values/values";
-import { formSchema, FormValues } from "./schema";
 import sx from "./form.module.css";
+import { createForm, FormProvider } from "./import";
+import { type FormValues, formSchema } from "./schema";
+import { Values } from "./values/values";
 
 export const Form = () => {
   const form = createForm<FormValues>({
@@ -14,12 +14,12 @@ export const Form = () => {
       password: "",
       profile: {
         age: 0,
-        name: "",
+        name: ""
       },
-      remember: false,
+      remember: false
     },
     mode: "onChange",
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(formSchema)
   });
   const { errors, register, handleSubmit, reset } = form;
 
@@ -50,8 +50,8 @@ export const Form = () => {
                 required: "Required",
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Invalid email",
-                },
+                  message: "Invalid email"
+                }
               })}
             />
             <Field.Message level="error">{errors.email?.message}</Field.Message>
@@ -62,7 +62,7 @@ export const Form = () => {
             <TextInput
               {...register("password", {
                 required: "Required",
-                minLength: { value: 8, message: "Min 8" },
+                minLength: { value: 8, message: "Min 8" }
               })}
             />
             <Field.Message level="error">{errors.password?.message}</Field.Message>
@@ -88,7 +88,7 @@ export const Form = () => {
             <TextInput
               {...register("profile.name", {
                 required: "Required",
-                maxLength: { value: 10, message: "Max 10" },
+                maxLength: { value: 10, message: "Max 10" }
               })}
             />
             <Field.Message level="error">{errors["profile.name"]?.message}</Field.Message>
@@ -101,13 +101,13 @@ export const Form = () => {
               {...register("profile.age", {
                 min: {
                   value: 18,
-                  message: "Min 18",
+                  message: "Min 18"
                 },
                 max: {
                   value: 100,
-                  message: "Max 100",
+                  message: "Max 100"
                 },
-                valueAsNumber: true,
+                valueAsNumber: true
               })}
             />
             <Field.Message level="error">{errors["profile.age"]?.message}</Field.Message>

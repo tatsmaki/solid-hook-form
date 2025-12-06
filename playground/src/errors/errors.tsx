@@ -1,5 +1,5 @@
-import { useFormContext, FieldErrors } from "../import";
-import { FormValues } from "../schema";
+import { type FieldErrors, useFormContext } from "../import";
+import type { FormValues } from "../schema";
 import sx from "./errors.module.css";
 
 export const Errors = () => {
@@ -18,7 +18,7 @@ export const Errors = () => {
     Object.fromEntries(
       Object.entries(errors).map(([key, error]) => [
         key,
-        error ? { ...error, ref: undefined } : error,
+        error ? { ...error, ref: undefined } : error
       ])
     );
 

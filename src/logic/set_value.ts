@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noExplicitAny: value can be any
 export const setFieldValue = (field: HTMLElement | null, value: any) => {
   if (!field) {
     return;

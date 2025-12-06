@@ -1,6 +1,6 @@
-import { FormValues } from "./form";
-import { Path } from "./path";
-import { Rules } from "./validate";
+import type { FormValues } from "./form";
+import type { Path } from "./path";
+import type { Rules } from "./validate";
 
 export type Ref = HTMLElement | null;
 

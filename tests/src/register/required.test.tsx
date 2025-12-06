@@ -15,7 +15,7 @@ describe("required", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input {...register("email", { required: true })} error={errors.email} />
@@ -41,7 +41,7 @@ describe("required", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input {...register("email", { required: errorMessage })} error={errors.email} />

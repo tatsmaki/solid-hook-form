@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noUselessEscapeInString: regex escape */
+
 import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";

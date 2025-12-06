@@ -1,6 +1,7 @@
-import { FormValues } from "../types/form";
+import type { FormValues } from "../types/form";
 import { compact, isObject } from "./get";
 
+// biome-ignore lint/suspicious/noExplicitAny: value can be any
 const isKey = (value: any) => /^\w*$/.test(value);
 const stringToPath = (input: string) => compact(input.replace(/["|']|\]/g, "").split(/\.|\[/));
 
@@ -17,9 +18,9 @@ export const set = (object: FormValues, path: string, value: unknown) => {
       newValue =
         isObject(objValue) || Array.isArray(objValue)
           ? objValue
-          : !isNaN(+tempPath[index + 1])
-          ? []
-          : {};
+          : !Number.isNaN(+tempPath[index + 1])
+            ? []
+            : {};
     }
     if (key === "__proto__" || key === "constructor" || key === "prototype") {
       return;

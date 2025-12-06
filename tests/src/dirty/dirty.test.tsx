@@ -1,7 +1,6 @@
 import { render } from "vitest-browser-solid";
 import { Form } from "../form";
 import { Input } from "../input";
-import { Controller } from "../import";
 
 const onSubmit = vi.fn(() => {});
 
@@ -14,7 +13,7 @@ describe("dirtyFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}
@@ -42,8 +41,8 @@ describe("dirtyFields", () => {
       <Form
         defaultValues={{
           profile: {
-            name: "",
-          },
+            name: ""
+          }
         }}
         render={({ register }) => <Input {...register("profile.name")} />}
         onSubmit={onSubmit}
@@ -70,7 +69,7 @@ describe("dirtyFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ setValue }) => (
           <Input
@@ -94,7 +93,7 @@ describe("dirtyFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}
@@ -117,7 +116,7 @@ describe("dirtyFields", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register }) => <Input {...register("email")} />}
         onSubmit={onSubmit}

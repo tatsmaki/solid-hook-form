@@ -25,7 +25,7 @@ const Examples = () => {
 
           <Grid.Item href="/examples/zod">
             <h2>
-              <img src="/zod.webp" width={32} />
+              <img src="/zod.webp" width={32} aria-hidden />
               Zod
             </h2>
             <p>Integrate Zod schema validation into your form.</p>

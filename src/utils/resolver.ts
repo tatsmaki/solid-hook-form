@@ -7,7 +7,7 @@ export const getResolverFields = (fields: FormFields) => {
   return Object.entries(fields).reduce<ResolverFields>((acc, [name, ref]) => {
     acc[name] = {
       ref: ref as Ref,
-      name,
+      name
     };
 
     return acc;

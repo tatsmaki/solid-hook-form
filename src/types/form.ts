@@ -1,12 +1,13 @@
-import type { Accessor } from "solid-js";
-import { FieldPath, FieldPathValue, Path } from "./path";
-import { FieldErrors } from "./errors";
-import { Control } from "./controller";
 import type { Resolver } from "react-hook-form";
-import { Ref, Register } from "./register";
-import { TouchedFields } from "./touched";
-import { DirtyFields } from "./dirty";
+import type { Accessor } from "solid-js";
+import type { Control } from "./controller";
+import type { DirtyFields } from "./dirty";
+import type { FieldErrors } from "./errors";
+import type { FieldPath, FieldPathValue, Path } from "./path";
+import type { Ref, Register } from "./register";
+import type { TouchedFields } from "./touched";
 
+// biome-ignore lint/suspicious/noExplicitAny: value can be any
 export type FormValues = Record<string, any>;
 
 export type GetValues<F extends FormValues> = {

@@ -1,5 +1,16 @@
 import { createMemo, createSignal } from "solid-js";
-import {
+import { createDirtyFields } from "./logic/create_dirty_fields";
+import { createErrors } from "./logic/create_errors";
+import { createFields } from "./logic/create_fields";
+import { createRules } from "./logic/create_rules";
+import { createTouchedFields } from "./logic/create_touched_fields";
+import { formatValue } from "./logic/format_value";
+import { getFieldValue } from "./logic/get_value";
+import { setFieldValue } from "./logic/set_value";
+import { validate } from "./logic/validate";
+import type { Control } from "./types/controller";
+import type { FieldError } from "./types/errors";
+import type {
   CreateForm,
   CreateFormArg,
   CreateFormReturn,
@@ -7,24 +18,13 @@ import {
   GetValues,
   HandleSubmit,
   Reset,
-  SetValue,
+  SetValue
 } from "./types/form";
-import { Path } from "./types/path";
-import { FieldError } from "./types/errors";
-import { getFieldValue } from "./logic/get_value";
-import { setFieldValue } from "./logic/set_value";
-import { validate } from "./logic/validate";
-import { createErrors } from "./logic/create_errors";
-import { set } from "./utils/set";
+import type { Path } from "./types/path";
+import type { Register } from "./types/register";
 import { get } from "./utils/get";
-import { createRules } from "./logic/create_rules";
-import { createFields } from "./logic/create_fields";
-import { formatValue } from "./logic/format_value";
 import { getResolverFields } from "./utils/resolver";
-import { Control } from "./types/controller";
-import { Register } from "./types/register";
-import { createTouchedFields } from "./logic/create_touched_fields";
-import { createDirtyFields } from "./logic/create_dirty_fields";
+import { set } from "./utils/set";
 
 export const createForm: CreateForm = <F extends FormValues>(
   arg: CreateFormArg<F>
@@ -63,7 +63,7 @@ export const createForm: CreateForm = <F extends FormValues>(
 
     const result = await resolver(values() || {}, null, {
       fields: getResolverFields(fields),
-      shouldUseNativeValidation: false,
+      shouldUseNativeValidation: false
     });
 
     for (const name of names) {
@@ -96,7 +96,7 @@ export const createForm: CreateForm = <F extends FormValues>(
 
   const validateAllFields = async () => {
     if (resolver) {
-      await runSchema(Object.keys(fields) as any);
+      await runSchema(Object.keys(fields) as Path<F>[]);
 
       return;
     }
@@ -165,14 +165,14 @@ export const createForm: CreateForm = <F extends FormValues>(
 
         setField(name, element);
         setFieldValue(element, get(values(), name));
-      },
+      }
     };
   };
 
   const control: Control<F> = {
     values,
     errors,
-    register,
+    register
   };
 
   const getValues: GetValues<F> = (name?: Path<F>) => {
@@ -244,7 +244,7 @@ export const createForm: CreateForm = <F extends FormValues>(
       isValid,
       isDirty,
       touchedFields,
-      dirtyFields,
+      dirtyFields
     },
     values,
     errors,
@@ -252,6 +252,6 @@ export const createForm: CreateForm = <F extends FormValues>(
     getValues,
     setValue,
     handleSubmit,
-    reset,
+    reset
   };
 };

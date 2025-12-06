@@ -1,10 +1,12 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: value can be any */
+
 const isDateObject = (value: any) => value instanceof Date;
 const isNullOrUndefined = (value: any) => value == null;
 const isObjectType = (value: any) => typeof value === "object";
 export const isObject = (value: any) =>
   !isNullOrUndefined(value) && !Array.isArray(value) && isObjectType(value) && !isDateObject(value);
 export const compact = (value: any) => (Array.isArray(value) ? value.filter(Boolean) : []);
-const isUndefined = (val: any) => val === void 0;
+const isUndefined = (value: any) => value === void 0;
 
 export const get = (object: any, path: string, defaultValue?: unknown) => {
   if (!path || !isObject(object)) {

@@ -17,7 +17,7 @@ describe("maxLength", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input {...register("email", { maxLength })} error={errors.email} />
@@ -44,7 +44,7 @@ describe("maxLength", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input

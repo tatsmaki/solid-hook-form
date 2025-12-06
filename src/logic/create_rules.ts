@@ -1,6 +1,6 @@
-import { FormValues } from "../types/form";
-import { Path } from "../types/path";
-import { Rules } from "../types/validate";
+import type { FormValues } from "../types/form";
+import type { Path } from "../types/path";
+import type { Rules } from "../types/validate";
 
 export const createRules = <F extends FormValues>() => {
   const rules: Record<string, Rules<F, Path<F>>> = {};
@@ -14,7 +14,7 @@ export const createRules = <F extends FormValues>() => {
       maxLength: options.maxLength,
       pattern: options.pattern,
       valueAsNumber: options.valueAsNumber,
-      validate: options.validate,
+      validate: options.validate
     };
   };
 

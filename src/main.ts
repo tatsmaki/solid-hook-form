@@ -12,7 +12,7 @@ export type {
   CreateFormArg,
   CreateFormReturn,
   SubmitHandler,
-  SubmitErrorHandler,
+  SubmitErrorHandler
 } from "./types/form";
 export type { Control, UseControllerArg, UseControllerReturn } from "./types/controller";
 export type { Path } from "./types/path";

@@ -1,6 +1,6 @@
+import { useLocation } from "@solidjs/router";
 import { Link } from "solid-uix";
 import sx from "./header.module.css";
-import { useLocation } from "@solidjs/router";
 
 export const Header = () => {
   const location = useLocation();

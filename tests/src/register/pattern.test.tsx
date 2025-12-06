@@ -17,7 +17,7 @@ describe("pattern", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input {...register("email", { pattern })} error={errors.email} />
@@ -44,12 +44,12 @@ describe("pattern", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input
             {...register("email", {
-              pattern: { value: pattern, message: errorMessage },
+              pattern: { value: pattern, message: errorMessage }
             })}
             error={errors.email}
           />

@@ -1,5 +1,7 @@
-import { JSXElement } from "solid-js";
-import { createForm, CreateFormReturn, FormValues, SubmitHandler } from "./import";
+/** biome-ignore-all lint/a11y/useAriaPropsSupportedByRole: pre aria-label */
+
+import type { JSXElement } from "solid-js";
+import { type CreateFormReturn, createForm, type FormValues, type SubmitHandler } from "./import";
 
 type FormProps<F extends FormValues> = {
   mode?: "onChange" | "onSubmit" | "onBlur";
@@ -14,7 +16,7 @@ export const Form = <F extends FormValues>(props: FormProps<F>) => {
 
   const form = createForm({
     defaultValues,
-    mode,
+    mode
   });
   const { formState, values, handleSubmit } = form;
 

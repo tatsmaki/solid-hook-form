@@ -17,7 +17,7 @@ describe("minLength", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input {...register("email", { minLength })} error={errors.email} />
@@ -44,7 +44,7 @@ describe("minLength", () => {
     const page = render(() => (
       <Form
         defaultValues={{
-          email: "",
+          email: ""
         }}
         render={({ register, errors }) => (
           <Input

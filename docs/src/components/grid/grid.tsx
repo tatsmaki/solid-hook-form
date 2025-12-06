@@ -1,4 +1,4 @@
-import { ParentProps } from "solid-js";
+import type { ParentProps } from "solid-js";
 import sx from "./grid.module.css";
 
 export const Grid = (props: ParentProps) => {

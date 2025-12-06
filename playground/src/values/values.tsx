@@ -1,5 +1,5 @@
 import { useFormContext } from "../import";
-import { FormValues } from "../schema";
+import type { FormValues } from "../schema";
 import sx from "./values.module.css";
 
 export const Values = () => {
