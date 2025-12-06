@@ -35,6 +35,8 @@ export const DocsNavigation = () => {
               formState
             </Link>
           </li>
+          <li style={{ opacity: 0.5 }}>values</li>
+          <li style={{ opacity: 0.5 }}>errors</li>
           <li>
             <Link
               href="/docs/create-form/submit"
@@ -51,6 +53,27 @@ export const DocsNavigation = () => {
               color={location.pathname.includes("/docs/create-form/reset") ? "accent" : "secondary"}
             >
               reset
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/docs/create-form/set-value"
+              color={
+                location.pathname.includes("/docs/create-form/set-value") ? "accent" : "secondary"
+              }
+            >
+              setValue
+            </Link>
+          </li>
+          <li style={{ opacity: 0.5 }}>getValues</li>
+          <li>
+            <Link
+              href="/docs/create-form/trigger"
+              color={
+                location.pathname.includes("/docs/create-form/trigger") ? "accent" : "secondary"
+              }
+            >
+              trigger
             </Link>
           </li>
         </ul>

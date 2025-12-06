@@ -29,7 +29,7 @@ const UseForm = () => {
               ["Name", "Type", "Description"],
               ["defaultValues", "Object", "Default values for the form."],
               ["mode", "string", "Validation strategy. Defaults to 'onChange'."],
-              ["resolver", "Resolver", "Integrates with your preferred schema validation library."],
+              ["resolver", "Resolver", "Integrates with your preferred schema validation library."]
             ]}
           </Table>
 
@@ -72,8 +72,8 @@ const UseForm = () => {
                 [
                   "onChange",
                   "string",
-                  "Validation is triggered on the change event for each input. Only updated fields will be re-rendered.",
-                ],
+                  "Validation is triggered on the change event for each input. Only updated fields will be re-rendered."
+                ]
               ]}
             </Table>
 
@@ -179,18 +179,27 @@ const ExampleForm = () => {
                 formState
               </Link>
             </li>
+            <li>values</li>
+            <li>errors</li>
             <li>
               <Link href="/docs/create-form/submit" color="accent">
                 handleSubmit
               </Link>
             </li>
-            <li>values</li>
-            <li>errors</li>
-            <li>getValues</li>
-            <li>setValue</li>
             <li>
               <Link href="/docs/create-form/reset" color="accent">
                 reset
+              </Link>
+            </li>
+            <li>
+              <Link href="/docs/create-form/set-value" color="accent">
+                setValue
+              </Link>
+            </li>
+            <li>getValues</li>
+            <li>
+              <Link href="/docs/create-form/trigger" color="accent">
+                trigger
               </Link>
             </li>
           </ul>
