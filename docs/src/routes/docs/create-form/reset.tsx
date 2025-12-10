@@ -34,10 +34,16 @@ const Reset = () => {
               [
                 "values",
                 "Object",
-                "An optional object to reset form values, and it's recommended to provide the entire defaultValues when supplied",
+                "An optional object to reset form values, and it's recommended to provide the entire defaultValues when supplied"
               ],
-              ["options.keepTouched", "boolean", "Retain formState.touchedFields()."],
+              [
+                "opions.keepErrors",
+                "boolean",
+                "All errors will remain. This will not guarantee with further user actions."
+              ],
               ["options.keepDirty", "boolean", "Retain formState.dirtyFields()."],
+              ["opions.keepValues", "boolean", "Form input values will be unchanged."],
+              ["options.keepTouched", "boolean", "Retain formState.touchedFields()."]
             ]}
           </Table>
 
