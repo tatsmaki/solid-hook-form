@@ -26,7 +26,11 @@ export const createErrors = <F extends FormValues>() => {
     );
   };
 
-  const resetErrors = () => {
+  const resetErrors = (keepErrors?: boolean) => {
+    if (keepErrors) {
+      return;
+    }
+
     setErrors(reconcile({}));
   };
 
