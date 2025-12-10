@@ -10,7 +10,7 @@ beforeEach(() => {
 });
 
 describe("reset", () => {
-  it("should reset", async () => {
+  it("should reset values", async () => {
     const page = render(() => (
       <Form
         defaultValues={{
@@ -32,67 +32,114 @@ describe("reset", () => {
       />
     ));
 
-    const firstInput = page.getByRole("textbox", { name: "email" });
-    const secondInput = page.getByRole("textbox", { name: "password" });
-    const reset = page.getByRole("button", { name: "Reset" });
+    const emailInput = page.getByRole("textbox", { name: "email" });
+    const passwordInput = page.getByRole("textbox", { name: "password" });
+    const resetButton = page.getByRole("button", { name: "Reset" });
 
-    expect(firstInput).toHaveValue("");
-    expect(secondInput).toHaveValue("");
+    expect(emailInput).toHaveValue("");
+    expect(passwordInput).toHaveValue("");
 
-    await firstInput.fill("email");
-    await secondInput.fill("password");
-
-    await reset.click();
-    expect(firstInput).toHaveValue("");
-    expect(secondInput).toHaveValue("");
+    await emailInput.fill("email");
+    await passwordInput.fill("password");
+    await resetButton.click();
+    expect(emailInput).toHaveValue("");
+    expect(passwordInput).toHaveValue("");
   });
 
-  it("should reset but keep current values when keepValues is true", async () => {
-    const emailInputValue = "example@gmail.com";
+  it("should reset errors", async () => {
     const page = render(() => (
-      <Form 
+      <Form
         defaultValues={{
-          email: ""
-        }} render={({ register }) => (
+          email: "",
+          password: ""
+        }}
+        render={({ control, errors, register }) => (
           <>
-            <Input {...register("email")} />
+            <Input {...register("email", { minLength: 10 })} error={errors.email} />
+            <Controller
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <Input {...field} value={field.value()} error={errors.password} />
+              )}
+              rules={{
+                minLength: 10
+              }}
+            />
           </>
         )}
         onSubmit={onSubmit}
-        onReset={({ reset, values }) => reset({ ...values() }, { keepValues: true })}
+        onReset={({ reset }) => reset()}
       />
-    )); 
-    
+    ));
+
     const emailInput = page.getByRole("textbox", { name: "email" });
-    const reset = page.getByRole("button", { name: "Reset" });
+    const passwordInput = page.getByRole("textbox", { name: "password" });
+    const resetButton = page.getByRole("button", { name: "Reset" });
 
-    await emailInput.fill(emailInputValue);
-    await reset.click();
+    await emailInput.fill("email");
+    await passwordInput.fill("password");
+    expect(emailInput).toHaveAttribute("aria-invalid", "true");
+    expect(passwordInput).toHaveAttribute("aria-invalid", "true");
 
-    expect(emailInput).toHaveValue(emailInputValue)
-  })
+    await resetButton.click();
+    expect(emailInput).toHaveAttribute("aria-invalid", "false");
+    expect(passwordInput).toHaveAttribute("aria-invalid", "false");
+  });
 
-  it("should reset and clear errors unless keepErrors is true", async () => {
+  it("should keep values", async () => {
     const page = render(() => (
       <Form
-        defaultValues={{ email: "" }}
-        render={({ register, setValue, errors }) => (
+        defaultValues={{
+          email: "",
+          password: ""
+        }}
+        render={({ control, register }) => (
           <>
-            <>
-              <Input {...register("email", { required: "Email is required" })} />
-              {errors?.email?.message ? (
-                <p data-testid="email-error">{errors.email?.message}</p>       
-              ): null}
-            </>
-            <button
-              type="button"
-              onClick={() => {
-                // simulate filling invalid value
-                setValue("email", "", { shouldValidate: true }); // empty triggers required
-              }}
-            >
-            Fill Invalid
-          </button>
+            <Input {...register("email")} />
+            <Controller
+              control={control}
+              name="password"
+              render={({ field }) => <Input {...field} value={field.value()} />}
+            />
+          </>
+        )}
+        onSubmit={onSubmit}
+        onReset={({ reset }) => reset(undefined, { keepValues: true })}
+      />
+    ));
+
+    const emailInput = page.getByRole("textbox", { name: "email" });
+    const passwordInput = page.getByRole("textbox", { name: "password" });
+    const resetButton = page.getByRole("button", { name: "Reset" });
+
+    const emailValue = "example@gmail.com";
+    const passwordValue = "secret";
+    await emailInput.fill(emailValue);
+    await passwordInput.fill(passwordValue);
+    await resetButton.click();
+    expect(emailInput).toHaveValue(emailValue);
+    expect(passwordInput).toHaveValue(passwordValue);
+  });
+
+  it("should keep errors", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: "",
+          password: ""
+        }}
+        render={({ control, errors, register }) => (
+          <>
+            <Input {...register("email", { required: true })} error={errors.email} />
+            <Controller
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <Input {...field} value={field.value()} error={errors.password} />
+              )}
+              rules={{ required: true }}
+            />
           </>
         )}
         onSubmit={onSubmit}
@@ -101,18 +148,19 @@ describe("reset", () => {
     ));
 
     const emailInput = page.getByRole("textbox", { name: "email" });
+    const passwordInput = page.getByRole("textbox", { name: "password" });
     const resetButton = page.getByRole("button", { name: "Reset" });
-    const fillInvalidBtn = page.getByRole("button", { name: "Fill Invalid" });
-    const errorMessage = page.getByTestId("email-error");
-  
-    await fillInvalidBtn.click();
 
-    expect(errorMessage).toHaveTextContent("Email is required");
-    expect(emailInput).toHaveValue("");
+    await emailInput.fill("email");
+    await emailInput.fill("");
+    expect(emailInput).toHaveAttribute("aria-invalid", "true");
+
+    await passwordInput.fill("password");
+    await passwordInput.fill("");
+    expect(passwordInput).toHaveAttribute("aria-invalid", "true");
 
     await resetButton.click();
-
-    expect(errorMessage).toHaveTextContent("Email is required")
-    expect(emailInput).toHaveValue("")
+    expect(emailInput).toHaveAttribute("aria-invalid", "true");
+    expect(passwordInput).toHaveAttribute("aria-invalid", "true");
   });
 });
