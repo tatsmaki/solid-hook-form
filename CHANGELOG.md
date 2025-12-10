@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0 (2025-12-10)
+
+### Added
+
+- reset API options including keepValues and keepErrors [1e9fefa](https://github.com/tatsmaki/solid-hook-form/commit/1e9fefaeedc0aacf5dca454e57a6a6ee93c5f64e), [3efb658](https://github.com/tatsmaki/solid-hook-form/commit/3efb658af9edac378f7a4fabfcf465a6372f1506)
+
 ## 2.1.0 (2025-12-06)
 
 ### Added
