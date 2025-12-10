@@ -17,12 +17,12 @@ import type {
   FormValues,
   GetValues,
   HandleSubmit,
-  Reset,
   SetValue,
   Trigger
 } from "./types/form";
 import type { Path } from "./types/path";
 import type { Register } from "./types/register";
+import type { Reset } from "./types/reset";
 import { get } from "./utils/get";
 import { getResolverFields } from "./utils/resolver";
 import { set } from "./utils/set";

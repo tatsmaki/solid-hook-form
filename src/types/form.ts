@@ -5,6 +5,7 @@ import type { DirtyFields } from "./dirty";
 import type { FieldErrors } from "./errors";
 import type { FieldPath, FieldPathValue, Path } from "./path";
 import type { Ref, Register } from "./register";
+import type { Reset } from "./reset";
 import type { TouchedFields } from "./touched";
 
 // biome-ignore lint/suspicious/noExplicitAny: value can be any
@@ -45,18 +46,6 @@ export type HandleSubmit<F extends FormValues> = (
   onSubmit: SubmitHandler<F>,
   onError?: SubmitErrorHandler<F>
 ) => (event: SubmitEvent) => void;
-
-export type ResetOptions = {
-  keepErrors?: boolean;
-  keepValues?: boolean;
-  keepTouched?: boolean;
-  keepDirty?: boolean;
-};
-
-export type Reset<F extends FormValues> = (
-  newDefaultValues?: Partial<F>,
-  options?: ResetOptions
-) => void;
 
 export type CreateFormArg<F extends FormValues> = {
   defaultValues: F;
