@@ -19,7 +19,7 @@ describe("submit", () => {
         render={({ formState, register }) => (
           <>
             <Input {...register("email")} />
-            <span aria-label="isSubmitted">{formState.isSubmitted()}</span>
+            <span aria-label="isSubmitted">{String(formState.isSubmitted())}</span>
           </>
         )}
         onSubmit={onSubmit}
