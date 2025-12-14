@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.0 (2025-12-14)
+
+### Added
+
+- formState isSubmitted and submitCount [bbe0cac](https://github.com/tatsmaki/solid-hook-form/commit/bbe0cac886d3996361c11027de11182178c64f58)
+
 ## 2.2.0 (2025-12-10)
 
 ### Added
