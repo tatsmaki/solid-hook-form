@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/a11y/useAriaPropsSupportedByRole: aria-label */
+
 import { render } from "vitest-browser-solid";
 import { Form } from "../form";
 import { Controller } from "../import";
@@ -87,6 +89,60 @@ describe("reset", () => {
     expect(passwordInput).toHaveAttribute("aria-invalid", "false");
   });
 
+  it("should reset isSubmitted", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: ""
+        }}
+        render={({ formState, register }) => (
+          <>
+            <Input {...register("email")} />
+            <span aria-label="isSubmitted">{String(formState.isSubmitted())}</span>
+          </>
+        )}
+        onSubmit={onSubmit}
+        onReset={({ reset }) => reset()}
+      />
+    ));
+
+    const submitButton = page.getByRole("button", { name: "Submit" });
+    const resetButton = page.getByRole("button", { name: "Reset" });
+    const isSubmitted = page.getByLabelText("isSubmitted");
+
+    await submitButton.click();
+    expect(isSubmitted).toHaveTextContent("true");
+    await resetButton.click();
+    expect(isSubmitted).toHaveTextContent("false");
+  });
+
+  it("should reset submitCount", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: ""
+        }}
+        render={({ formState, register }) => (
+          <>
+            <Input {...register("email")} />
+            <span aria-label="submitCount">{formState.submitCount()}</span>
+          </>
+        )}
+        onSubmit={onSubmit}
+        onReset={({ reset }) => reset()}
+      />
+    ));
+
+    const submitButton = page.getByRole("button", { name: "Submit" });
+    const resetButton = page.getByRole("button", { name: "Reset" });
+    const submitCount = page.getByLabelText("submitCount");
+
+    await submitButton.click();
+    expect(submitCount).toHaveTextContent("1");
+    await resetButton.click();
+    expect(submitCount).toHaveTextContent("0");
+  });
+
   it("should keep values", async () => {
     const page = render(() => (
       <Form
@@ -162,5 +218,59 @@ describe("reset", () => {
     await resetButton.click();
     expect(emailInput).toHaveAttribute("aria-invalid", "true");
     expect(passwordInput).toHaveAttribute("aria-invalid", "true");
+  });
+
+  it("should keep isSubmitted", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: ""
+        }}
+        render={({ formState, register }) => (
+          <>
+            <Input {...register("email")} />
+            <span aria-label="isSubmitted">{String(formState.isSubmitted())}</span>
+          </>
+        )}
+        onSubmit={onSubmit}
+        onReset={({ reset }) => reset(undefined, { keepIsSubmitted: true })}
+      />
+    ));
+
+    const submitButton = page.getByRole("button", { name: "Submit" });
+    const resetButton = page.getByRole("button", { name: "Reset" });
+    const isSubmitted = page.getByLabelText("isSubmitted");
+
+    await submitButton.click();
+    expect(isSubmitted).toHaveTextContent("true");
+    await resetButton.click();
+    expect(isSubmitted).toHaveTextContent("true");
+  });
+
+  it("should keep submitCount", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: ""
+        }}
+        render={({ formState, register }) => (
+          <>
+            <Input {...register("email")} />
+            <span aria-label="submitCount">{formState.submitCount()}</span>
+          </>
+        )}
+        onSubmit={onSubmit}
+        onReset={({ reset }) => reset(undefined, { keepSubmitCount: true })}
+      />
+    ));
+
+    const submitButton = page.getByRole("button", { name: "Submit" });
+    const resetButton = page.getByRole("button", { name: "Reset" });
+    const submitCount = page.getByLabelText("submitCount");
+
+    await submitButton.click();
+    expect(submitCount).toHaveTextContent("1");
+    await resetButton.click();
+    expect(submitCount).toHaveTextContent("1");
   });
 });
