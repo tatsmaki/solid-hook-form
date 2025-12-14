@@ -30,19 +30,25 @@ const FormState = () => {
               [
                 "isDirty",
                 "Accessor<boolean>",
-                "Set to true after the user modifies any of the inputs.",
+                "Set to true after the user modifies any of the inputs."
               ],
               ["errors", "FieldErrors", "Store proxy object with field errors."],
               [
                 "dirtyFields",
                 "Accessor<DirtyFields>",
-                "Accessor to get user-modified fields. Make sure to provide all inputs' defaultValues via createForm, so the library can compare against the defaultValues.",
+                "Accessor to get user-modified fields. Make sure to provide all inputs' defaultValues via createForm, so the library can compare against the defaultValues."
               ],
               [
                 "touchedFields",
                 "Accessor<TouchedFields>",
-                "Accessor to get all the inputs the user has interacted with.",
+                "Accessor to get all the inputs the user has interacted with."
               ],
+              [
+                "isSubmitted",
+                "Accessor<boolean>",
+                "Set to true after the form is submitted. Will remain true until the reset method is invoked."
+              ],
+              ["submitCount", "Accessor<number>", "Number of times the form was submitted."]
             ]}
           </Table>
 

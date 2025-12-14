@@ -43,7 +43,9 @@ const Reset = () => {
               ],
               ["options.keepDirty", "boolean", "Retain formState.dirtyFields()."],
               ["opions.keepValues", "boolean", "Form input values will be unchanged."],
-              ["options.keepTouched", "boolean", "Retain formState.touchedFields()."]
+              ["options.keepTouched", "boolean", "Retain formState.touchedFields()."],
+              ["options.keepIsSubmitted", "boolean", "isSubmitted state will be unchanged."],
+              ["options.keepSubmitCount", "boolean", "submitCount state will be unchanged."]
             ]}
           </Table>
 
