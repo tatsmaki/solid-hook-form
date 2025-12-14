@@ -3,6 +3,7 @@ import { createDirtyFields } from "./logic/create_dirty_fields";
 import { createErrors } from "./logic/create_errors";
 import { createFields } from "./logic/create_fields";
 import { createRules } from "./logic/create_rules";
+import { createSubmit } from "./logic/create_submit";
 import { createTouchedFields } from "./logic/create_touched_fields";
 import { formatValue } from "./logic/format_value";
 import { getFieldValue } from "./logic/get_value";
@@ -38,6 +39,7 @@ export const createForm: CreateForm = <F extends FormValues>(
   const { errors, appendError, removeError, resetErrors, getError } = createErrors<F>();
   const { touchedFields, addTouched, resetTouched } = createTouchedFields<F>();
   const { dirtyFields, isDirty, checkDirty, resetDirty } = createDirtyFields<F>(defaultValues);
+  const { isSubmitted, submitCount, logSubmit, resetSubmit } = createSubmit();
 
   const isValid = createMemo(() => {
     return !Object.keys(errors).length;
@@ -213,6 +215,7 @@ export const createForm: CreateForm = <F extends FormValues>(
   const handleSubmit: HandleSubmit<F> = (onSubmit, onError) => {
     return async (event) => {
       event.preventDefault();
+      logSubmit();
       await validateAllFields();
 
       if (isValid()) {
@@ -226,6 +229,7 @@ export const createForm: CreateForm = <F extends FormValues>(
   };
 
   const reset: Reset<F> = (values, options = {}) => {
+    resetSubmit(options.keepIsSubmitted, options.keepSubmitCount);
     resetErrors(options.keepErrors);
     resetTouched(options.keepTouched);
     resetDirty(options.keepDirty);
@@ -263,7 +267,9 @@ export const createForm: CreateForm = <F extends FormValues>(
       isValid,
       isDirty,
       touchedFields,
-      dirtyFields
+      dirtyFields,
+      isSubmitted,
+      submitCount
     },
     values,
     errors,

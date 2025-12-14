@@ -6,6 +6,8 @@ export type ResetOptions = {
   keepValues?: boolean;
   keepTouched?: boolean;
   keepDirty?: boolean;
+  keepIsSubmitted?: boolean;
+  keepSubmitCount?: boolean;
 };
 
 export type Reset<F extends FormValues> = (values?: Partial<F>, options?: ResetOptions) => void;
