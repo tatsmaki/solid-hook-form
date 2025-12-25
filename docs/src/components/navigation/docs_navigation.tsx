@@ -57,6 +57,28 @@ export const DocsNavigation = () => {
           </li>
           <li>
             <Link
+              href="/docs/create-form/set-error"
+              color={
+                location.pathname.includes("/docs/create-form/set-error") ? "accent" : "secondary"
+              }
+            >
+              setError
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/docs/create-form/clear-errors"
+              color={
+                location.pathname.includes("/docs/create-form/clear-errors")
+                  ? "accent"
+                  : "secondary"
+              }
+            >
+              clearErrors
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/docs/create-form/set-value"
               color={
                 location.pathname.includes("/docs/create-form/set-value") ? "accent" : "secondary"
