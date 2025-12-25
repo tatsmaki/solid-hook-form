@@ -29,3 +29,13 @@ export type FieldError = {
 // };
 
 export type FieldErrors<F extends FormValues = FormValues> = Partial<Record<Path<F>, FieldError>>;
+
+export type SetErrorOptions = {
+  shouldFocus?: boolean;
+};
+
+export type SetError<F extends FormValues = FormValues> = (
+  name: Path<F>,
+  error: FieldError,
+  options?: SetErrorOptions
+) => void;

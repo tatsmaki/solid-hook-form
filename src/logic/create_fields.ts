@@ -12,9 +12,14 @@ export const createFields = () => {
     fields[name] = element;
   };
 
+  const focusField = (name: string) => {
+    getField(name)?.focus();
+  };
+
   return {
     fields,
     getField,
-    setField
+    setField,
+    focusField
   };
 };
