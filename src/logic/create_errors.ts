@@ -1,5 +1,5 @@
 import { createStore, produce, reconcile } from "solid-js/store";
-import type { FieldError, FieldErrors } from "../types/errors";
+import type { ClearErrors, FieldError, FieldErrors } from "../types/errors";
 import type { FormValues } from "../types/form";
 import type { Path } from "../types/path";
 
@@ -18,7 +18,7 @@ export const createErrors = <F extends FormValues>() => {
     );
   };
 
-  const removeError = (name: Path<F>) => {
+  const clearError = (name: Path<F>) => {
     setErrors(
       produce((prevState) => {
         delete prevState[name];
@@ -34,11 +34,32 @@ export const createErrors = <F extends FormValues>() => {
     setErrors(reconcile({}));
   };
 
+  const clearErrors: ClearErrors<F> = (name) => {
+    if (!name) {
+      resetErrors();
+      return;
+    }
+
+    if (typeof name === "string") {
+      clearError(name);
+      return;
+    }
+
+    setErrors(
+      produce((prevState) => {
+        name.forEach((name) => {
+          delete prevState[name];
+        });
+      })
+    );
+  };
+
   return {
     errors,
     appendError,
-    removeError,
+    clearError,
     resetErrors,
-    getError
+    getError,
+    clearErrors
   };
 };

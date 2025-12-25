@@ -36,7 +36,7 @@ export const createForm: CreateForm = <F extends FormValues>(
   const { fields, getField, setField, focusField } = createFields();
   const { rules, addRule, getRule } = createRules<F>();
   const [values, setValues] = createSignal<F>(structuredClone(defaultValues));
-  const { errors, appendError, removeError, resetErrors, getError } = createErrors<F>();
+  const { errors, appendError, clearError, resetErrors, clearErrors, getError } = createErrors<F>();
   const { touchedFields, addTouched, resetTouched } = createTouchedFields<F>();
   const { dirtyFields, isDirty, checkDirty, resetDirty } = createDirtyFields<F>(defaultValues);
   const { isSubmitted, submitCount, logSubmit, resetSubmit } = createSubmit();
@@ -59,10 +59,6 @@ export const createForm: CreateForm = <F extends FormValues>(
     }
   };
 
-  const clearFieldError = (name: Path<F>) => {
-    removeError(name);
-  };
-
   const runSchema = async (names: Path<F>[]) => {
     if (!resolver) {
       return;
@@ -79,7 +75,7 @@ export const createForm: CreateForm = <F extends FormValues>(
       if (error) {
         setError(name, error);
       } else {
-        clearFieldError(name);
+        clearError(name);
       }
     }
   };
@@ -97,7 +93,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     if (error) {
       setError(name, error);
     } else {
-      clearFieldError(name);
+      clearError(name);
     }
   };
 
@@ -283,6 +279,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     handleSubmit,
     reset,
     setError,
+    clearErrors,
     trigger
   };
 };
