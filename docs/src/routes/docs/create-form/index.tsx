@@ -192,6 +192,16 @@ const ExampleForm = () => {
               </Link>
             </li>
             <li>
+              <Link href="/docs/create-form/set-error" color="accent">
+                setError
+              </Link>
+            </li>
+            <li>
+              <Link href="/docs/create-form/clear-errors" color="accent">
+                clearErrors
+              </Link>
+            </li>
+            <li>
               <Link href="/docs/create-form/set-value" color="accent">
                 setValue
               </Link>
