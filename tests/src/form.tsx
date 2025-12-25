@@ -7,6 +7,7 @@ type FormProps<F extends FormValues> = {
   mode?: "onChange" | "onSubmit" | "onBlur";
   defaultValues: F;
   render: (form: CreateFormReturn<F>) => JSXElement;
+  submitButton?: (form: CreateFormReturn<F>) => JSXElement;
   onSubmit: SubmitHandler<F>;
   onReset?(form: CreateFormReturn<F>): void;
 };
@@ -28,7 +29,7 @@ export const Form = <F extends FormValues>(props: FormProps<F>) => {
       >
         {props.render(form)}
 
-        <button type="submit">Submit</button>
+        {props.submitButton?.(form) ?? <button type="submit">Submit</button>}
 
         <button type="button" onClick={() => props.onReset?.(form)}>
           Reset
