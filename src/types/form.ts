@@ -2,7 +2,7 @@ import type { Resolver } from "react-hook-form";
 import type { Accessor } from "solid-js";
 import type { Control } from "./controller";
 import type { DirtyFields } from "./dirty";
-import type { FieldErrors } from "./errors";
+import type { FieldErrors, SetError } from "./errors";
 import type { FieldPath, FieldPathValue, Path } from "./path";
 import type { Ref, Register } from "./register";
 import type { Reset } from "./reset";
@@ -71,6 +71,7 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
   setValue: SetValue<F>;
   handleSubmit: HandleSubmit<F>;
   reset: Reset<F>;
+  setError: SetError<F>;
   trigger: Trigger<F>;
 };
 

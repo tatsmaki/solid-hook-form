@@ -10,7 +10,7 @@ import { getFieldValue } from "./logic/get_value";
 import { setFieldValue } from "./logic/set_value";
 import { validate } from "./logic/validate";
 import type { Control } from "./types/controller";
-import type { FieldError } from "./types/errors";
+import type { SetError } from "./types/errors";
 import type {
   CreateForm,
   CreateFormArg,
@@ -33,7 +33,7 @@ export const createForm: CreateForm = <F extends FormValues>(
 ): CreateFormReturn<F> => {
   const { defaultValues, mode = "onChange", resolver } = arg;
 
-  const { fields, getField, setField } = createFields();
+  const { fields, getField, setField, focusField } = createFields();
   const { rules, addRule, getRule } = createRules<F>();
   const [values, setValues] = createSignal<F>(structuredClone(defaultValues));
   const { errors, appendError, removeError, resetErrors, getError } = createErrors<F>();
@@ -45,7 +45,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     return !Object.keys(errors).length;
   });
 
-  const setFieldError = (name: Path<F>, error: FieldError) => {
+  const setError: SetError<F> = (name, error, options) => {
     const field = getField(name);
 
     if (field) {
@@ -53,6 +53,10 @@ export const createForm: CreateForm = <F extends FormValues>(
     }
 
     appendError(name, error);
+
+    if (options?.shouldFocus) {
+      focusField(name);
+    }
   };
 
   const clearFieldError = (name: Path<F>) => {
@@ -73,7 +77,7 @@ export const createForm: CreateForm = <F extends FormValues>(
       const error = get(result.errors, name);
 
       if (error) {
-        setFieldError(name, error);
+        setError(name, error);
       } else {
         clearFieldError(name);
       }
@@ -91,7 +95,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     const error = validate(values(), name, rule);
 
     if (error) {
-      setFieldError(name, error);
+      setError(name, error);
     } else {
       clearFieldError(name);
     }
@@ -278,6 +282,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     setValue,
     handleSubmit,
     reset,
+    setError,
     trigger
   };
 };
