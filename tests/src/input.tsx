@@ -18,6 +18,7 @@ export const Input = (props: InputProps) => {
         type="text"
         aria-invalid={!!props.error}
         aria-errormessage={errorId}
+        style={{ "border-color": props.error ? "red" : undefined }}
         {...rest}
       />
 
