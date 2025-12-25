@@ -39,3 +39,5 @@ export type SetError<F extends FormValues = FormValues> = (
   error: FieldError,
   options?: SetErrorOptions
 ) => void;
+
+export type ClearErrors<F extends FormValues = FormValues> = (name?: Path<F> | Path<F>[]) => void;
