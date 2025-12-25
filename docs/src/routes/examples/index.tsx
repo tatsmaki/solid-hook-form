@@ -1,10 +1,11 @@
+import curly from "@phosphor-icons/core/regular/brackets-curly.svg?raw";
+import check from "@phosphor-icons/core/regular/check-circle.svg?raw";
+// import server from "@phosphor-icons/core/regular/cloud-check.svg?raw";
+import upload from "@phosphor-icons/core/regular/upload-simple.svg?raw";
 import { Title } from "@solidjs/meta";
 import { Container } from "~/components/container/container";
-import { Grid } from "~/components/grid/grid";
-import check from "@phosphor-icons/core/regular/check-circle.svg?raw";
-import curly from "@phosphor-icons/core/regular/brackets-curly.svg?raw";
-import upload from "@phosphor-icons/core/regular/upload-simple.svg?raw";
 import { Footer } from "~/components/footer/footer";
+import { Grid } from "~/components/grid/grid";
 
 const Examples = () => {
   return (
@@ -34,6 +35,14 @@ const Examples = () => {
           <Grid.Item href="/examples/yup">
             <h2>Yup</h2>
             <p>Integrate Yup schema validation into your form.</p>
+          </Grid.Item>
+
+          <Grid.Item href="/examples/async-validation">
+            <h2>
+              {/* <span innerHTML={server} /> */}
+              Async Validation
+            </h2>
+            <p>Give error feedback to a user after server-side validation.</p>
           </Grid.Item>
 
           <Grid.Item href="/examples/nested-values">
