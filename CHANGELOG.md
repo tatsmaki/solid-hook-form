@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.4.0 (2025-12-25)
+
+### Added
+
+- createForm setError API to add custom errors manually [960e5a7](https://github.com/tatsmaki/solid-hook-form/commit/960e5a75f6a95a0c7eec113c1312675ad3fb5e8f)
+- createForm clearErrors API to clear errors without form reset [53eed0c](https://github.com/tatsmaki/solid-hook-form/commit/53eed0cb268c52ab361ccf600bacd19f7a264dab)
+
 ## 2.3.0 (2025-12-14)
 
 ### Added
