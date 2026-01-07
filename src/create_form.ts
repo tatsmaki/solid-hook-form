@@ -31,7 +31,7 @@ import { set } from "./utils/set";
 export const createForm: CreateForm = <F extends FormValues>(
   arg: CreateFormArg<F>
 ): CreateFormReturn<F> => {
-  const { defaultValues, mode = "onChange", resolver } = arg;
+  const { defaultValues, mode = "onChange", shouldFocusError = true, resolver } = arg;
 
   const { fields, getField, setField, focusField } = createFields();
   const { rules, addRule, getRule } = createRules<F>();
@@ -224,7 +224,10 @@ export const createForm: CreateForm = <F extends FormValues>(
       }
 
       onError?.(errors);
-      focusFirstError();
+
+      if (shouldFocusError) {
+        focusFirstError();
+      }
     };
   };
 

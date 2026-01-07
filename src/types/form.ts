@@ -50,6 +50,7 @@ export type HandleSubmit<F extends FormValues> = (
 export type CreateFormArg<F extends FormValues> = {
   defaultValues: F;
   mode?: "onChange" | "onSubmit" | "onBlur";
+  shouldFocusError?: boolean;
   resolver?: Resolver<F>;
 };
 
