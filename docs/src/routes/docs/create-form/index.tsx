@@ -29,7 +29,8 @@ const UseForm = () => {
               ["Name", "Type", "Description"],
               ["defaultValues", "Object", "Default values for the form."],
               ["mode", "string", "Validation strategy. Defaults to 'onChange'."],
-              ["resolver", "Resolver", "Integrates with your preferred schema validation library."]
+              ["resolver", "Resolver", "Integrates with your preferred schema validation library."],
+              ["shouldFocusError", "boolean", "Enable or disable built-in focus management."]
             ]}
           </Table>
 
@@ -160,6 +161,31 @@ const ExampleForm = () => {
     </form>
   )
 }`}
+            </Code>
+          </div>
+
+          <div id="shouldFocusError">
+            <h2>
+              <Link href="#shouldFocusError" color="secondary">
+                shouldFocusError
+              </Link>
+            </h2>
+
+            <p>
+              When set to true (default), and the user submits a form that fails validation, focus
+              is set on the first field with an error.
+              <br />
+              The focus order is based on the register order.
+            </p>
+
+            <Code language="js">
+              {`createForm({
+  defaultValues: {
+    firstName: "",
+    lastName: ""
+  },
+  shouldFocusError: false
+})`}
             </Code>
           </div>
 
