@@ -4,8 +4,9 @@ import type { JSXElement } from "solid-js";
 import { type CreateFormReturn, createForm, type FormValues, type SubmitHandler } from "./import";
 
 type FormProps<F extends FormValues> = {
-  mode?: "onChange" | "onSubmit" | "onBlur";
   defaultValues: F;
+  mode?: "onChange" | "onSubmit" | "onBlur";
+  shouldFocusError?: boolean;
   render: (form: CreateFormReturn<F>) => JSXElement;
   submitButton?: (form: CreateFormReturn<F>) => JSXElement;
   onSubmit: SubmitHandler<F>;
@@ -13,11 +14,12 @@ type FormProps<F extends FormValues> = {
 };
 
 export const Form = <F extends FormValues>(props: FormProps<F>) => {
-  const { mode, defaultValues } = props;
+  const { mode, defaultValues, shouldFocusError } = props;
 
   const form = createForm({
     defaultValues,
-    mode
+    mode,
+    shouldFocusError
   });
   const { formState, values, handleSubmit } = form;
 
