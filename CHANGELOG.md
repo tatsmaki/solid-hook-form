@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.5.0 (2026-01-09)
+
+### Added
+
+- onTouched validation mode [36a19f8](https://github.com/tatsmaki/solid-hook-form/commit/36a19f80bee6844aa97772dd89f0e70746f910f0)
+
+### Bug fixes
+
+- shouldFocusError prop can be used to disable internal focus management [7af44cc](https://github.com/tatsmaki/solid-hook-form/commit/7af44ccb6f2be1badd37ecd49deaf4ad09c79754)
+
 ## 2.4.0 (2025-12-25)
 
 ### Added
