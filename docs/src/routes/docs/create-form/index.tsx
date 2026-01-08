@@ -64,16 +64,26 @@ const UseForm = () => {
               </Link>
             </h2>
 
-            <p>This option allows you to configure the validation strategy.</p>
+            <p>
+              This option allows you to configure the validation strategy before a user submits the
+              form. The validation occurs during the onSubmit event, which is triggered by invoking
+              the handleSubmit function.
+            </p>
 
             <Table>
               {[
                 ["Name", "Type", "Description"],
                 ["onSubmit", "string", "Validation is triggered on the submit event."],
+                ["onBlur", "string", "Validation is triggered on the blur event."],
                 [
                   "onChange",
                   "string",
-                  "Validation is triggered on the change event for each input. Only updated fields will be re-rendered."
+                  "Validation is triggered on the change event for each input, leading to multiple re-renders."
+                ],
+                [
+                  "onTouched",
+                  "string",
+                  "Validation is initially triggered on the first blur event. After that, it is triggered on every change event."
                 ]
               ]}
             </Table>
