@@ -45,6 +45,10 @@ export const createForm: CreateForm = <F extends FormValues>(
     return !Object.keys(errors).length;
   });
 
+  const isTouched = (name: Path<F>) => {
+    return get(touchedFields(), name);
+  };
+
   const setError: SetError<F> = (name, error, options) => {
     const field = getField(name);
 
@@ -145,21 +149,21 @@ export const createForm: CreateForm = <F extends FormValues>(
       onInput(event) {
         onFieldChange(event, name);
 
-        if (mode === "onChange") {
+        if (mode === "onChange" || (mode === "onTouched" && isTouched(name))) {
           validateField(name);
         }
       },
       onChange(event) {
         onFieldChange(event, name);
 
-        if (mode === "onChange") {
+        if (mode === "onChange" || (mode === "onTouched" && isTouched(name))) {
           validateField(name);
         }
       },
       onBlur(event) {
         onFieldChange(event, name);
 
-        if (mode === "onBlur") {
+        if (mode === "onBlur" || (mode === "onTouched" && !isTouched(name))) {
           validateField(name);
         }
 
