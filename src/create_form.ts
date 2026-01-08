@@ -10,7 +10,7 @@ import { getFieldValue } from "./logic/get_value";
 import { setFieldValue } from "./logic/set_value";
 import { validate } from "./logic/validate";
 import type { Control } from "./types/controller";
-import type { SetError } from "./types/errors";
+import type { FieldError, SetError } from "./types/errors";
 import type {
   CreateForm,
   CreateFormArg,
@@ -59,6 +59,14 @@ export const createForm: CreateForm = <F extends FormValues>(
     }
   };
 
+  const renderError = (name: Path<F>, error?: FieldError) => {
+    if (error) {
+      setError(name, error);
+    } else {
+      clearError(name);
+    }
+  };
+
   const runSchema = async (names: Path<F>[]) => {
     if (!resolver) {
       return;
@@ -72,17 +80,13 @@ export const createForm: CreateForm = <F extends FormValues>(
     for (const name of names) {
       const error = get(result.errors, name);
 
-      if (error) {
-        setError(name, error);
-      } else {
-        clearError(name);
-      }
+      renderError(name, error);
     }
   };
 
-  const validateField = (name: Path<F>) => {
+  const validateField = async (name: Path<F>) => {
     if (resolver) {
-      runSchema([name]);
+      await runSchema([name]);
 
       return;
     }
@@ -90,11 +94,7 @@ export const createForm: CreateForm = <F extends FormValues>(
     const rule = getRule(name);
     const error = validate(values(), name, rule);
 
-    if (error) {
-      setError(name, error);
-    } else {
-      clearError(name);
-    }
+    renderError(name, error);
   };
 
   const validateAllFields = async () => {
@@ -133,7 +133,7 @@ export const createForm: CreateForm = <F extends FormValues>(
 
       return newState;
     });
-    validateField(name);
+
     checkDirty(name, value);
   };
 
@@ -143,18 +143,24 @@ export const createForm: CreateForm = <F extends FormValues>(
     return {
       name,
       onInput(event) {
+        onFieldChange(event, name);
+
         if (mode === "onChange") {
-          onFieldChange(event, name);
+          validateField(name);
         }
       },
       onChange(event) {
+        onFieldChange(event, name);
+
         if (mode === "onChange") {
-          onFieldChange(event, name);
+          validateField(name);
         }
       },
       onBlur(event) {
+        onFieldChange(event, name);
+
         if (mode === "onBlur") {
-          onFieldChange(event, name);
+          validateField(name);
         }
 
         addTouched(name);

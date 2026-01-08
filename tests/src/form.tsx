@@ -5,7 +5,7 @@ import { type CreateFormReturn, createForm, type FormValues, type SubmitHandler 
 
 type FormProps<F extends FormValues> = {
   defaultValues: F;
-  mode?: "onChange" | "onSubmit" | "onBlur";
+  mode?: "onChange" | "onSubmit" | "onBlur" | "onTouched";
   shouldFocusError?: boolean;
   render: (form: CreateFormReturn<F>) => JSXElement;
   submitButton?: (form: CreateFormReturn<F>) => JSXElement;
@@ -26,7 +26,7 @@ export const Form = <F extends FormValues>(props: FormProps<F>) => {
   return (
     <div>
       <form
-        style={{ display: "flex", "flex-direction": "column", gap: "16px" }}
+        style={{ display: "flex", "flex-direction": "column", gap: "32px" }}
         onSubmit={handleSubmit(props.onSubmit)}
       >
         {props.render(form)}
@@ -40,16 +40,20 @@ export const Form = <F extends FormValues>(props: FormProps<F>) => {
 
       <br />
       <br />
+      <p>
+        isValid <span aria-label="isValid">{formState.isValid() ? "true" : "false"}</span>
+      </p>
       <p>values</p>
       <pre aria-label="values">{JSON.stringify(values(), null, 2)}</pre>
       <br />
+
       <p>
         isDirty <span aria-label="isDirty">{formState.isDirty() ? "true" : "false"}</span>
       </p>
-
       <p>dirtyFields</p>
       <pre aria-label="dirtyFields">{JSON.stringify(formState.dirtyFields(), null, 2)}</pre>
       <br />
+
       <p>touchedFields</p>
       <pre aria-label="touchedFields">{JSON.stringify(formState.touchedFields(), null, 2)}</pre>
     </div>

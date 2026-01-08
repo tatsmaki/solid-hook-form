@@ -11,7 +11,7 @@ export const Input = (props: InputProps) => {
   const [, rest] = splitProps(props, ["error"]);
 
   return (
-    <div style={{ display: "flex", "flex-direction": "column" }}>
+    <div style={{ display: "flex", "flex-direction": "column", position: "relative" }}>
       <label for={inputId}>{props.name}</label>
       <input
         id={inputId}
@@ -23,7 +23,11 @@ export const Input = (props: InputProps) => {
       />
 
       {!!props.error && (
-        <p role="alert" id={errorId}>
+        <p
+          role="alert"
+          id={errorId}
+          style={{ color: "red", position: "absolute", bottom: "-50%", margin: 0 }}
+        >
           {props.error.message}
         </p>
       )}
