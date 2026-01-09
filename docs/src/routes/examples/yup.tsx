@@ -3,6 +3,10 @@ import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
+import { StackBlitzPreview } from "~/components/stackblitz-preview/stackblitz-preview";
+
+const stackblitzUrl =
+  "https://stackblitz.com/edit/solidjs-templates-mnwtfxjb?file=src%2Fexample_form%2Fexample_schema.ts";
 
 const Yup = () => {
   return (
@@ -12,31 +16,31 @@ const Yup = () => {
         <ExamplesNavigation />
 
         <Container.Content>
-        <h1>Yup</h1>
+          <h1>Yup</h1>
 
-        <p>
-          You can find full example at{" "}
-          <Link
-            href="https://stackblitz.com/edit/solidjs-templates-mnwtfxjb?file=src%2Fexample_form%2Fexample_schema.ts"
-            target="_blank"
-            color="accent"
-          >
-            StackBlitz
-          </Link>
-          .
-        </p>
+          <p>Integrate Yup schema validation into your form.</p>
 
-        <p>
-          Check{" "}
-          <Link href="https://github.com/jquense/yup" target="_blank" color="accent">
-            Yup
-          </Link>{" "}
-          documentation for more details.
-        </p>
+          <p>
+            You can find full example at{" "}
+            <Link href={stackblitzUrl} target="_blank" color="accent">
+              StackBlitz
+            </Link>
+            .
+          </p>
 
-        <p>Define a schema:</p>
+          <StackBlitzPreview src={stackblitzUrl} title="Yup" />
 
-        <Code language="js">{`import { object, string, boolean } from 'yup'
+          <p>
+            Check{" "}
+            <Link href="https://github.com/jquense/yup" target="_blank" color="accent">
+              Yup
+            </Link>{" "}
+            documentation for more details.
+          </p>
+
+          <p>Define a schema:</p>
+
+          <Code language="js">{`import { object, string, boolean } from 'yup'
 
 export const exampleSchema = object({
   email: string().email().required(),
@@ -45,15 +49,15 @@ export const exampleSchema = object({
 })
 `}</Code>
 
-        <p>When using TypeScript, infer form values type from the schema:</p>
+          <p>When using TypeScript, infer form values type from the schema:</p>
 
-        <Code language="ts">{`import { InferType } from 'yup'
+          <Code language="ts">{`import { InferType } from 'yup'
 
 export type ExampleFormValues = InferType<typeof exampleSchema>`}</Code>
 
-        <p>Connect schema to the form:</p>
+          <p>Connect schema to the form:</p>
 
-        <Code language="js">{`import { createForm } from 'solid-hook-form'
+          <Code language="js">{`import { createForm } from 'solid-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { exampleSchema } from './example_schema'
 

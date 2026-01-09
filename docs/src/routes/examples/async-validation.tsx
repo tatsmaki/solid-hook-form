@@ -5,6 +5,10 @@ import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
+import { StackBlitzPreview } from "~/components/stackblitz-preview/stackblitz-preview";
+
+const stackblitzUrl =
+  "https://stackblitz.com/edit/solidjs-templates-hrzxfhbq?file=src%2Fexample_form%2Fexample_form.tsx";
 
 const AsyncValidation = () => {
   return (
@@ -16,17 +20,17 @@ const AsyncValidation = () => {
         <Container.Content>
           <h1>Async Validation</h1>
 
+          <p>Give error feedback to a user after server-side validation.</p>
+
           <p>
             You can find full example at{" "}
-            <Link
-              href="https://stackblitz.com/edit/solidjs-templates-hrzxfhbq?file=src%2Fexample_form%2Fexample_form.tsx"
-              target="_blank"
-              color="accent"
-            >
+            <Link href={stackblitzUrl} target="_blank" color="accent">
               StackBlitz
             </Link>
             .
           </p>
+
+          <StackBlitzPreview src={stackblitzUrl} title="Async Validation" />
 
           <p>Set validation error manually after server response:</p>
 

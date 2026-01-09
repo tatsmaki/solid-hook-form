@@ -3,6 +3,10 @@ import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
+import { StackBlitzPreview } from "~/components/stackblitz-preview/stackblitz-preview";
+
+const stackblitzUrl =
+  "https://stackblitz.com/edit/solidjs-templates-fpxsx83t?file=src%2Fexample_form%2Fexample_schema.ts";
 
 const Zod = () => {
   return (
@@ -13,18 +17,17 @@ const Zod = () => {
 
         <Container.Content>
           <h1>Zod</h1>
+          <p>Integrate Zod schema validation into your form.</p>
 
           <p>
             You can find full example at{" "}
-            <Link
-              href="https://stackblitz.com/edit/solidjs-templates-fpxsx83t?file=src%2Fexample_form%2Fexample_schema.ts"
-              target="_blank"
-              color="accent"
-            >
+            <Link href={stackblitzUrl} target="_blank" color="accent">
               StackBlitz
             </Link>
             .
           </p>
+
+          <StackBlitzPreview src={stackblitzUrl} title="StackBlitz - Zod" />
 
           <p>
             Check{" "}

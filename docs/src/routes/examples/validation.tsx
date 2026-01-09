@@ -5,6 +5,10 @@ import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
+import { StackBlitzPreview } from "~/components/stackblitz-preview/stackblitz-preview";
+
+const stackblitzUrl =
+  "https://stackblitz.com/edit/solidjs-templates-lf7zsywk?file=src%2Fexample_form%2Fexample_form.tsx";
 
 const Validation = () => {
   return (
@@ -14,31 +18,31 @@ const Validation = () => {
         <ExamplesNavigation />
 
         <Container.Content>
-        <h1>Validation</h1>
+          <h1>Validation</h1>
 
-        <p>
-          You can find full example at{" "}
-          <Link
-            href="https://stackblitz.com/edit/solidjs-templates-lf7zsywk?file=src%2Fexample_form%2Fexample_form.tsx"
-            target="_blank"
-            color="accent"
-          >
-            StackBlitz
-          </Link>
-          .
-        </p>
+          <p>Apply validation rules to inputs and provide accessible error messages.</p>
 
-        <p>
-          You can find full list of validation rules in{" "}
-          <Link href="/docs/create-form/register#rules" color="accent">
-            createForm - register rules
-          </Link>{" "}
-          section.
-        </p>
+          <p>
+            You can find full example at{" "}
+            <Link href={stackblitzUrl} target="_blank" color="accent">
+              StackBlitz
+            </Link>
+            .
+          </p>
 
-        <p>Register input and apply validation rules:</p>
+          <StackBlitzPreview src={stackblitzUrl} title="Validation" />
 
-        <Code language="js">{`import { createForm } from "solid-hook-form"
+          <p>
+            You can find full list of validation rules in{" "}
+            <Link href="/docs/create-form/register#rules" color="accent">
+              createForm - register rules
+            </Link>{" "}
+            section.
+          </p>
+
+          <p>Register input and apply validation rules:</p>
+
+          <Code language="js">{`import { createForm } from "solid-hook-form"
 
 export const ExampleForm = () => {
   const form = createForm({
@@ -73,9 +77,9 @@ export const ExampleForm = () => {
   )
 }`}</Code>
 
-        <p>Don't forget to display an accessible error message:</p>
+          <p>Don't forget to display an accessible error message:</p>
 
-        <Code language="js">{`<input
+          <Code language="js">{`<input
   {...register("email", {
     required: "Required",
     pattern: {
@@ -87,12 +91,12 @@ export const ExampleForm = () => {
 />
 {errors.email && <p role="alert">{errors.email.message}</p>}`}</Code>
 
-        <p>
-          When using TypeScript, define form values type and apply it to the form for additional
-          type safety:
-        </p>
+          <p>
+            When using TypeScript, define form values type and apply it to the form for additional
+            type safety:
+          </p>
 
-        <Code language="ts">{`type ExampleFormValues = {
+          <Code language="ts">{`type ExampleFormValues = {
   email: string;
 }
 
