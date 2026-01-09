@@ -2,12 +2,16 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
+import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
 
 const Yup = () => {
   return (
     <main>
       <Title>Yup</Title>
-      <Container>
+      <Container.Grid>
+        <ExamplesNavigation />
+
+        <Container.Content>
         <h1>Yup</h1>
 
         <p>
@@ -84,7 +88,8 @@ export const ExampleForm = () => {
   )
 }
 `}</Code>
-      </Container>
+        </Container.Content>
+      </Container.Grid>
     </main>
   );
 };
