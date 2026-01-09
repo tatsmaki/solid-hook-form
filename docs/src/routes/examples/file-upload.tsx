@@ -1,13 +1,19 @@
+import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
 import { Image } from "~/components/image/image";
+import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
 
 const FileUpload = () => {
   return (
     <main>
-      <Container>
-        <h1>File Upload</h1>
+      <Title>File Upload</Title>
+      <Container.Grid>
+        <ExamplesNavigation />
+
+        <Container.Content>
+          <h1>File Upload</h1>
 
         <p>
           Check full example at{" "}
@@ -52,7 +58,8 @@ export const ExampleForm = () => {
   );
 };`}
         </Code>
-      </Container>
+        </Container.Content>
+      </Container.Grid>
     </main>
   );
 };

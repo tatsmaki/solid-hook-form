@@ -4,12 +4,16 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
+import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
 
 const Validation = () => {
   return (
     <main>
       <Title>Validation</Title>
-      <Container>
+      <Container.Grid>
+        <ExamplesNavigation />
+
+        <Container.Content>
         <h1>Validation</h1>
 
         <p>
@@ -99,7 +103,8 @@ const ExampleForm = () => {
     }
   })
 }`}</Code>
-      </Container>
+        </Container.Content>
+      </Container.Grid>
     </main>
   );
 };

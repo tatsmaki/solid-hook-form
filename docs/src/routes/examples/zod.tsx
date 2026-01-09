@@ -2,37 +2,41 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
+import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
 
 const Zod = () => {
   return (
     <main>
       <Title>Zod</Title>
-      <Container>
-        <h1>Zod</h1>
+      <Container.Grid>
+        <ExamplesNavigation />
 
-        <p>
-          You can find full example at{" "}
-          <Link
-            href="https://stackblitz.com/edit/solidjs-templates-fpxsx83t?file=src%2Fexample_form%2Fexample_schema.ts"
-            target="_blank"
-            color="accent"
-          >
-            StackBlitz
-          </Link>
-          .
-        </p>
+        <Container.Content>
+          <h1>Zod</h1>
 
-        <p>
-          Check{" "}
-          <Link href="https://zod.dev" target="_blank" color="accent">
-            Zod
-          </Link>{" "}
-          documentation for more details.
-        </p>
+          <p>
+            You can find full example at{" "}
+            <Link
+              href="https://stackblitz.com/edit/solidjs-templates-fpxsx83t?file=src%2Fexample_form%2Fexample_schema.ts"
+              target="_blank"
+              color="accent"
+            >
+              StackBlitz
+            </Link>
+            .
+          </p>
 
-        <p>Define a schema:</p>
+          <p>
+            Check{" "}
+            <Link href="https://zod.dev" target="_blank" color="accent">
+              Zod
+            </Link>{" "}
+            documentation for more details.
+          </p>
 
-        <Code language="js">{`import z, { object, email, string, boolean } from 'zod'
+          <p>Define a schema:</p>
+
+          <Code language="js">{`import z, { object, email, string, boolean } from 'zod'
 
 export const exampleSchema = object({
   email: email(),
@@ -49,13 +53,13 @@ export const exampleSchema = object({
 })
 `}</Code>
 
-        <p>When using TypeScript, infer form values type from the schema:</p>
+          <p>When using TypeScript, infer form values type from the schema:</p>
 
-        <Code language="ts">{`export type ExampleFormValues = z.infer<typeof exampleSchema>`}</Code>
+          <Code language="ts">{`export type ExampleFormValues = z.infer<typeof exampleSchema>`}</Code>
 
-        <p>Connect schema to the form:</p>
+          <p>Connect schema to the form:</p>
 
-        <Code language="js">{`import { createForm } from 'solid-hook-form'
+          <Code language="js">{`import { createForm } from 'solid-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { exampleSchema } from './example_schema'
 
@@ -90,7 +94,8 @@ export const ExampleForm = () => {
   )
 }
 `}</Code>
-      </Container>
+        </Container.Content>
+      </Container.Grid>
     </main>
   );
 };

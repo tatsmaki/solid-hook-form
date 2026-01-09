@@ -4,29 +4,33 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
+import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
 
 const AsyncValidation = () => {
   return (
     <main>
       <Title>Async Validation</Title>
-      <Container>
-        <h1>Async Validation</h1>
+      <Container.Grid>
+        <ExamplesNavigation />
 
-        <p>
-          You can find full example at{" "}
-          <Link
-            href="https://stackblitz.com/edit/solidjs-templates-hrzxfhbq?file=src%2Fexample_form%2Fexample_form.tsx"
-            target="_blank"
-            color="accent"
-          >
-            StackBlitz
-          </Link>
-          .
-        </p>
+        <Container.Content>
+          <h1>Async Validation</h1>
 
-        <p>Set validation error manually after server response:</p>
+          <p>
+            You can find full example at{" "}
+            <Link
+              href="https://stackblitz.com/edit/solidjs-templates-hrzxfhbq?file=src%2Fexample_form%2Fexample_form.tsx"
+              target="_blank"
+              color="accent"
+            >
+              StackBlitz
+            </Link>
+            .
+          </p>
 
-        <Code language="js">{`import { createForm } from 'solid-hook-form'
+          <p>Set validation error manually after server response:</p>
+
+          <Code language="js">{`import { createForm } from 'solid-hook-form'
 import { createSignal } from 'solid-js'
 
 export const ExampleForm = () => {
@@ -76,7 +80,8 @@ export const ExampleForm = () => {
     </form>
   )
 }`}</Code>
-      </Container>
+        </Container.Content>
+      </Container.Grid>
     </main>
   );
 };
