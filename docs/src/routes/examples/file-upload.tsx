@@ -2,8 +2,11 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
-import { Image } from "~/components/image/image";
 import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
+import { StackBlitzPreview } from "~/components/stackblitz-preview/stackblitz-preview";
+
+const stackblitzUrl =
+  "https://stackblitz.com/edit/solidjs-templates-jhhjanak?file=src%2Fexample_form%2Fexample_form.tsx";
 
 const FileUpload = () => {
   return (
@@ -15,22 +18,20 @@ const FileUpload = () => {
         <Container.Content>
           <h1>File Upload</h1>
 
-        <p>
-          Check full example at{" "}
-          <Link
-            href="https://stackblitz.com/edit/solidjs-templates-jhhjanak?file=src%2Fexample_form%2Fexample_form.tsx"
-            target="_blank"
-            color="accent"
-          >
-            StackBlitz
-          </Link>
-          .
-        </p>
+          <p>Control documents upload using native file input.</p>
 
-        <Image src="/file_upload.png" />
+          <p>
+            Check full example at{" "}
+            <Link href={stackblitzUrl} target="_blank" color="accent">
+              StackBlitz
+            </Link>
+            .
+          </p>
 
-        <Code language="ts">
-          {`import { createForm, FormProvider } from "solid-hook-form";
+          <StackBlitzPreview src={stackblitzUrl} title="File Upload" />
+
+          <Code language="ts">
+            {`import { createForm, FormProvider } from "solid-hook-form";
 import { FileUpload } from "./file_upload";
 
 type ExampleFormValues = {
@@ -57,7 +58,7 @@ export const ExampleForm = () => {
     </FormProvider>
   );
 };`}
-        </Code>
+          </Code>
         </Container.Content>
       </Container.Grid>
     </main>

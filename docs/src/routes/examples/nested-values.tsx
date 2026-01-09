@@ -2,8 +2,11 @@ import { Title } from "@solidjs/meta";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
-import { Image } from "~/components/image/image";
 import { ExamplesNavigation } from "~/components/navigation/examples_navigation";
+import { StackBlitzPreview } from "~/components/stackblitz-preview/stackblitz-preview";
+
+const stackblitzUrl =
+  "https://stackblitz.com/edit/solidjs-templates-kxtctw2h?file=src%2Fexample_form%2Fexample_form.tsx";
 
 const NestedValues = () => {
   return (
@@ -15,21 +18,19 @@ const NestedValues = () => {
         <Container.Content>
           <h1>Nested Values</h1>
 
-        <p>
-          Check full example at{" "}
-          <Link
-            href="https://stackblitz.com/edit/solidjs-templates-kxtctw2h?file=src%2Fexample_form%2Fexample_form.tsx"
-            target="_blank"
-            color="accent"
-          >
-            StackBlitz
-          </Link>
-          .
-        </p>
+          <p>Access object properties and array items in form fields.</p>
 
-        <Image src="/nested_values.png" />
+          <p>
+            Check full example at{" "}
+            <Link href={stackblitzUrl} target="_blank" color="accent">
+              StackBlitz
+            </Link>
+            .
+          </p>
 
-        <Code language="ts">{`import { createForm } from "solid-hook-form";
+          <StackBlitzPreview src={stackblitzUrl} title="Nested Values" height="510px" />
+
+          <Code language="ts">{`import { createForm } from "solid-hook-form";
 
 type ExampleFormValues = {
   user: {
