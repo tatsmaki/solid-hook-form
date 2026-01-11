@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.1 (2026-01-11)
+
+### Bug fixes
+
+- fixed fields registration for conditional render [5cb0ab64](https://github.com/tatsmaki/solid-hook-form/commit/5cb0ab64d9d6a7fbb02102cea9db4706de10c272)
+
 ## 2.5.0 (2026-01-09)
 
 ### Added
