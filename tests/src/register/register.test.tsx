@@ -31,11 +31,9 @@ describe("register", () => {
   });
 
   it("should handle conditional render", async () => {
-    const emailBadResult = "email";
     const pattern = /^[^@]+@[^@]+.[^@]+$/;
     const emailOkResult = "email@example.com";
     const emailErrorMessage = "Invalid email";
-    const passwordBadResult = "pass";
     const minLength = 5;
     const passwordOkResult = "password123";
     const passwordErrorMessage = "Min length is 5";
@@ -49,7 +47,7 @@ describe("register", () => {
             email: "",
             password: ""
           }}
-          render={({ errors, register }) => (
+          render={({ errors, formState, register, trigger }) => (
             <>
               <Show when={formStep() === 0}>
                 <Input
@@ -58,6 +56,18 @@ describe("register", () => {
                   })}
                   error={errors.email}
                 />
+                <button
+                  type="button"
+                  onClick={() => {
+                    trigger();
+
+                    if (formState.isValid()) {
+                      setFormStep(1);
+                    }
+                  }}
+                >
+                  Next
+                </button>
               </Show>
               <Show when={formStep() === 1}>
                 <Input
@@ -66,13 +76,10 @@ describe("register", () => {
                   })}
                   error={errors.password}
                 />
+                <button type="button" onClick={() => setFormStep(0)}>
+                  Back
+                </button>
               </Show>
-              <button type="button" onClick={() => setFormStep(0)}>
-                Step 1
-              </button>
-              <button type="button" onClick={() => setFormStep(1)}>
-                Step 2
-              </button>
             </>
           )}
           onSubmit={onSubmit}
@@ -81,51 +88,34 @@ describe("register", () => {
     });
 
     const emailInput = page.getByRole("textbox", { name: "email" });
-    const step1Button = page.getByRole("button", { name: "Step 1" });
-    const step2Button = page.getByRole("button", { name: "Step 2" });
+    const nextButton = page.getByRole("button", { name: "Next" });
     const submitButton = page.getByRole("button", { name: "Submit" });
     expect(emailInput).toHaveValue("");
-
-    await emailInput.fill(emailBadResult);
-    expect(emailInput).toHaveAttribute("aria-invalid", "true");
-    expect(emailInput).toHaveAccessibleErrorMessage(emailErrorMessage);
-    await step2Button.click();
-
-    const passwordInput = page.getByRole("textbox", { name: "password" });
-    expect(passwordInput).toHaveValue("");
-
-    await passwordInput.fill(passwordBadResult);
-    expect(passwordInput).toHaveAttribute("aria-invalid", "true");
-    expect(passwordInput).toHaveAccessibleErrorMessage(passwordErrorMessage);
-
-    await step1Button.click();
-    expect(emailInput).not.toHaveFocus();
-    expect(emailInput).toHaveValue(emailBadResult);
-    expect(emailInput).toHaveAttribute("aria-invalid", "true");
-    expect(emailInput).toHaveAccessibleErrorMessage(emailErrorMessage);
 
     await submitButton.click();
     expect(onSubmit).not.toHaveBeenCalled();
     expect(emailInput).toHaveFocus();
-
+    expect(emailInput).toHaveAttribute("aria-invalid", "true");
+    expect(emailInput).toHaveAccessibleErrorMessage(emailErrorMessage);
     await emailInput.fill(emailOkResult);
-    expect(emailInput).toHaveAttribute("aria-invalid", "false");
-    expect(emailInput).not.toHaveAccessibleErrorMessage();
+    await nextButton.click();
 
-    await step2Button.click();
-    expect(passwordInput).not.toHaveFocus();
-    expect(passwordInput).toHaveValue(passwordBadResult);
-    expect(passwordInput).toHaveAttribute("aria-invalid", "true");
-    expect(passwordInput).toHaveAccessibleErrorMessage(passwordErrorMessage);
+    const passwordInput = page.getByRole("textbox", { name: "password" });
+    const backButton = page.getByRole("button", { name: "Back" });
+    expect(passwordInput).toHaveValue("");
 
     await submitButton.click();
     expect(onSubmit).not.toHaveBeenCalled();
     expect(passwordInput).toHaveFocus();
-
+    expect(passwordInput).toHaveAttribute("aria-invalid", "true");
+    expect(passwordInput).toHaveAccessibleErrorMessage(passwordErrorMessage);
     await passwordInput.fill(passwordOkResult);
-    expect(passwordInput).toHaveAttribute("aria-invalid", "false");
-    expect(passwordInput).not.toHaveAccessibleErrorMessage();
+    await backButton.click();
 
+    expect(emailInput).toHaveValue(emailOkResult);
+    await nextButton.click();
+
+    expect(passwordInput).toHaveValue(passwordOkResult);
     await submitButton.click();
 
     expect(onSubmit).toHaveBeenCalledWith({
