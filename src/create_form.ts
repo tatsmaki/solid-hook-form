@@ -128,7 +128,7 @@ export const createForm: CreateForm = <F extends FormValues>(
 
   const onFieldChange = (event: Event | unknown, name: Path<F>) => {
     const fieldValue = getFieldValue(event);
-    const value = formatValue(fieldValue, rules[name]);
+    const value = formatValue(fieldValue, getRule(name));
 
     setValues((prev) => {
       const newState = { ...prev };
