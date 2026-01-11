@@ -45,10 +45,15 @@ const Examples = () => {
             <p>Give error feedback to a user after server-side validation.</p>
           </Grid.Item>
 
+          <Grid.Item href="/examples/multistep-form">
+            <h2>Muiti-Step Form</h2>
+            <p>Collect user information through different pages and sections.</p>
+          </Grid.Item>
+
           <Grid.Item href="/examples/nested-values">
             <h2>
               <span innerHTML={curly} />
-              Nested values
+              Nested Values
             </h2>
             <p>Access object properties and array items in form fields.</p>
           </Grid.Item>
@@ -56,7 +61,7 @@ const Examples = () => {
           <Grid.Item href="/examples/file-upload">
             <h2>
               <span innerHTML={upload} />
-              File upload
+              File Upload
             </h2>
             <p>Control documents upload using native file input.</p>
           </Grid.Item>
