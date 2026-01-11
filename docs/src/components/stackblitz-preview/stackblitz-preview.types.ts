@@ -4,4 +4,5 @@ export type StackBlitzPreviewProps = JSX.IframeHTMLAttributes<HTMLIFrameElement>
   src: string;
   title: string;
   height?: string;
+  hideExplorer?: boolean;
 };
