@@ -22,5 +22,9 @@ export const createRules = <F extends FormValues>() => {
     return rules[name];
   };
 
-  return { rules, addRule, getRule };
+  const removeRule = (name: string) => {
+    delete rules[name];
+  };
+
+  return { rules, addRule, getRule, removeRule };
 };

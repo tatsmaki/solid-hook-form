@@ -16,10 +16,15 @@ export const createFields = () => {
     getField(name)?.focus();
   };
 
+  const removeField = (name: string) => {
+    delete fields[name];
+  };
+
   return {
     fields,
     getField,
     setField,
-    focusField
+    focusField,
+    removeField
   };
 };
