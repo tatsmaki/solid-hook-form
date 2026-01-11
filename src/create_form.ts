@@ -1,4 +1,4 @@
-import { createMemo, createSignal } from "solid-js";
+import { createMemo, createSignal, onCleanup } from "solid-js";
 import { createDirtyFields } from "./logic/create_dirty_fields";
 import { createErrors } from "./logic/create_errors";
 import { createFields } from "./logic/create_fields";
@@ -33,8 +33,8 @@ export const createForm: CreateForm = <F extends FormValues>(
 ): CreateFormReturn<F> => {
   const { defaultValues, mode = "onChange", shouldFocusError = true, resolver } = arg;
 
-  const { fields, getField, setField, focusField } = createFields();
-  const { rules, addRule, getRule } = createRules<F>();
+  const { fields, getField, setField, focusField, removeField } = createFields();
+  const { rules, addRule, getRule, removeRule } = createRules<F>();
   const [values, setValues] = createSignal<F>(structuredClone(defaultValues));
   const { errors, appendError, clearError, resetErrors, clearErrors, getError } = createErrors<F>();
   const { touchedFields, addTouched, resetTouched } = createTouchedFields<F>();
@@ -143,6 +143,12 @@ export const createForm: CreateForm = <F extends FormValues>(
 
   const register: Register<F> = (name, options = {}) => {
     addRule(name, options);
+
+    onCleanup(() => {
+      removeRule(name);
+      removeField(name);
+      clearError(name);
+    });
 
     return {
       name,
