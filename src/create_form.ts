@@ -170,13 +170,16 @@ export const createForm: CreateForm = <F extends FormValues>(
         addTouched(name);
       },
       ref(element) {
-        const field = getField(name);
-
-        if (field) {
+        if (!element) {
           return;
         }
 
-        setField(name, element);
+        const field = getField(name);
+
+        if (field !== element) {
+          setField(name, element);
+        }
+
         setFieldValue(element, get(values(), name));
       }
     };
