@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.2 (2026-01-11)
+
+### Bug fixes
+
+- fixed register validation rules cleanup [79337aa](https://github.com/tatsmaki/solid-hook-form/commit/79337aa8ffebdb03bb65aed764a1a57a056174c1)
+
 ## 2.5.1 (2026-01-11)
 
 ### Bug fixes
