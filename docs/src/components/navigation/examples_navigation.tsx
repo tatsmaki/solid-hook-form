@@ -36,6 +36,13 @@ export const ExamplesNavigation = () => {
       </Link>
 
       <Link
+        href="/examples/multistep-form"
+        color={location.pathname.includes("/examples/multistep-form") ? "accent" : "secondary"}
+      >
+        Multi-Step Form
+      </Link>
+
+      <Link
         href="/examples/nested-values"
         color={location.pathname.includes("/examples/nested-values") ? "accent" : "secondary"}
       >
