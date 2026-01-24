@@ -36,7 +36,7 @@ export type TriggerOptions = {
 export type Trigger<F extends FormValues> = (
   name?: Path<F> | Path<F>[],
   options?: TriggerOptions
-) => void;
+) => Promise<void>;
 
 export type SubmitHandler<F extends FormValues> = (values: F) => void;
 
