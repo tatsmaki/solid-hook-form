@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.3 (2026-01-24)
+
+### Bug fixes
+
+- trigger should return promise type [52ae641](https://github.com/tatsmaki/solid-hook-form/commit/52ae6416776295f1245858db7022a40759b87706)
+
 ## 2.5.2 (2026-01-11)
 
 ### Bug fixes
