@@ -21,7 +21,7 @@ const Trigger = () => {
 
           <pre
             style={{ color: "var(--colors-accent-500)", "white-space": "break-spaces" }}
-          >{`(name: string | string[]) => void`}</pre>
+          >{`(name: string | string[]) => Promise<void>`}</pre>
 
           <p style={{ "margin-bottom": 0 }}>Props</p>
           <hr />
