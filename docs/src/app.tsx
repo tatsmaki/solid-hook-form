@@ -9,7 +9,7 @@ import "./app.css";
 import style from "solid-uix/dist/main.css?url";
 
 const ScrollToAnchor = clientOnly(async () => ({
-  default: (await import("./components/scroll/scroll")).ScrollToAnchor,
+  default: (await import("./components/scroll/scroll")).ScrollToAnchor
 }));
 
 const App = () => {
@@ -22,10 +22,7 @@ const App = () => {
             name="description"
             content="Performant, flexible and extensible forms with easy-to-use validation."
           />
-          <Meta
-            name="keywords"
-            content="solid, solid-hook-form, hooks, forms, validation, typescript"
-          />
+          <Meta name="keywords" content="solid, solidjs, hook, form, validation, typescript" />
           <Meta property="og:title" content="Solid Hook Form" />
           <Meta property="og:site_name" content="Solid Hook Form" />
           <Meta
