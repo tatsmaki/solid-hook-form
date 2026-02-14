@@ -1,4 +1,5 @@
 import { Title } from "@solidjs/meta";
+import { createSignal, onCleanup, onMount } from "solid-js";
 import { Link } from "solid-uix";
 import { Code } from "~/components/code/code";
 import { Container } from "~/components/container/container";
@@ -6,36 +7,113 @@ import { Footer } from "~/components/footer/footer";
 import { Navigation } from "~/components/navigation/navigation";
 
 const GetStarted = () => {
+  let isUserNavigation = false;
+  let timerId: number | undefined;
+  const [hash, setHash] = createSignal("");
+
+  const onNavigation = (event: MouseEvent) => {
+    const target = event.target as HTMLAnchorElement;
+    const href = target.href;
+    const hash = new URL(href).hash;
+
+    isUserNavigation = true;
+    setHash(hash);
+    clearTimeout(timerId);
+
+    timerId = setTimeout(() => {
+      isUserNavigation = false;
+    }, 1000);
+  };
+
+  onMount(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const options: IntersectionObserverInit = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (isUserNavigation) {
+        return;
+      }
+
+      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+
+      if (visibleEntries.length > 0) {
+        const visibleEntry = visibleEntries[0];
+        const href = visibleEntry.target.getAttribute("id") as string;
+
+        setHash(`#${href}`);
+        console.log("setHash", href);
+        history.replaceState(null, "", `get-started#${href}`);
+      }
+    }, options);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    onCleanup(() => {
+      observer.disconnect();
+      clearTimeout(timerId);
+    });
+  });
+
   return (
     <main>
       <Title>Get started</Title>
 
       <Container.Grid>
         <Navigation>
-          <Link href="/get-started#install" color="secondary">
+          <Link
+            href="/get-started#install"
+            color={hash() === "#install" || hash() === "#example" ? "accent" : "secondary"}
+            onClick={onNavigation}
+          >
             Install
           </Link>
-          <Link href="/get-started#register-fields" color="secondary">
+          <Link
+            href="/get-started#register"
+            color={hash() === "#register" ? "accent" : "secondary"}
+            onClick={onNavigation}
+          >
             Register fields
           </Link>
-          <Link href="/get-started#apply-validation" color="secondary">
+          <Link
+            href="/get-started#validation"
+            color={hash() === "#validation" ? "accent" : "secondary"}
+            onClick={onNavigation}
+          >
             Apply validation
           </Link>
-          <Link href="/get-started#controller" color="secondary">
+          <Link
+            href="/get-started#controller"
+            color={hash() === "#controller" ? "accent" : "secondary"}
+            onClick={onNavigation}
+          >
             Controlled Inputs
           </Link>
-          <Link href="/get-started#handle-errors" color="secondary">
+          <Link
+            href="/get-started#errors"
+            color={hash() === "#errors" ? "accent" : "secondary"}
+            onClick={onNavigation}
+          >
             Handle errors
           </Link>
-          <Link href="/get-started#typescript" color="secondary">
+          <Link
+            href="/get-started#typescript"
+            color={hash() === "#typescript" ? "accent" : "secondary"}
+            onClick={onNavigation}
+          >
             TypeScript
           </Link>
+
+          {/* <Link>{getHash()}</Link> */}
         </Navigation>
 
         <Container.Content>
           <h1>Get started</h1>
 
-          <div id="install">
+          <section id="install">
             <h2>
               <Link href="#install" color="secondary">
                 Install
@@ -43,9 +121,9 @@ const GetStarted = () => {
             </h2>
             <p>Install Solid Hook Form package.</p>
             <Code language="sh">npm install solid-hook-form</Code>
-          </div>
+          </section>
 
-          <div id="example">
+          <section id="example">
             <h2>
               <Link href="#example" color="secondary">
                 Example
@@ -74,11 +152,11 @@ export const ExampleForm = () => {
   )
 }`}
             </Code>
-          </div>
+          </section>
 
-          <div id="register-fields">
+          <section id="register">
             <h2>
-              <Link href="#register-fields" color="secondary">
+              <Link href="#register" color="secondary">
                 Register fields
               </Link>
             </h2>
@@ -116,11 +194,11 @@ export const ExampleForm = () => {
   )
 }`}
             </Code>
-          </div>
+          </section>
 
-          <div id="apply-validation">
+          <section id="validation">
             <h2>
-              <Link href="#apply-validation" color="secondary">
+              <Link href="#validation" color="secondary">
                 Apply validation
               </Link>
             </h2>
@@ -173,9 +251,9 @@ export const ExampleForm = () => {
     </form>
   )
 }`}</Code>
-          </div>
+          </section>
 
-          <div id="controller">
+          <section id="controller">
             <h2>
               <Link href="#controller" color="secondary">
                 Controlled Inputs
@@ -274,11 +352,11 @@ export const ExampleForm = () => {
   )
 }`}
             </Code>
-          </div>
+          </section>
 
-          <div id="handle-errors">
+          <section id="errors">
             <h2>
-              <Link href="#handle-errors" color="secondary">
+              <Link href="#errors" color="secondary">
                 Handle errors
               </Link>
             </h2>
@@ -320,9 +398,9 @@ export const ExampleForm = () => {
     </form>
   )
 }`}</Code>
-          </div>
+          </section>
 
-          <div id="typescript">
+          <section id="typescript">
             <h2>
               <Link href="#typescript" color="secondary">
                 TypeScript
@@ -360,7 +438,7 @@ export const ExampleForm = () => {
     </form>
   )
 }`}</Code>
-          </div>
+          </section>
         </Container.Content>
 
         <Footer />
