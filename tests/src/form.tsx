@@ -1,7 +1,13 @@
 /** biome-ignore-all lint/a11y/useAriaPropsSupportedByRole: pre aria-label */
 
 import type { JSXElement } from "solid-js";
-import { type CreateFormReturn, createForm, type FormValues, type SubmitHandler } from "./import";
+import {
+  type CreateFormReturn,
+  createForm,
+  type FormValues,
+  type SubmitErrorHandler,
+  type SubmitHandler
+} from "./import";
 
 type FormProps<F extends FormValues> = {
   defaultValues: F;
@@ -10,6 +16,7 @@ type FormProps<F extends FormValues> = {
   render: (form: CreateFormReturn<F>) => JSXElement;
   submitButton?: (form: CreateFormReturn<F>) => JSXElement;
   onSubmit: SubmitHandler<F>;
+  onError?: SubmitErrorHandler<F>;
   onReset?(form: CreateFormReturn<F>): void;
 };
 
@@ -27,7 +34,7 @@ export const Form = <F extends FormValues>(props: FormProps<F>) => {
     <div>
       <form
         style={{ display: "flex", "flex-direction": "column", gap: "32px" }}
-        onSubmit={handleSubmit(props.onSubmit)}
+        onSubmit={handleSubmit(props.onSubmit, props.onError)}
       >
         {props.render(form)}
 
