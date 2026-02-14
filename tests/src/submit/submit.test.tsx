@@ -4,6 +4,7 @@ import { Form } from "../form";
 import { Input } from "../input";
 
 const onSubmit = vi.fn(() => {});
+const onError = vi.fn(() => {});
 
 beforeEach(() => {
   vi.resetAllMocks();
@@ -62,5 +63,31 @@ describe("submit", () => {
     await submitButton.click();
     expect(onSubmit).toHaveBeenCalled();
     expect(submitCount).toHaveTextContent("2");
+  });
+
+  it("should call onError", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          email: ""
+        }}
+        render={({ register }) => (
+          <Input {...register("email", { required: "Email is required" })} />
+        )}
+        onSubmit={onSubmit}
+        onError={onError}
+      />
+    ));
+
+    const submitButton = page.getByRole("button", { name: "Submit" });
+    await submitButton.click();
+
+    expect(onError).toHaveBeenCalledTimes(1);
+    expect(onError).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: expect.objectContaining({ message: "Email is required" })
+      })
+    );
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 });
