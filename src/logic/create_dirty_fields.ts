@@ -1,4 +1,5 @@
-import { createMemo, createSignal } from "solid-js";
+import { createMemo } from "solid-js";
+import { createStore, produce, reconcile } from "solid-js/store";
 import type { DirtyFields } from "../types/dirty";
 import type { FormValues } from "../types/form";
 import type { Path } from "../types/path";
@@ -16,10 +17,10 @@ const isSomeFieldDirty = (value: FormValues): boolean => {
 };
 
 export const createDirtyFields = <F extends FormValues>(defaultValues: F) => {
-  const [dirtyFields, setDirtyFields] = createSignal<DirtyFields<F>>({});
+  const [dirtyFields, setDirtyFields] = createStore<DirtyFields<F>>({});
 
   const isDirty = createMemo(() => {
-    return isSomeFieldDirty(dirtyFields());
+    return isSomeFieldDirty(dirtyFields);
   });
 
   // biome-ignore lint/suspicious/noExplicitAny: value can be any
@@ -27,13 +28,11 @@ export const createDirtyFields = <F extends FormValues>(defaultValues: F) => {
     const defaultValue = get(defaultValues, name);
     const isDirty = value !== defaultValue;
 
-    setDirtyFields((prev) => {
-      const newState = { ...prev };
-
-      set(newState, name, isDirty);
-
-      return newState;
-    });
+    setDirtyFields(
+      produce((prev) => {
+        set(prev, name, isDirty);
+      })
+    );
   };
 
   const resetDirty = (keepDirty?: boolean) => {
@@ -41,7 +40,7 @@ export const createDirtyFields = <F extends FormValues>(defaultValues: F) => {
       return;
     }
 
-    setDirtyFields({});
+    setDirtyFields(reconcile({}));
   };
 
   return { dirtyFields, isDirty, checkDirty, resetDirty };

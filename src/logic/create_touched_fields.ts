@@ -1,20 +1,18 @@
-import { createSignal } from "solid-js";
+import { createStore, produce, reconcile } from "solid-js/store";
 import type { FormValues } from "../types/form";
 import type { Path } from "../types/path";
 import type { TouchedFields } from "../types/touched";
 import { set } from "../utils/set";
 
 export const createTouchedFields = <F extends FormValues>() => {
-  const [touchedFields, setTouchedFields] = createSignal<TouchedFields<F>>({});
+  const [touchedFields, setTouchedFields] = createStore<TouchedFields<F>>({});
 
   const addTouched = (name: Path<F>) => {
-    setTouchedFields((prev) => {
-      const newState = { ...prev };
-
-      set(newState, name, true);
-
-      return newState;
-    });
+    setTouchedFields(
+      produce((prev) => {
+        set(prev, name, true);
+      })
+    );
   };
 
   const resetTouched = (keepTouched?: boolean) => {
@@ -22,7 +20,7 @@ export const createTouchedFields = <F extends FormValues>() => {
       return;
     }
 
-    setTouchedFields({});
+    setTouchedFields(reconcile({}));
   };
 
   return { touchedFields, addTouched, resetTouched };

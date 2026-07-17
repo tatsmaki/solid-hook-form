@@ -35,13 +35,13 @@ const FormState = () => {
               ["errors", "FieldErrors", "Store proxy object with field errors."],
               [
                 "dirtyFields",
-                "Accessor<DirtyFields>",
-                "Accessor to get user-modified fields. Make sure to provide all inputs' defaultValues via createForm, so the library can compare against the defaultValues."
+                "DirtyFields",
+                "Store proxy object with user-modified fields. Make sure to provide all inputs' defaultValues via createForm, so the library can compare against the defaultValues."
               ],
               [
                 "touchedFields",
-                "Accessor<TouchedFields>",
-                "Accessor to get all the inputs the user has interacted with."
+                "TouchedFields",
+                "Store proxy object with all the inputs the user has interacted with."
               ],
               [
                 "isSubmitted",
