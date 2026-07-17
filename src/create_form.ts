@@ -46,7 +46,7 @@ export const createForm: CreateForm = <F extends FormValues>(
   });
 
   const isTouched = (name: Path<F>) => {
-    return get(touchedFields(), name);
+    return get(touchedFields, name);
   };
 
   const setError: SetError<F> = (name, error, options) => {

@@ -32,6 +32,28 @@ describe("touchedFields", () => {
     expect(touched).toHaveTextContent('{ "email": true }');
   });
 
+  it("should add touched field in nested object", async () => {
+    const page = render(() => (
+      <Form
+        defaultValues={{
+          profile: {
+            name: ""
+          }
+        }}
+        render={({ register }) => <Input {...register("profile.name")} />}
+        onSubmit={onSubmit}
+      />
+    ));
+
+    const input = page.getByRole("textbox", { name: "profile.name" });
+    const touched = page.getByLabelText("touchedFields");
+    await input.click();
+    expect(touched).toHaveTextContent("{}");
+
+    await userEvent.tab();
+    expect(touched).toHaveTextContent('{ "profile": { "name": true } }');
+  });
+
   it("should use setValue options", async () => {
     const page = render(() => (
       <Form

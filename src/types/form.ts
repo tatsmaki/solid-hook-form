@@ -60,8 +60,8 @@ export type CreateFormReturn<F extends FormValues = FormValues> = {
     errors: FieldErrors<F>;
     isValid: Accessor<boolean>;
     isDirty: Accessor<boolean>;
-    touchedFields: Accessor<TouchedFields<F>>;
-    dirtyFields: Accessor<DirtyFields<F>>;
+    touchedFields: TouchedFields<F>;
+    dirtyFields: DirtyFields<F>;
     isSubmitted: Accessor<boolean>;
     submitCount: Accessor<number>;
   };
